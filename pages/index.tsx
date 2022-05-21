@@ -4,52 +4,29 @@ import styles from '../styles/Home.module.css';
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
-import Project from './projects/_components/Project';
-import { Projects } from '../types';
+import ProjectCard from './projects/_components/ProjectCard';
+import { Experience, Project, Technology } from '../types';
+import { experiences, technologies } from '../helper/data';
+import { getAbsoluteUrl } from '../helper';
+import ExperienceCard from '../components/home/ExperienceCard';
+import TechnologyCard from '../components/home/TechnologyCard';
 
 interface HomeProps {
-  projects: Projects;
+  projects: Project[];
 }
 
 const Home: NextPage<HomeProps> = ({ projects }) => {
   return (
     <Layout>
       <LandingSection />
-      <section className="my-16">
-        <h2 className="section-header mb-2">Brief about my career</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
-      <ProjectSection projects={projects} />
-      <section className="my-16">
-        <h2 className="section-header mb-2">Work Experience</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
-      <section className="my-16">
-        <h2 className="section-header mb-2">Technologies</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
-      <section className="my-16">
+      <div className="mx-2">
+        <BriefSection />
+        <ProjectSection projects={projects} />
+        <ExperienceSection />
+        <TechnologySection />
+      </div>
+
+      <section className="my-12">
         <h2 className="section-header mb-2">Education</h2>
         <div>
           <p className="text-gray-100">
@@ -112,16 +89,74 @@ const LandingSection = () => (
     </div>
   </section>
 );
-
-const ProjectSection = ({ projects }: HomeProps) => {
+const BriefSection = () => (
+  <section className="mt-16 mb-12">
+    <h2 className="section-header mb-2">Brief about my career</h2>
+    <div>
+      <p className="text-gray-100">
+        I was a graphic designer before I jump into dev ecosystem. At first, I
+        switched to UI/UX design and then learned fundamentals of computer
+        sicence and web development. Now, I’m a frontend developer who builds
+        UIs for both mobile and web in elegant and efficient way.
+      </p>
+    </div>
+  </section>
+);
+const ProjectSection = ({ projects }: { projects: Project[] }) => {
   return (
-    <section className="my-16">
-      <h2 className="section-header mb-8">Featured Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+    <section className="my-12">
+      <h2 className="section-header mb-5">Featured Projects</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8">
         {projects.map((project, idx) => (
-          <div key={idx}>
-            <Project project={project} />
-          </div>
+          <ProjectCard key={idx} project={project} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const ExperienceSection = () => (
+  <section className="my-12">
+    <h2 className="section-header mb-5">Work Experience</h2>
+    <div className="flex gap-8 flex-col">
+      {experiences.map((exp, idx) => (
+        <ExperienceCard experience={exp} key={idx} />
+      ))}
+    </div>
+  </section>
+);
+
+const TechnologySection = () => {
+  let group: { specialized: Technology[]; others: Technology[] } = {
+    specialized: [],
+    others: [],
+  };
+  group = technologies.reduce((p, v) => {
+    if (v.specialized) {
+      p.specialized.push(v);
+    } else {
+      p.others.push(v);
+    }
+    return p;
+  }, group);
+
+  return (
+    <section className="my-12">
+      <h2 className="section-header mb-2">Technologies</h2>
+      <p className="uppercase text-gray-400 text-sm font-semibold mb-4">
+        Specialized in
+      </p>
+      <div className="flex flex-wrap gap-4">
+        {group.specialized.map((tech, idx) => (
+          <TechnologyCard key={idx} technology={tech} />
+        ))}
+      </div>
+      <p className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6">
+        Familiar with
+      </p>
+      <div className="flex flex-wrap gap-4">
+        {group.others.map((tech, idx) => (
+          <TechnologyCard key={idx} technology={tech} />
         ))}
       </div>
     </section>
@@ -129,11 +164,10 @@ const ProjectSection = ({ projects }: HomeProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res: Response = await fetch('http://localhost:3000/api/projects');
-  const data: Projects = await res.json();
-  console.log('Res data : ', data);
+  const projectRes: Response = await fetch(getAbsoluteUrl('/projects'));
+  const projects: Project[] = await projectRes.json();
   return {
-    props: { projects: data },
+    props: { projects },
   };
 };
 export default Home;

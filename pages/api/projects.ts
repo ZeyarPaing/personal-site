@@ -1,12 +1,11 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Projects } from '../../types';
+import { Project } from '../../types';
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Projects>,
+  res: NextApiResponse<Project[]>,
 ) {
-  const projects: Projects = [
+  const projects: Project[] = [
     {
       name: 'Monage',
       logo: '/assets/logos/monage.svg',
