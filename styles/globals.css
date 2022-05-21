@@ -12,6 +12,7 @@ body {
     font-family: Visby, Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     @apply bg-darkblue text-white tracking-wide;
+    z-index: -5;
 }
 
 /*custom scroll bar*/
