@@ -5,14 +5,15 @@ import React, { FormEventHandler, useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
 import projectCard from '../components/project/ProjectCard';
-import { Experience, Project, Technology } from '../types';
+import { Project, Technology } from '../types';
 import {
   education,
   experiences,
+  projects,
   technologies,
   voluntaries,
 } from '../helper/data';
-import { getAbsoluteUrl } from '../helper';
+// import { getAbsoluteUrl } from '../helper';
 import ExperienceCard from '../components/home/ExperienceCard';
 import TechnologyCard from '../components/home/TechnologyCard';
 import EducationCard from '../components/home/EducationCard';
@@ -250,8 +251,8 @@ const ContactSection = () => {
   );
 };
 export const getStaticProps: GetStaticProps = async (context) => {
-  const projectRes: Response = await fetch(getAbsoluteUrl('/projects'));
-  const projects: Project[] = await projectRes.json();
+  // const projectRes: Response = await fetch(getAbsoluteUrl('/projects'));
+  // const projects: Project[] = await projectRes.json();
   return {
     props: { projects },
   };

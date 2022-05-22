@@ -1,4 +1,10 @@
-import { Education, Experience, Technology, Voluntary } from '../types';
+import {
+  Education,
+  Experience,
+  Project,
+  Technology,
+  Voluntary,
+} from '../types';
 
 export const experiences: Experience[] = [
   {
@@ -117,5 +123,25 @@ export const voluntaries: Voluntary[] = [
     position: 'Volunteer',
     description:
       'Involved in running the events at university such as Thingyan Festival and Fresher Welcome',
+  },
+];
+export const projects: Project[] = [
+  {
+    name: 'Monage',
+    logo: '/assets/logos/monage.svg',
+    type: 'Collaborative Expense/Income Tracker',
+    description:
+      'A personal project, simple expense/income tracker app with collaborative wallets. VueJs , node(express), mongodb are used to build it.',
+    demoUrl: 'https://monage.zeyar.dev',
+    color: '#4B5DFF',
+  },
+  {
+    name: 'Spring University Myanmar',
+    logo: '/assets/logos/sum.svg',
+    type: 'University Website and CMS Panel ',
+    description:
+      'Website + admin console for Spring University Myanmar using Next.js, Firebase realtime database and Google Could Storage.',
+    demoUrl: 'https://sum-five.vercel.app',
+    color: '#F05655',
   },
 ];
