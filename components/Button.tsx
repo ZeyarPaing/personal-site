@@ -3,7 +3,7 @@ import React from 'react';
 interface ButtonType {
   children: React.ReactNode;
   type?: 'primary' | 'secondary';
-  onClick?: () => {};
+  onClick?: any;
   disabled?: boolean;
   className?: string;
 }

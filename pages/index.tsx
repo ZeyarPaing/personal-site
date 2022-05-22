@@ -67,7 +67,17 @@ const LandingSection = () => (
         web-based applications incorporating a range of technologies.
       </p>
       <div className="flex gap-8 items-center mt-5">
-        <Button type="primary">Resume</Button>
+        <Button
+          onClick={() =>
+            window.open(
+              'https://www.figma.com/proto/bejHkqD4rOQRzkkvHiZKqi/Resume?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1',
+              '_blank',
+            )
+          }
+          type="primary"
+        >
+          Resume
+        </Button>
         <TextButton type="primary">
           <Link href="#contact">
             <a>Contact me</a>
@@ -164,14 +174,14 @@ const EducationSection = () => {
       <p className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6">
         Certificate Courses
       </p>
-      <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
         {courses.map((name, idx) => (
           <div
-            className="bg-gray-900 bg-opacity-80 rounded-3xl border border-gray-700 px-5 py-4 flex flex-col items-end gap-4"
+            className="bg-gray-900 bg-opacity-80 rounded-3xl border border-gray-700 px-5 py-4 flex flex-col items-end gap-y-5"
             key={idx}
           >
-            <Image src="/assets/logos/coursera.svg" width={60} height={60} />
-            <h4 className="font-bold text-sm ">{name}</h4>
+            <Image src="/assets/logos/coursera.svg" width={40} height={40} />
+            <h4 className="font-bold text-xs ">{name}</h4>
           </div>
         ))}
       </div>
@@ -198,6 +208,17 @@ const ContactSection = () => {
     e.preventDefault();
     console.log('on submit invoked', email, message);
     // TODO: do email send stuff here
+    fetch('/api/contact', {
+      body: JSON.stringify({ message: message, email: email }),
+      method: 'POST',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('message res : ', res);
+      })
+      .catch((err) => {
+        console.warn('message err : ', err);
+      });
   }
 
   return (
