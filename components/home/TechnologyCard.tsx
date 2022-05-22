@@ -6,21 +6,27 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
     <div
       className="group flex-auto border-current text-gray-400 px-[1px] py-[1px] rounded-3xl"
       style={{
-        background: `linear-gradient(to bottom right, ${technology.color}AA , #00000000)`,
+        background: `linear-gradient(to bottom right, ${technology.color}${
+          technology.specialized ? 'BB' : '45'
+        } , #00000000)`,
       }}
       title={technology.name}
     >
       <div
-        className={`px-10 pt-8 pb-4 ${
-          technology.name == 'Flutter' ? 'pl-7' : ''
-        } backdrop-blur-md rounded-3xl w-full grid place-items-center ${
-          technology.specialized ? 'bg-gray-900 bg-opacity-70' : 'bg-gray-900'
-        }`}
+        className={`px-5 md:px-10 pt-6 md:pt-8 pb-2 md:pb-4 ${
+          technology.name == 'Flutter'
+            ? 'pl-4 pr-6'
+            : technology.name == 'Next.js'
+            ? 'px-10'
+            : ''
+        } backdrop-blur-md rounded-3xl w-full grid place-items-center bg-darkblue bg-opacity-80 `}
       >
         <Image
-          className={'group-hover:scale-75 transition-transform'}
-          width={100}
-          height={100}
+          className={`group-hover:scale-75 ${
+            !technology.specialized ? 'scale-75' : 'scale-90'
+          } md:scale-100 transition-transform`}
+          width={technology.name == 'Next.js' ? 120 : 90}
+          height={90}
           src={technology.icon}
           alt={technology.name}
         />

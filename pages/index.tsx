@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 import React, { FormEventHandler, useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
-import ProjectCard from './projects/_components/ProjectCard';
+import projectCard from '../components/project/ProjectCard';
 import { Experience, Project, Technology } from '../types';
 import {
   education,
@@ -19,6 +19,7 @@ import EducationCard from '../components/home/EducationCard';
 import VoluntaryCard from '../components/home/VoluntaryCard';
 import Link from 'next/link';
 import ContactItem from '../components/home/ContactItem';
+import ProjectCard from '../components/project/ProjectCard';
 
 interface HomeProps {
   projects: Project[];

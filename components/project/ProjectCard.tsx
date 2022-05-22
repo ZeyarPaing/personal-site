@@ -1,7 +1,7 @@
-import { Project } from '../../../types';
+import { Project } from '../../types';
 import Image from 'next/image';
 
-const ProjectCard = (props: { project: Project }) => {
+const projectCard = (props: { project: Project }) => {
   const project = props.project;
   return (
     <div className="relative">
@@ -23,4 +23,4 @@ const ProjectCard = (props: { project: Project }) => {
   );
 };
 
-export default ProjectCard;
+export default projectCard;
