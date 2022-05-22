@@ -6,11 +6,13 @@ const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
-    <nav className="z-10 px-3 py-4 text-white bg-gray-900 bg-opacity-10 backdrop-blur-md fixed top-0 w-full">
+    <nav className="z-10 px-3 py-3 text-white bg-gray-900 bg-opacity-10 backdrop-blur-md fixed top-0 w-full">
       <div className="m-container flex flex-wrap justify-between items-center ">
-        <a href="https://flowbite.com" className="flex items-center">
-          <Image src="/logo-full.svg" width={120} height={30} alt="logo" />
-        </a>
+        <Link href="/">
+          <a>
+            <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
+          </a>
+        </Link>
         <div
           className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "
           aria-controls="mobile-menu"

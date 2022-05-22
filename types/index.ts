@@ -25,3 +25,9 @@ export type Education = {
   name: string;
   description: string;
 };
+
+export type Voluntary = {
+  place: string;
+  description: string;
+  position: string;
+};

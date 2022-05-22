@@ -5,6 +5,7 @@ interface ButtonType {
   type?: 'primary' | 'secondary';
   onClick?: () => {};
   disabled?: boolean;
+  className?: string;
 }
 
 const Button = ({
@@ -12,6 +13,7 @@ const Button = ({
   onClick,
   disabled = false,
   type = 'primary',
+  className,
 }: ButtonType) => {
   return (
     <button
@@ -21,7 +23,7 @@ const Button = ({
         type == 'primary'
           ? 'bg-primary hover:bg-primary-light active:bg-primary-dark text-gray-900'
           : 'bg-secondary hover:bg-secondary-light active:bg-secondary-dark text-white'
-      } px-8 py-3 rounded-lg font-bold disabled:bg-gray-400 disabled:text-gray-600`}
+      } px-8 py-3 rounded-lg font-bold disabled:bg-gray-400 disabled:text-gray-600 ${className}`}
     >
       {children}
     </button>

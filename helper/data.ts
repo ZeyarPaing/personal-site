@@ -1,4 +1,4 @@
-import { Experience, Technology } from '../types';
+import { Education, Experience, Technology, Voluntary } from '../types';
 
 export const experiences: Experience[] = [
   {
@@ -71,5 +71,51 @@ export const technologies: Technology[] = [
     name: 'Python',
     specialized: false,
     color: '#5A9FD4',
+  },
+];
+
+export const education: Education[] = [
+  {
+    name: 'University of Computer Studies, Yangon',
+    description:
+      'Started as a bachelor student in 2019. Specialized in Knowledge Engineering of Computer Science. After learning the fundamentals for a year and a half, the pandemic & the coup happened. Currently, I’m boycotting the Myanmar Junta by not taking classes managed by the Junta.',
+  },
+  {
+    name: 'Turing Programming Training Center',
+    description:
+      'Started as a bachelor student in 2019. Specialized in Knowledge Engineering of Computer Science. After learning the fundamentals for a year and a half, the pandemic & the coup happened. Currently, I’m boycotting the Myanmar Junta by not taking classes managed by the Junta.',
+  },
+];
+
+export const courses: string[] = [
+  'Programming Foundations with JavaScript, HTML and CSS',
+  'Visual Elements of User Interface Design',
+  'Modern JavaScript: ES6 Basics',
+  'Javascript animation for websites, storytelling',
+  'Crash Course on Python',
+  'Mathematics for Machine Learning: Linear Algebra',
+];
+
+export const voluntaries: Voluntary[] = [
+  {
+    place: 'Non-profit Organization',
+    position: 'Public Relation Team Member',
+    description: 'Crating graphics for social media and events',
+  },
+  {
+    place: 'ICPC National Contest',
+    position: 'Volunteer',
+    description: 'Crating graphics for social media and events',
+  },
+  {
+    place: 'UCSY IT Camp 2019',
+    position: 'Public Relation Volunteer',
+    description: 'The event had the attendees of over 2200 and 40 speakers.',
+  },
+  {
+    place: 'University Events & Ceremonies',
+    position: 'Volunteer',
+    description:
+      'Involved in running the events at university such as Thingyan Festival and Fresher Welcome',
   },
 ];

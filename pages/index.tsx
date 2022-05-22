@@ -1,15 +1,24 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import React from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
 import ProjectCard from './projects/_components/ProjectCard';
 import { Experience, Project, Technology } from '../types';
-import { experiences, technologies } from '../helper/data';
+import {
+  education,
+  experiences,
+  technologies,
+  voluntaries,
+} from '../helper/data';
 import { getAbsoluteUrl } from '../helper';
 import ExperienceCard from '../components/home/ExperienceCard';
 import TechnologyCard from '../components/home/TechnologyCard';
+import EducationCard from '../components/home/EducationCard';
+import VoluntaryCard from '../components/home/VoluntaryCard';
+import Link from 'next/link';
+import ContactItem from '../components/home/ContactItem';
 
 interface HomeProps {
   projects: Project[];
@@ -24,41 +33,10 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
         <ProjectSection projects={projects} />
         <ExperienceSection />
         <TechnologySection />
+        <EducationSection />
+        <VoluntarySection />
+        <ContactSection />
       </div>
-
-      <section className="my-12">
-        <h2 className="section-header mb-2">Education</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
-      <section className="my-16">
-        <h2 className="section-header mb-2">Voluntary Activities</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
-      <section className="my-16">
-        <h2 className="section-header mb-2">Contact</h2>
-        <div>
-          <p className="text-gray-100">
-            I was a graphic designer before I jump into dev ecosystem. At first,
-            I switched to UI/UX design and then learned fundamentals of computer
-            sicence and web development. Now, I’m a frontend developer who
-            builds UIs for both mobile and web in elegant and efficient way.
-          </p>
-        </div>
-      </section>
     </Layout>
   );
 };
@@ -84,7 +62,11 @@ const LandingSection = () => (
       </p>
       <div className="flex gap-8 items-center mt-5">
         <Button type="primary">Resume</Button>
-        <TextButton type="primary">Contact me</TextButton>
+        <TextButton type="primary">
+          <Link href="#contact">
+            <a>Contact me</a>
+          </Link>
+        </TextButton>
       </div>
     </div>
   </section>
@@ -163,6 +145,104 @@ const TechnologySection = () => {
   );
 };
 
+const EducationSection = () => {
+  return (
+    <section className="my-12">
+      <h2 className="section-header mb-5">Education</h2>
+      <div className="flex gap-8 flex-col">
+        {education.map((edu, idx) => (
+          <EducationCard education={edu} key={idx} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const VoluntarySection = () => (
+  <section className="my-12">
+    <h2 className="section-header mb-5">Voluntary Activities</h2>
+    <div className="flex gap-8 flex-wrap">
+      {voluntaries.map((vol, idx) => (
+        <VoluntaryCard voluntary={vol} key={idx} />
+      ))}
+    </div>
+  </section>
+);
+
+const ContactSection = () => {
+  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
+
+  function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log('on submit invoked', email, message);
+    // TODO: do email send stuff here
+  }
+
+  return (
+    <section
+      id="contact"
+      className="my-24 flex justify-between flex-wrap gap-y-6"
+    >
+      <div className="max-w-md">
+        <h2 className="section-header mb-3">Contact</h2>
+        <ContactItem
+          link="tel:+959783024165"
+          icon="phone.svg"
+          display="+959 78302 4165"
+        />
+        <ContactItem
+          link="mailto:zaynepaing@gmail.com"
+          icon="mail.svg"
+          display="zaynepaing@gmail.com"
+        />
+        <ContactItem
+          link="https://github.com/ZeyarPaing"
+          icon="github.svg"
+          display="ZeyarPaing"
+        />
+        <ContactItem
+          link="https://mm.linkedin.com/in/zeyar-paing-713854172"
+          icon="linkedin.svg"
+          display="zeyar-paing-713854172"
+        />
+      </div>
+      <div className="w-full sm:max-w-md sm:w-auto">
+        <h2 className="section-header mb-3">Drop a line</h2>
+        <form onSubmit={handleSendMessage}>
+          <label className="font-secondary text-gray-400 font-semibold text-sm">
+            Message
+          </label>
+          <textarea
+            required={true}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1"
+            placeholder="Hi there! "
+          ></textarea>
+          <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1">
+            Email
+          </label>
+          <input
+            required={true}
+            type="email"
+            placeholder="yourname@company.com"
+            className="px-4 py-3 rounded-xl w-full sm:w-auto"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <span className="block mt-4 sm:pl-3 sm:inline">
+            <Button type="primary" className="w-full sm:w-auto">
+              Send
+              <span className="inline-flex h-[10px] w-[10px] relative -translate-y-[22px] -translate-x-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300"></span>
+              </span>
+            </Button>
+          </span>
+        </form>
+      </div>
+    </section>
+  );
+};
 export const getStaticProps: GetStaticProps = async (context) => {
   const projectRes: Response = await fetch(getAbsoluteUrl('/projects'));
   const projects: Project[] = await projectRes.json();
