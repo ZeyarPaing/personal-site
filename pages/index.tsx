@@ -7,6 +7,7 @@ import { Button, TextButton } from '../components/Button';
 import projectCard from '../components/project/ProjectCard';
 import { Project, Technology } from '../types';
 import {
+  courses,
   education,
   experiences,
   projects,
@@ -61,9 +62,9 @@ const LandingSection = () => (
       <p className="font-light uppercase">Hello there, I’m</p>
       <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
       <p className="max-w-lg text-lg font-light leading-[28px]">
-        A frontend enthusiast who loves building efficient & usable interfaces
-        with knowledge of design creative UI/UX and implement it to make it
-        alive.
+        A creative Front-End Developer delivering efficient & optimized
+        solutions, Skilled in designing, developing and refactoring multiple
+        web-based applications incorporating a range of technologies.
       </p>
       <div className="flex gap-8 items-center mt-5">
         <Button type="primary">Resume</Button>
@@ -81,21 +82,22 @@ const BriefSection = () => (
     <h2 className="section-header mb-2">Brief about my career</h2>
     <div>
       <p className="text-gray-100">
-        I was a graphic designer before I jump into dev ecosystem. At first, I
-        switched to UI/UX design and then learned fundamentals of computer
-        sicence and web development. Now, I’m a frontend developer who builds
-        UIs for both mobile and web in elegant and efficient way.
+        I was a UI/UX designer before I dived into web development. I really
+        loves designing UI and making it live. After 2+ years of experience in
+        Frontend Development, I&apos;m delivering robust, efficient & elegant
+        interfaces with considerations of Accessibility, User Experience Laws
+        and Responsiveness.
       </p>
     </div>
   </section>
 );
 const ProjectSection = ({ projects }: { projects: Project[] }) => {
   return (
-    <section className="my-12">
-      <h2 className="section-header mb-5">Featured Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8">
+    <section className="my-12 ">
+      <h2 className="section-header mb-7">Featured Projects</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 project-container">
         {projects.map((project, idx) => (
-          <ProjectCard key={idx} project={project} />
+          <ProjectCard showDots={true} key={idx} project={project} />
         ))}
       </div>
     </section>
@@ -103,7 +105,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 };
 
 const ExperienceSection = () => (
-  <section className="my-12">
+  <section className="my-12 ">
     <h2 className="section-header mb-5">Work Experience</h2>
     <div className="flex gap-8 flex-col">
       {experiences.map((exp, idx) => (
@@ -157,6 +159,20 @@ const EducationSection = () => {
       <div className="flex gap-8 flex-col">
         {education.map((edu, idx) => (
           <EducationCard education={edu} key={idx} />
+        ))}
+      </div>
+      <p className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6">
+        Certificate Courses
+      </p>
+      <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {courses.map((name, idx) => (
+          <div
+            className="bg-gray-900 bg-opacity-80 rounded-3xl border border-gray-700 px-5 py-4 flex flex-col items-end gap-4"
+            key={idx}
+          >
+            <Image src="/assets/logos/coursera.svg" width={60} height={60} />
+            <h4 className="font-bold text-sm ">{name}</h4>
+          </div>
         ))}
       </div>
     </section>

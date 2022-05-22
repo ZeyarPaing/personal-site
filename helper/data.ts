@@ -11,15 +11,16 @@ export const experiences: Experience[] = [
     companyName: 'Bilions',
     position: 'Frontend Developer',
     description:
-      'Started developing frontend UIs in  Vue Js at first and mobile UIs in Flutter now. I’ve improved in organizing the components for better DevX and readability, refactoring state management and network requests and communication with other developers and designers',
+      "Implemented user-friendly web applications designed by UI/UX designer. I've developed a good way of communication with UI/UX designer which benefits in theming & asset sharing for the app.  I’ve improved in organizing the components for better DevX and readability, refactoring, state management and better network requests",
     year: 1,
   },
   {
     companyName: "Partner Associates Int'l Co.,Ltd.",
     position: 'Junior Application Developer',
     description:
-      'Started developing frontend UIs in  Vue Js at first and mobile UIs in Flutter now. I’ve improved in organizing the components for better DevX and readability, refactoring state management and network requests and communication with other developers and designers',
-    year: 1,
+      'Joined in 2020 as an Internship Student responsible not only for coding web UIs but also for designing UI/UX for mobile and web applications.' +
+      " After almost a year, I've been promoted to Junior Application Developer. I've designed many elegant and usable UI and developed web interfaces with the best performance and design. I've gained a lot of experience about layouts, network request and refactoring techniques",
+    year: 1.4,
   },
 ];
 
@@ -84,12 +85,12 @@ export const education: Education[] = [
   {
     name: 'University of Computer Studies, Yangon',
     description:
-      'Started as a bachelor student in 2019. Specialized in Knowledge Engineering of Computer Science. After learning the fundamentals for a year and a half, the pandemic & the coup happened. Currently, I’m boycotting the Myanmar Junta by not taking classes managed by the Junta.',
+      "Started as a bachelor student in 2019. Specialized in Knowledge Engineering Major of Computer Science Category. During the periods of learning, I've learned the fundamentals of Computer Sciences such as Data Structures & Algorithms, Programming Foundations, Basic Database Systems and Web Development Foundations ",
   },
   {
     name: 'Turing Programming Training Center',
     description:
-      'Started as a bachelor student in 2019. Specialized in Knowledge Engineering of Computer Science. After learning the fundamentals for a year and a half, the pandemic & the coup happened. Currently, I’m boycotting the Myanmar Junta by not taking classes managed by the Junta.',
+      "Joined a course taught by Ko Thet Khine, Javascript & React Course. I've learned how to use JavaScript in an efficient and pragmatic way. After completing this course, I started developing React apps and involved in Js coding challenges",
   },
 ];
 
@@ -106,17 +107,20 @@ export const voluntaries: Voluntary[] = [
   {
     place: 'Non-profit Organization',
     position: 'Public Relation Team Member',
-    description: 'Crating graphics for social media and events',
+    description:
+      'Responsible for social media awareness for the events and publications',
   },
   {
     place: 'ICPC National Contest',
     position: 'Volunteer',
-    description: 'Crating graphics for social media and events',
+    description:
+      "A role for reporting technical errors of computers and contestants' scores",
   },
   {
     place: 'UCSY IT Camp 2019',
     position: 'Public Relation Volunteer',
-    description: 'The event had the attendees of over 2200 and 40 speakers.',
+    description:
+      'Participated in inviting Speakers and making social media marketing for the event',
   },
   {
     place: 'University Events & Ceremonies',
@@ -129,18 +133,18 @@ export const projects: Project[] = [
   {
     name: 'Monage',
     logo: '/assets/logos/monage.svg',
-    type: 'Collaborative Expense/Income Tracker',
+    type: 'Mobile-first Expense/Income Tracker',
     description:
-      'A personal project, simple expense/income tracker app with collaborative wallets. VueJs , node(express), mongodb are used to build it.',
+      'Simple expense/income tracker app with collaborative features. This app can make the fund usage between friends, families and teams more transparent',
     demoUrl: 'https://monage.zeyar.dev',
     color: '#4B5DFF',
   },
   {
     name: 'Spring University Myanmar',
     logo: '/assets/logos/sum.svg',
-    type: 'University Website and CMS Panel ',
+    type: 'University Website + Admin Panel ',
     description:
-      'Website + admin console for Spring University Myanmar using Next.js, Firebase realtime database and Google Could Storage.',
+      'A multilingual, Server Side Rendered website. The major data includes Schools, Courses, Careers and Articles, all of them can be manipulated from a Customized Admin Panel ',
     demoUrl: 'https://sum-five.vercel.app',
     color: '#F05655',
   },
