@@ -222,7 +222,7 @@ const ContactSection = () => {
             className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1"
             placeholder="Hi there! "
           ></textarea>
-          <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1">
+          <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
             Email
           </label>
           <input
@@ -232,12 +232,14 @@ const ContactSection = () => {
             className="px-4 py-3 rounded-xl w-full sm:w-auto"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="block mt-4 sm:pl-3 sm:inline">
+          <span className="block mt-4 sm:m-0 sm:pl-3 sm:inline-block relative">
             <Button type="primary" className="w-full sm:w-auto">
               Send
-              <span className="inline-flex h-[10px] w-[10px] relative -translate-y-[22px] -translate-x-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300"></span>
+              <span className="absolute -top-2.5 -right-0.5">
+                <span className="inline-flex h-[10px] w-[10px] relative ">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300"></span>
+                </span>
               </span>
             </Button>
           </span>
