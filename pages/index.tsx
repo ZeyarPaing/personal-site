@@ -42,8 +42,11 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
 };
 
 const LandingSection = () => (
-  <section className="flex justify-center items-center gap-10 mx-auto mt-28 relative flex-wrap lg:flex-nowrap">
-    <div className="basset blur-[70px] w-16 h-16 bg-[#06B1D7] absolute top-44 left-0"></div>
+  <section className="flex justify-center items-center gap-10 mx-auto mt-18 md:mt-28 relative flex-wrap lg:flex-nowrap">
+    <div
+      className="basset blur-[70px] w-16 h-16 bg-[#06B1D7] absolute t
+    op-44 left-0"
+    ></div>
     <div className="basset blur-[80px] w-16 h-16 bg-primary absolute top-20 right-[15%]"></div>
     <Image
       src="/assets/image/profile.svg"
