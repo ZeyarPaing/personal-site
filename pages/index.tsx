@@ -203,11 +203,11 @@ const VoluntarySection = () => (
 const ContactSection = () => {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
+  const [submitStatus, setSubmitStatus] = useState('idle');
 
   function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log('on submit invoked', email, message);
-    // TODO: do email send stuff here
+    setSubmitStatus('loading');
     fetch('/api/contact', {
       body: JSON.stringify({ message: message, email: email }),
       method: 'POST',
@@ -215,9 +215,16 @@ const ContactSection = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log('message res : ', res);
+        setSubmitStatus('ok');
       })
       .catch((err) => {
         console.warn('message err : ', err);
+        setSubmitStatus('err');
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 1000);
       });
   }
 
@@ -258,9 +265,9 @@ const ContactSection = () => {
           <textarea
             required={true}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1"
+            className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1 text-sm"
             placeholder="Hi there! "
-          ></textarea>
+          />
           <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
             Email
           </label>
@@ -268,16 +275,20 @@ const ContactSection = () => {
             required={true}
             type="email"
             placeholder="yourname@company.com"
-            className="px-4 py-3 rounded-xl w-full sm:w-auto"
+            className="px-4 py-3 rounded-xl w-full sm:w-auto text-sm"
             onChange={(e) => setEmail(e.target.value)}
           />
           <span className="block mt-4 sm:m-0 sm:pl-3 sm:inline-block relative">
-            <Button type="primary" className="w-full sm:w-auto">
+            <Button
+              type="primary"
+              className="w-full sm:w-auto"
+              status={submitStatus}
+            >
               Send
               <span className="absolute -top-2.5 -right-0.5">
                 <span className="inline-flex h-[10px] w-[10px] relative ">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75" />
+                  <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300" />
                 </span>
               </span>
             </Button>

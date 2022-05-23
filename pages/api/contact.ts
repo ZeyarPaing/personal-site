@@ -1,35 +1,67 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createTransport } from 'nodemailer';
-import { Project } from '../../types';
+import axios from 'axios';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log('env : ', process.env.EMAIL);
+function sendError(res: NextApiResponse) {
+  return res
+    .status(500)
+    .json({ message: 'Sorry, the bird failed to send your message' });
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const abstractApiKey = process.env.ABSTRACT_API_KEY;
+  const body = JSON.parse(req.body);
+
+  //check email validity
+  if (!body.email && !body.message) {
+    sendError(res);
+  }
+
+  let abstract = await axios.get(
+    `https://emailvalidation.abstractapi.com/v1/`,
+    {
+      params: { api_key: abstractApiKey, email: body.email },
+    },
+  );
+  if (abstract.data.deliverability == 'UNDELIVERABLE') {
+    sendError(res);
+  }
+
   const transporter = createTransport({
     port: 465,
     host: 'smtp.gmail.com',
     auth: {
-      user: process.env.EMAIL,
+      user: abstract.data.autocorrect || process.env.EMAIL,
       pass: process.env.MAILPASS,
     },
     secure: true,
   });
   const mailData = {
-    from: 'Website: zeyar.dev',
+    from: 'PersonalWeb',
     to: 'zeyarpaing@protonmail.com',
-    subject: `Message From ${req.body.email}`,
-    text: req.body.message + ' | Sent from: ' + req.body.email,
-    html: `<div>${req.body.message}</div><p>Sent from:
-    ${req.body.email}</p>`,
+    subject: `Message From ${body.email}`,
+    html: `
+  <div>
+      <h4>Hello Zeyar!</h4>
+      <p>There is a message someone sent from your website's contact section.</p>
+      <hr>
+      <p>Sender's email : ${body.email}</p>
+      <p style="max-width: 50%">${body.message}</p>
+      <hr>
+      <small>Bot from zeyar.dev</small>
+  </div>`,
   };
 
   transporter.sendMail(mailData, function (err, info) {
     if (err) {
       console.log('error  :', err);
-      res.status(500).json('error');
+      sendError(res);
     } else {
-      console.log('ok ');
-      res.status(200).json('ok');
+      console.log('ok :', info);
+      res.status(200).json({ message: 'Message sent' });
     }
   });
-  res.status(200).json('ok');
 }
