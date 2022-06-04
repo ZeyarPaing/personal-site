@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import React, { FormEventHandler, useState } from 'react';
+import React, { FormEventHandler, useCallback, useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
 import projectCard from '../components/project/ProjectCard';
@@ -22,6 +22,10 @@ import VoluntaryCard from '../components/home/VoluntaryCard';
 import Link from 'next/link';
 import ContactItem from '../components/home/ContactItem';
 import ProjectCard from '../components/project/ProjectCard';
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from 'react-google-recaptcha-v3';
 
 interface HomeProps {
   projects: Project[];
@@ -205,12 +209,30 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState('idle');
 
-  function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const handleReCaptchaVerify = async () => {
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+    let token = '';
+    try {
+      token = await executeRecaptcha('submit');
+    } catch (e) {
+      console.error('Recaptcha Error');
+    }
+    return token;
+  };
+
+  async function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitStatus('loading');
-    fetch('/api/contact', {
-      body: JSON.stringify({ message: message, email: email }),
-      method: 'POST',
+    const token = await handleReCaptchaVerify();
+    if (!token) return;
+    fetch('/api/dynamo', {
+      body: JSON.stringify({ message: message, email: email, captcha: token }),
+      method: 'PUT',
     })
       .then((res) => res.json())
       .then((res) => {
@@ -256,45 +278,47 @@ const ContactSection = () => {
           display="zeyar-paing-713854172"
         />
       </div>
-      <div className="w-full sm:max-w-md sm:w-auto">
-        <h2 className="section-header mb-3">Drop a line</h2>
-        <form onSubmit={handleSendMessage}>
-          <label className="font-secondary text-gray-400 font-semibold text-sm">
-            Message
-          </label>
-          <textarea
-            required={true}
-            onChange={(e) => setMessage(e.target.value)}
-            className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1 text-sm"
-            placeholder="Hi there! "
-          />
-          <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
-            Email
-          </label>
-          <input
-            required={true}
-            type="email"
-            placeholder="yourname@company.com"
-            className="px-4 py-3 rounded-xl w-full sm:w-auto text-sm"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <span className="block mt-4 sm:m-0 sm:pl-3 sm:inline-block relative">
-            <Button
-              type="primary"
-              className="w-full sm:w-auto"
-              status={submitStatus}
-            >
-              Send
-              <span className="absolute -top-2.5 -right-0.5">
-                <span className="inline-flex h-[10px] w-[10px] relative ">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75" />
-                  <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300" />
+      <GoogleReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_KEY}>
+        <div className="w-full sm:max-w-md sm:w-auto">
+          <h2 className="section-header mb-3">Drop a line</h2>
+          <form onSubmit={handleSendMessage}>
+            <label className="font-secondary text-gray-400 font-semibold text-sm">
+              Message
+            </label>
+            <textarea
+              required={true}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1 text-sm"
+              placeholder="Hi there! "
+            />
+            <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
+              Email
+            </label>
+            <input
+              required={true}
+              type="email"
+              placeholder="yourname@company.com"
+              className="px-4 py-3 rounded-xl w-full sm:w-auto text-sm"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span className="block mt-4 sm:m-0 sm:pl-3 sm:inline-block relative">
+              <Button
+                type="primary"
+                className="w-full sm:w-auto"
+                status={submitStatus}
+              >
+                Send
+                <span className="absolute -top-2.5 -right-0.5">
+                  <span className="inline-flex h-[10px] w-[10px] relative ">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75" />
+                    <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300" />
+                  </span>
                 </span>
-              </span>
-            </Button>
-          </span>
-        </form>
-      </div>
+              </Button>
+            </span>
+          </form>
+        </div>
+      </GoogleReCaptchaProvider>
     </section>
   );
 };
