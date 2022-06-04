@@ -10,50 +10,54 @@ interface ButtonType {
 }
 
 const Button = ({
-                  children,
-                  onClick,
-                  status = 'idle',
-                  disabled = false,
-                  type = 'primary',
-                  className,
-                }: ButtonType) => {
+  children,
+  onClick,
+  status = 'idle',
+  disabled = false,
+  type = 'primary',
+  className,
+}: ButtonType) => {
   return (
-      <button
-          onClick={onClick}
-          disabled={disabled}
-          className={`${
-              type == 'primary'
-                  ? 'bg-primary hover:bg-primary-light active:bg-primary-dark text-gray-900'
-                  : 'bg-secondary hover:bg-secondary-light active:bg-secondary-dark text-white'
-          } px-8 py-3 rounded-lg font-bold disabled:bg-gray-400 disabled:text-gray-600 ${className}`}
-      >
-        {status == 'idle' ? children
-            : status == 'loading' ?
-                <p>Loading</p>
-                : status == 'ok' ? <p>Ok</p> : <p>err</p>
-        }
-      </button>
+    <button
+      onClick={onClick}
+      disabled={disabled || status !== 'idle'}
+      className={`${
+        type == 'primary'
+          ? 'bg-primary hover:bg-primary-light active:bg-primary-dark text-gray-900'
+          : 'bg-secondary hover:bg-secondary-light active:bg-secondary-dark text-white'
+      } px-8 py-3 rounded-lg font-bold disabled:bg-gray-400 disabled:text-gray-600 ${className}`}
+    >
+      {status == 'idle' ? (
+        children
+      ) : status == 'loading' ? (
+        <p>Sending</p>
+      ) : status == 'ok' ? (
+        <p>Ok</p>
+      ) : (
+        <p>Error</p>
+      )}
+    </button>
   );
 };
 
 const TextButton = ({
-                      children,
-                      type = 'primary',
-                      disabled = false,
-                      onClick,
-                    }: ButtonType) => {
+  children,
+  type = 'primary',
+  disabled = false,
+  onClick,
+}: ButtonType) => {
   const color = `text-${type} hover:text-${type}-light active:text-${type}-dark`;
   return (
-      <button
-          className={`${
-              type == 'primary'
-                  ? 'text-primary hover:text-primary-light active:text-primary-dark '
-                  : 'text-secondary hover:text-secondary-light active:text-secondary-dark '
-          } font-bold`}
-      >
-        {children}
-      </button>
+    <button
+      className={`${
+        type == 'primary'
+          ? 'text-primary hover:text-primary-light active:text-primary-dark '
+          : 'text-secondary hover:text-secondary-light active:text-secondary-dark '
+      } font-bold`}
+    >
+      {children}
+    </button>
   );
 };
 
-export {Button, TextButton};
+export { Button, TextButton };

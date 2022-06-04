@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import React, { FormEventHandler, useState } from 'react';
+import React, { FormEventHandler, useCallback, useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
 import projectCard from '../components/project/ProjectCard';
@@ -22,6 +22,11 @@ import VoluntaryCard from '../components/home/VoluntaryCard';
 import Link from 'next/link';
 import ContactItem from '../components/home/ContactItem';
 import ProjectCard from '../components/project/ProjectCard';
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from 'react-google-recaptcha-v3';
+import { throws } from 'assert';
 
 interface HomeProps {
   projects: Project[];
@@ -38,7 +43,12 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
         <TechnologySection />
         <EducationSection />
         <VoluntarySection />
+        {/*<GoogleReCaptchaProvider*/}
+        {/*  reCaptchaKey={process.env.RECAPTCHA_KEY}*/}
+        {/*  useRecaptchaNet={true}*/}
+        {/*>*/}
         <ContactSection />
+        {/*</GoogleReCaptchaProvider>*/}
       </div>
     </Layout>
   );
@@ -205,13 +215,31 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState('idle');
 
-  function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
+  // const { executeRecaptcha } = useGoogleReCaptcha();
+  //
+  // const handleReCaptchaVerify = useCallback(async () => {
+  //   if (!executeRecaptcha) {
+  //     console.log('Execute recaptcha not yet available');
+  //     return;
+  //   }
+  //   let token = '';
+  //   try {
+  //     token = await executeRecaptcha('submit');
+  //     console.log('token : ', token);
+  //   } catch (e) {
+  //     console.error('Recaptcha Error', e);
+  //   }
+  //   return token;
+  // }, [executeRecaptcha]);
+
+  async function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitStatus('loading');
-    fetch('/api/contact', {
+    fetch('/api/dynamo', {
       body: JSON.stringify({ message: message, email: email }),
-      method: 'POST',
+      method: 'PUT',
     })
+      .then((res) => (res.status != 200 ? Promise.reject(res) : res))
       .then((res) => res.json())
       .then((res) => {
         console.log('message res : ', res);
@@ -256,6 +284,7 @@ const ContactSection = () => {
           display="zeyar-paing-713854172"
         />
       </div>
+
       <div className="w-full sm:max-w-md sm:w-auto">
         <h2 className="section-header mb-3">Drop a line</h2>
         <form onSubmit={handleSendMessage}>
