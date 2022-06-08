@@ -27,6 +27,7 @@ import {
   useGoogleReCaptcha,
 } from 'react-google-recaptcha-v3';
 import { throws } from 'assert';
+import BlurredBox from '../components/BlurredBox';
 
 interface HomeProps {
   projects: Project[];
@@ -59,8 +60,43 @@ const LandingSection = () => (
     <div
       className="basset blur-[70px] w-16 h-16 bg-[#06B1D7] absolute t
     op-44 left-0"
-    ></div>
-    <div className="basset blur-[80px] w-16 h-16 bg-primary absolute top-20 right-[15%]"></div>
+    />
+    <div className="basset blur-[80px] w-16 h-16 bg-primary absolute top-20 right-[15%]" />
+    <BlurredBox
+      size={{ width: '3rem', height: '3rem' }}
+      color={'#1572da'}
+      position={{ x: 55, y: 120 }}
+    />
+    <BlurredBox
+      size={{ width: '5rem', height: '5rem' }}
+      color={'#3943be'}
+      position={{ x: 70, y: 350 }}
+    />
+    <BlurredBox
+      size={{ width: '3rem', height: '3rem' }}
+      color={'#0fb78b'}
+      position={{ x: 30, y: 270 }}
+    />
+    <BlurredBox
+      size={{ width: '4rem', height: '4rem' }}
+      color={'#0fb78b'}
+      position={{ x: 100, y: 500 }}
+    />
+    <BlurredBox
+      size={{ width: '4rem', height: '4rem' }}
+      color={'#1572da'}
+      position={{ x: 20, y: 500 }}
+    />{' '}
+    <BlurredBox
+      size={{ width: '3rem', height: '3rem' }}
+      color={'#0648ab'}
+      position={{ x: 80, y: 640 }}
+    />
+    <BlurredBox
+      size={{ width: '4rem', height: '4rem' }}
+      color={'#0fb78b'}
+      position={{ x: 0, y: 670 }}
+    />{' '}
     <Image
       src="/assets/image/profile.svg"
       width={420}

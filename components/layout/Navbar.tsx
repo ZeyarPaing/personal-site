@@ -9,14 +9,12 @@ const Navbar = () => {
     <nav className="z-10 px-3 py-3 text-white bg-gray-900 bg-opacity-10 backdrop-blur-md fixed top-0 w-full">
       <div className="m-container flex flex-wrap justify-center items-center ">
         <Link href="/">
-          <a>
+          <a className="flex items-center">
             <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
           </a>
         </Link>
-        {/*<div*/}
+        {/*<button*/}
         {/*  className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "*/}
-        {/*  aria-controls="mobile-menu"*/}
-        {/*  aria-expanded="false"*/}
         {/*  onClick={() => setExpanded(!isExpanded)}*/}
         {/*>*/}
         {/*  <span className="sr-only">Open main menu</span>*/}
@@ -51,10 +49,10 @@ const Navbar = () => {
         {/*      fill="#D9D9D9"*/}
         {/*    />*/}
         {/*  </svg>*/}
-        {/*</div>*/}
+        {/*</button>*/}
         {/*<div*/}
         {/*  className={`${*/}
-        {/*    isExpanded ? 'block' : 'hidden'*/}
+        {/*    isExpanded ? ' block' : 'hidden '*/}
         {/*  } w-full md:block md:w-auto`}*/}
         {/*>*/}
         {/*  <ul className="flex flex-col mt-4 text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium gap-y-3">*/}
