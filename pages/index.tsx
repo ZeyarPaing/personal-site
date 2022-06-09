@@ -28,6 +28,7 @@ import {
 } from 'react-google-recaptcha-v3';
 import { throws } from 'assert';
 import BlurredBox from '../components/BlurredBox';
+import IntersectionObserve from '../components/IntersectionObserve';
 
 interface HomeProps {
   projects: Project[];
@@ -38,30 +39,50 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
     <Layout>
       <LandingSection />
       <div className="mx-2">
-        <BriefSection />
-        <ProjectSection projects={projects} />
-        <ExperienceSection />
-        <TechnologySection />
-        <EducationSection />
-        <VoluntarySection />
+        <IntersectionObserve>
+          <BriefSection />
+        </IntersectionObserve>
+        <IntersectionObserve>
+          <ProjectSection projects={projects} />
+        </IntersectionObserve>
+        <IntersectionObserve>
+          <ExperienceSection />
+        </IntersectionObserve>
+        <IntersectionObserve>
+          <TechnologySection />
+        </IntersectionObserve>
+        <IntersectionObserve>
+          <EducationSection />
+        </IntersectionObserve>
+        <IntersectionObserve>
+          <VoluntarySection />
+        </IntersectionObserve>
         {/*<GoogleReCaptchaProvider*/}
         {/*  reCaptchaKey={process.env.RECAPTCHA_KEY}*/}
         {/*  useRecaptchaNet={true}*/}
         {/*>*/}
-        <ContactSection />
+        <IntersectionObserve>
+          <ContactSection />
+        </IntersectionObserve>
         {/*</GoogleReCaptchaProvider>*/}
       </div>
     </Layout>
   );
 };
-
-const LandingSection = () => (
-  <section className="flex justify-center items-center gap-10 mx-auto mt-18 md:mt-28 relative flex-wrap lg:flex-nowrap">
-    <div
-      className="basset blur-[70px] w-16 h-16 bg-[#06B1D7] absolute t
-    op-44 left-0"
+const AnimatingBlocks = () => (
+  <>
+    <BlurredBox
+      size={{ width: '4rem', height: '3rem' }}
+      color={'#1b84ff'}
+      range={10}
+      position={{ x: 0, y: 70 }}
     />
-    <div className="basset blur-[80px] w-16 h-16 bg-primary absolute top-20 right-[15%]" />
+    <BlurredBox
+      size={{ width: '4rem', height: '4rem' }}
+      color={'#1ef6bd'}
+      range={300}
+      position={{ x: 80, y: 22 }}
+    />
     <BlurredBox
       size={{ width: '4rem', height: '3rem' }}
       color={'#1b84ff'}
@@ -86,7 +107,7 @@ const LandingSection = () => (
       size={{ width: '4rem', height: '4rem' }}
       color={'#1078ec'}
       position={{ x: 20, y: 470 }}
-    />{' '}
+    />
     <BlurredBox
       size={{ width: '3rem', height: '3rem' }}
       color={'#1168e8'}
@@ -96,41 +117,50 @@ const LandingSection = () => (
       size={{ width: '4rem', height: '4rem' }}
       color={'#14d7a4'}
       position={{ x: 0, y: 600 }}
-    />{' '}
-    <Image
-      src="/assets/image/profile.svg"
-      width={420}
-      height={450}
-      objectFit="cover"
-      alt="profile"
     />
-    <div className="max-w-xl lg:mt-12 mx-2">
-      <p className="font-light uppercase">Hello there, I’m</p>
-      <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
-      <p className="max-w-lg text-lg font-light leading-[28px]">
-        A creative & passionate Front-End Developer delivering efficient &
-        optimized solutions, Skilled in designing, developing and refactoring
-        multiple web-based applications incorporating a range of technologies.
-      </p>
-      <div className="flex gap-8 items-center mt-5">
-        <Button
-          onClick={() =>
-            window.open(
-              'https://www.figma.com/proto/bejHkqD4rOQRzkkvHiZKqi/Resume?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1',
-              '_blank',
-            )
-          }
-          type="primary"
-        >
-          Resume
-        </Button>
-        <TextButton type="primary">
-          <Link href="#contact">
-            <a>Contact me</a>
-          </Link>
-        </TextButton>
+  </>
+);
+const LandingSection = () => (
+  <section className="flex justify-center items-center gap-10 mx-auto mt-18 md:mt-28 relative flex-wrap lg:flex-nowrap">
+    <AnimatingBlocks />
+    <IntersectionObserve>
+      <Image
+        src="/assets/image/profile.svg"
+        width={420}
+        height={450}
+        objectFit="cover"
+        alt="profile"
+      />
+    </IntersectionObserve>
+    <IntersectionObserve>
+      <div className="max-w-xl lg:mt-12 mx-2">
+        <p className="font-light uppercase">Hello there, I’m</p>
+        <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
+        <p className="max-w-lg text-lg font-light leading-[28px]">
+          A creative & passionate Front-End Developer delivering efficient &
+          optimized solutions, Skilled in designing, developing and refactoring
+          multiple web-based applications incorporating a range of technologies.
+        </p>
+        <div className="flex gap-8 items-center mt-5">
+          <Button
+            onClick={() =>
+              window.open(
+                'https://www.figma.com/proto/bejHkqD4rOQRzkkvHiZKqi/Resume?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1',
+                '_blank',
+              )
+            }
+            type="primary"
+          >
+            Resume
+          </Button>
+          <TextButton type="primary">
+            <Link href="#contact">
+              <a>Contact me</a>
+            </Link>
+          </TextButton>
+        </div>
       </div>
-    </div>
+    </IntersectionObserve>
   </section>
 );
 const BriefSection = () => (

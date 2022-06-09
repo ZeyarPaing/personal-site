@@ -10,14 +10,15 @@ type blurProps = {
     x: number;
     y: number;
   };
+  range?: number;
 };
 
-const BlurredBox = ({ size, color, position }: blurProps) => {
+const BlurredBox = ({ size, color, position, range = 1000 }: blurProps) => {
   let bRef = useRef();
 
   function animate() {
-    let x = (Math.random() - 0.6) * 1000;
-    let y = (Math.random() - 0.6) * 1000;
+    let x = (Math.random() - 0.6) * range;
+    let y = (Math.random() - 0.6) * range;
     // @ts-ignore
     bRef.current.style.transform = `translateX(${x}%) translateY(${y}%)`;
     // requestAnimationFrame(animate);
