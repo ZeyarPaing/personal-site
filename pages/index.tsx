@@ -63,39 +63,39 @@ const LandingSection = () => (
     />
     <div className="basset blur-[80px] w-16 h-16 bg-primary absolute top-20 right-[15%]" />
     <BlurredBox
-      size={{ width: '3rem', height: '3rem' }}
-      color={'#1572da'}
+      size={{ width: '4rem', height: '3rem' }}
+      color={'#1b84ff'}
       position={{ x: 55, y: 120 }}
     />
     <BlurredBox
       size={{ width: '5rem', height: '5rem' }}
-      color={'#3943be'}
+      color={'#4655ff'}
       position={{ x: 70, y: 350 }}
     />
     <BlurredBox
-      size={{ width: '3rem', height: '3rem' }}
-      color={'#0fb78b'}
-      position={{ x: 30, y: 270 }}
+      size={{ width: '3.5rem', height: '3rem' }}
+      color={'#13ffbf'}
+      position={{ x: 30, y: 230 }}
     />
     <BlurredBox
       size={{ width: '4rem', height: '4rem' }}
-      color={'#0fb78b'}
-      position={{ x: 100, y: 500 }}
+      color={'#1ef6bd'}
+      position={{ x: 90, y: 480 }}
     />
     <BlurredBox
       size={{ width: '4rem', height: '4rem' }}
-      color={'#1572da'}
-      position={{ x: 20, y: 500 }}
+      color={'#1078ec'}
+      position={{ x: 20, y: 470 }}
     />{' '}
     <BlurredBox
       size={{ width: '3rem', height: '3rem' }}
-      color={'#0648ab'}
-      position={{ x: 80, y: 640 }}
+      color={'#1168e8'}
+      position={{ x: 80, y: 590 }}
     />
     <BlurredBox
       size={{ width: '4rem', height: '4rem' }}
-      color={'#0fb78b'}
-      position={{ x: 0, y: 670 }}
+      color={'#14d7a4'}
+      position={{ x: 0, y: 600 }}
     />{' '}
     <Image
       src="/assets/image/profile.svg"
@@ -108,9 +108,9 @@ const LandingSection = () => (
       <p className="font-light uppercase">Hello there, I’m</p>
       <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
       <p className="max-w-lg text-lg font-light leading-[28px]">
-        A creative Front-End Developer delivering efficient & optimized
-        solutions, Skilled in designing, developing and refactoring multiple
-        web-based applications incorporating a range of technologies.
+        A creative & passionate Front-End Developer delivering efficient &
+        optimized solutions, Skilled in designing, developing and refactoring
+        multiple web-based applications incorporating a range of technologies.
       </p>
       <div className="flex gap-8 items-center mt-5">
         <Button
@@ -137,12 +137,13 @@ const BriefSection = () => (
   <section className="mt-16 mb-12">
     <h2 className="section-header mb-2">Brief about my career</h2>
     <div>
-      <p className="text-gray-100">
+      <p className="text-gray-100 career-section">
         I was a UI/UX designer before I dived into web development. I really
-        loves designing UI and making it live. After 2+ years of experience in
-        Frontend Development, I&apos;m delivering robust, efficient & elegant
-        interfaces with considerations of Accessibility, User Experience Laws
-        and Responsiveness.
+        loves designing UI and making it live. After 3 years of experience
+        including freelance and 2+ years of industry experience in Frontend
+        Development, I&asop;m delivering robust, efficient & elegant interfaces
+        with considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
+        <b>User Experience Laws</b> and <b>Responsiveness</b>.
       </p>
     </div>
   </section>
@@ -315,9 +316,9 @@ const ContactSection = () => {
           display="ZeyarPaing"
         />
         <ContactItem
-          link="https://mm.linkedin.com/in/zeyar-paing-713854172"
+          link="https://linkedin.com/in/zeyar-paing"
           icon="linkedin.svg"
-          display="zeyar-paing-713854172"
+          display="zeyar-paing"
         />
       </div>
 

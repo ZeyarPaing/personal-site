@@ -90,3 +90,7 @@ input, textarea {
         margin-bottom: calc(100vw / 0.7);
     }
 }
+
+.career-section b {
+    @apply text-primary font-black;
+}

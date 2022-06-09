@@ -18,7 +18,7 @@ export const experiences: Experience[] = [
     companyName: "Partner Associates Int'l Co.,Ltd.",
     position: 'Junior Application Developer',
     description:
-      'Joined in 2020 as an Internship Student responsible not only for coding web UIs but also for designing UI/UX for mobile and web applications.' +
+      'Joined as an Internship Student responsible not only for coding web UIs but also for designing UI/UX for mobile and web applications.' +
       " After almost a year, I've been promoted to Junior Application Developer. I've designed many elegant and usable UI and developed web interfaces with the best performance and design. I've gained a lot of experience about layouts, network request and refactoring techniques",
     year: 1.4,
   },
