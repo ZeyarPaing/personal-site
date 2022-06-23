@@ -34,7 +34,7 @@ const BlurredBox = ({ size, color, position, range = 1000 }: blurProps) => {
       ref={bRef}
       className="basset absolute transition-transform ease-linear duration-[4s]"
       style={{
-        filter: `blur(calc(${size.width} * 1))`,
+        filter: `blur(calc(${size.width} * 1.1))`,
         backgroundColor: color,
         top: position.y + '%',
         left: position.x + '%',

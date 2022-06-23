@@ -65,6 +65,7 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
           <ContactSection />
         </IntersectionObserve>
         {/*</GoogleReCaptchaProvider>*/}
+        <CreditSection />
       </div>
     </Layout>
   );
@@ -171,7 +172,7 @@ const BriefSection = () => (
         I was a UI/UX designer before I dived into web development. I really
         loves designing UI and making it live. After 3 years of experience
         including freelance and 2+ years of industry experience in Frontend
-        Development, I&asop;m delivering robust, efficient & elegant interfaces
+        Development, I&apos;m delivering robust, efficient & elegant interfaces
         with considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
         <b>User Experience Laws</b> and <b>Responsiveness</b>.
       </p>
@@ -390,6 +391,36 @@ const ContactSection = () => {
             </Button>
           </span>
         </form>
+      </div>
+    </section>
+  );
+};
+
+const CreditSection = () => {
+  return (
+    <section className="mb-16 mt-32 flex justify-center">
+      {/*<small className="text-sm uppercase font-semibold text-gray-400">*/}
+      {/*  Credits*/}
+      {/*</small>*/}
+      {/*<br />*/}
+      <div className="flex md:items-center items-start flex-col md:flex-row gap-3 mt-2 px-8 py-6 rounded-2xl border border-gray-900 shadow-2xl shadow-[#020f25] ">
+        <img src="/logo-mono.svg" className="w-10 h-10" />
+        <p className="text-gray-300">
+          This awesome logo is designed by a talented designer,{' '}
+          <br className="sm:block md:hidden" />
+          <Link
+            target="_blank"
+            href="https://www.behance.net/kaungsithu6/projects"
+          >
+            <a
+              target="_blank"
+              className="hover:underline text-cyan-400 font-semibold"
+            >
+              Kaung Sithu
+            </a>
+          </Link>
+          <small className="text-sm text-gray-400"> [Profile on Behance]</small>
+        </p>
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ const IntersectionObserve = ({ children }: interSectionProps) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animated');
         } else {
-          entry.target.classList.remove('animated');
+          // entry.target.classList.remove('animated');
         }
       });
     });
