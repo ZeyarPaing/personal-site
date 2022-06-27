@@ -170,10 +170,12 @@ const BriefSection = () => (
     <div>
       <p className="text-gray-100 career-section">
         I was a UI/UX designer before I dived into web development. I really
-        loves designing UI and making it live. After 3 years of experience
-        including freelance and 2+ years of industry experience in Frontend
-        Development, I&apos;m delivering robust, efficient & elegant interfaces
-        with considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
+        loves designing UI and making it live.
+        {/*  After 3 years of experience*/}
+        {/*including freelance and 2+ years of industry experience in Frontend*/}
+        {/*Development,*/}
+        I&apos;m delivering robust, efficient & elegant interfaces with
+        considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
         <b>User Experience Laws</b> and <b>Responsiveness</b>.
       </p>
     </div>
