@@ -8,7 +8,8 @@ export type Project = {
 };
 
 export type Experience = {
-  year: number;
+  year?: number;
+  current?: boolean;
   companyName: string;
   description: string;
   position: string;
