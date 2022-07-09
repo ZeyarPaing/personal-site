@@ -25,7 +25,7 @@ const Button = ({
         type == 'primary'
           ? 'bg-primary hover:bg-primary-light active:bg-primary-dark text-gray-900'
           : 'bg-secondary hover:bg-secondary-light active:bg-secondary-dark text-white'
-      } px-8 py-3 rounded-lg font-bold disabled:bg-gray-400 disabled:text-gray-600 ${className}`}
+      } px-8 py-3 rounded-xl font-bold disabled:bg-gray-400 disabled:text-gray-600 ${className}`}
     >
       {status == 'idle' ? (
         children

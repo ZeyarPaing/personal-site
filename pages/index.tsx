@@ -185,7 +185,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
   return (
     <section className="my-12 ">
       <h2 className="section-header mb-7">Featured Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 project-container">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
         {projects.map((project, idx) => (
           <ProjectCard showDots={true} key={idx} project={project} />
         ))}
@@ -384,12 +384,7 @@ const ContactSection = () => {
               status={submitStatus}
             >
               Send
-              <span className="absolute -top-2.5 -right-0.5">
-                <span className="inline-flex h-[10px] w-[10px] relative ">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75" />
-                  <span className="relative inline-flex rounded-full h-[10px] w-[10px] bg-emerald-300" />
-                </span>
-              </span>
+
             </Button>
           </span>
         </form>

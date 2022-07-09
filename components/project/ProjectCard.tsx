@@ -1,17 +1,17 @@
 import { Project } from '../../types';
 import Image from 'next/image';
+import styles from '../../styles/Project.module.css'
 
 const projectCard = (props: { project: Project; showDots?: boolean }) => {
   const { project, showDots } = props;
   return (
     <div
-      className="relative cursor-pointer group"
+        style={{color: project.color }}
+      className={styles.projectCard + ' group'}
       onClick={() => window.open(project.demoUrl, '_blank')}
     >
       <div
-        className={`${
-          showDots ? 'absolute' : ''
-        } bg-gray-800 bg-opacity-40 transition-all group-hover:bg-opacity-50 rounded-2xl px-7 py-6 z-[3] backdrop-blur-md`}
+        className={`relative bg-gray-900 bg-opacity-40 transition-all group-hover:bg-opacity-50 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md`}
       >
         <div className="flex gap-4 flex-wrap">
           <Image src={project.logo} width={50} height={50} alt={project.name} />
@@ -22,14 +22,6 @@ const projectCard = (props: { project: Project; showDots?: boolean }) => {
         </div>
         <p className="text-gray-300 mt-3 text-sm">{project.description}</p>
       </div>
-      {showDots ? (
-        <div
-          className="absolute -top-1.5 -left-1.5 rounded-full w-8 h-8 group-hover:-top-3 group-hover:-left-3 transition-all "
-          style={{ backgroundColor: project.color }}
-        ></div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 };

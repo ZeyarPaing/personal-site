@@ -8,11 +8,18 @@ import {
 
 export const experiences: Experience[] = [
   {
+    companyName: 'Codigo',
+    current: true,
+    position: 'Frontend Developer',
+    description:
+        "Developing pixel-perfect user interfaces using Next.Js, React",
+  },
+  {
     companyName: 'Bilions',
     position: 'Frontend Developer',
     description:
       "Implemented user-friendly web applications designed by UI/UX designer. I've developed a good way of communication with UI/UX designer which benefits in theming & asset sharing for the app.  I’ve improved in organizing the components for better DevX and readability, refactoring, state management and better network requests",
-    year: 1,
+    year: 0.9,
   },
   {
     companyName: "Partner Associates Int'l Co.,Ltd.",
@@ -137,7 +144,7 @@ export const projects: Project[] = [
     description:
       'Simple expense/income tracker app with collaborative features. This app can make the fund usage between friends, families and teams more transparent',
     demoUrl: 'https://monage.zeyar.dev',
-    color: '#4B5DFF',
+    color: '#5f6eff',
   },
   {
     name: 'Spring University Myanmar',
@@ -146,6 +153,6 @@ export const projects: Project[] = [
     description:
       'A multilingual, Server Side Rendered website. The major data includes Schools, Courses, Careers and Articles, all of them can be manipulated from a Customized Admin Panel ',
     demoUrl: 'https://sum-five.vercel.app',
-    color: '#F05655',
+    color: '#fa6261',
   },
 ];

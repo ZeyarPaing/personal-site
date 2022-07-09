@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
-    <nav className="z-10 px-3 py-3 text-white bg-gray-900 bg-opacity-10 backdrop-blur-md fixed top-0 w-full">
+    <nav className="z-10 px-3 py-3 text-white bg-darkblue bg-opacity-70 backdrop-blur-xl backdrop-saturate-150 backdrop-brightness-150 fixed top-0 w-full">
       <div className="m-container flex flex-wrap justify-center items-center ">
         <Link href="/">
           <a className="flex items-center">
