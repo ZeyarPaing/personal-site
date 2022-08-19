@@ -57,10 +57,8 @@ export default async function handler(
 
   transporter.sendMail(mailData, function (err, info) {
     if (err) {
-      console.log('error  :', err);
       sendError(res);
     } else {
-      console.log('ok :', info);
       res.status(200).json({ message: 'Message sent' });
     }
   });

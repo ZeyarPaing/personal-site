@@ -28,7 +28,7 @@ export default async function handler(
     // }
 
     //ABSTRACT - to check email validity
-    console.log('abstract api key : ', abstractApiKey);
+    // console.log('abstract api key : ', abstractApiKey);
     try {
       let abstract = await axios.get(
         `https://emailvalidation.abstractapi.com/v1/`,
@@ -42,7 +42,7 @@ export default async function handler(
           .json({ code: 403, message: 'invalid email address' });
       }
     } catch (e) {
-      console.log('abstract err', e);
+      // console.log('abstract err', e);
       return res.status(403).json({ code: 403, message: 'email check error' });
     }
 

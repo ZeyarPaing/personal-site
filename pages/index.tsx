@@ -21,6 +21,7 @@ import ContactItem from '../components/home/ContactItem';
 import ProjectCard from '../components/project/ProjectCard';
 import BlurredBox from '../components/BlurredBox';
 import IntersectionObserve from '../components/IntersectionObserve';
+import profileImage from '../public/assets/image/profile.webp'
 
 interface HomeProps {
   projects: Project[];
@@ -113,11 +114,11 @@ const LandingSection = () => (
     <AnimatingBlocks />
     <IntersectionObserve>
       <Image
-        src="/assets/image/profile.svg"
+        src={profileImage}
         width={420}
         height={450}
         objectFit="cover"
-        alt="profile"
+        alt="profile image in 3d avatar style"
       />
     </IntersectionObserve>
     <IntersectionObserve>
@@ -161,9 +162,9 @@ const BriefSection = () => (
         {/*  After 3 years of experience*/}
         {/*including freelance and 2+ years of industry experience in Frontend*/}
         {/*Development,*/}
-        I&apos;m delivering robust, efficient & elegant interfaces with
+        I&apos;m delivering responsive, efficient & elegant interfaces with
         considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
-        <b>User Experience Laws</b> and <b>Responsiveness</b>.
+        <b>User Experience</b>.
       </p>
     </div>
   </section>
@@ -299,9 +300,9 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="my-24 flex justify-between flex-wrap gap-y-6"
+      className="my-24 flex gap-x-8  flex-wrap gap-y-6"
     >
-      <div className="max-w-md">
+      <div className="max-w-lg w-full">
         <h2 className="section-header mb-3">Contact</h2>
         <ContactItem
           link="tel:+959783024165"

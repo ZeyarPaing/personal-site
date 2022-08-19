@@ -10,6 +10,6 @@ export function getAbsoluteUrl(route: string) {
   }
 
   const url = host + 'api' + route;
-  console.log('url is : ', url);
+  // console.log('url is : ', url);
   return url;
 }
