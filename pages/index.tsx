@@ -1,10 +1,8 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import React, { FormEventHandler, useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button, TextButton } from '../components/Button';
-import projectCard from '../components/project/ProjectCard';
 import { Project, Technology } from '../types';
 import {
   courses,
@@ -14,7 +12,6 @@ import {
   technologies,
   voluntaries,
 } from '../helper/data';
-// import { getAbsoluteUrl } from '../helper';
 import ExperienceCard from '../components/home/ExperienceCard';
 import TechnologyCard from '../components/home/TechnologyCard';
 import EducationCard from '../components/home/EducationCard';
@@ -22,11 +19,6 @@ import VoluntaryCard from '../components/home/VoluntaryCard';
 import Link from 'next/link';
 import ContactItem from '../components/home/ContactItem';
 import ProjectCard from '../components/project/ProjectCard';
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-} from 'react-google-recaptcha-v3';
-import { throws } from 'assert';
 import BlurredBox from '../components/BlurredBox';
 import IntersectionObserve from '../components/IntersectionObserve';
 
@@ -57,14 +49,9 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
         <IntersectionObserve>
           <VoluntarySection />
         </IntersectionObserve>
-        {/*<GoogleReCaptchaProvider*/}
-        {/*  reCaptchaKey={process.env.RECAPTCHA_KEY}*/}
-        {/*  useRecaptchaNet={true}*/}
-        {/*>*/}
         <IntersectionObserve>
           <ContactSection />
         </IntersectionObserve>
-        {/*</GoogleReCaptchaProvider>*/}
         <CreditSection />
       </div>
     </Layout>
@@ -285,23 +272,6 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState('idle');
 
-  // const { executeRecaptcha } = useGoogleReCaptcha();
-  //
-  // const handleReCaptchaVerify = useCallback(async () => {
-  //   if (!executeRecaptcha) {
-  //     console.log('Execute recaptcha not yet available');
-  //     return;
-  //   }
-  //   let token = '';
-  //   try {
-  //     token = await executeRecaptcha('submit');
-  //     console.log('token : ', token);
-  //   } catch (e) {
-  //     console.error('Recaptcha Error', e);
-  //   }
-  //   return token;
-  // }, [executeRecaptcha]);
-
   async function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitStatus('loading');
@@ -384,7 +354,6 @@ const ContactSection = () => {
               status={submitStatus}
             >
               Send
-
             </Button>
           </span>
         </form>
@@ -396,10 +365,6 @@ const ContactSection = () => {
 const CreditSection = () => {
   return (
     <section className="mb-16 mt-32 flex justify-center">
-      {/*<small className="text-sm uppercase font-semibold text-gray-400">*/}
-      {/*  Credits*/}
-      {/*</small>*/}
-      {/*<br />*/}
       <div className="flex md:items-center items-start flex-col md:flex-row gap-3 mt-2 px-8 py-6 rounded-2xl border border-gray-900 shadow-2xl shadow-[#020f25] ">
         <img src="/logo-mono.svg" className="w-10 h-10" />
         <p className="text-gray-300">
@@ -423,8 +388,6 @@ const CreditSection = () => {
   );
 };
 export const getStaticProps: GetStaticProps = async (context) => {
-  // const projectRes: Response = await fetch(getAbsoluteUrl('/projects'));
-  // const projects: Project[] = await projectRes.json();
   return {
     props: { projects },
   };
