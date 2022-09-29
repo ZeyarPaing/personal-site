@@ -142,7 +142,7 @@ export const projects: Project[] = [
     logo: '/assets/logos/rezeve.svg',
     type: 'Website and web app',
     description:
-      'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness.',
+      'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness',
     demoUrl: 'https://rezeve.com',
     color: '#5DFC70',
   },
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     logo: '/assets/logos/manawstore.svg',
     type: 'Web and mobile app',
     description:
-      'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness.',
+      'All in one POS, Accounting, Invoices, Inventory software for both web and mobile',
     demoUrl: 'https://merchant.manawstore.com/',
     color: '#f1ca3b',
   },
