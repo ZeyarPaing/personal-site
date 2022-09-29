@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
     current: true,
     position: 'Frontend Developer',
     description:
-        "Developing pixel-perfect user interfaces using Next.Js, React",
+      'Developing pixel-perfect user interfaces using Next.Js, React',
   },
   {
     companyName: 'Bilions',
@@ -137,6 +137,24 @@ export const voluntaries: Voluntary[] = [
   },
 ];
 export const projects: Project[] = [
+  {
+    name: 'Rezeve',
+    logo: '/assets/logos/rezeve.svg',
+    type: 'Website and web app',
+    description:
+      'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness.',
+    demoUrl: 'https://rezeve.com',
+    color: '#5DFC70',
+  },
+  {
+    name: 'MaNaw Store',
+    logo: '/assets/logos/manawstore.svg',
+    type: 'Web and mobile app',
+    description:
+      'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness.',
+    demoUrl: 'https://merchant.manawstore.com/',
+    color: '#f1ca3b',
+  },
   {
     name: 'Monage',
     logo: '/assets/logos/monage.svg',

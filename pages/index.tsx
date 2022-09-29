@@ -21,7 +21,7 @@ import ContactItem from '../components/home/ContactItem';
 import ProjectCard from '../components/project/ProjectCard';
 import BlurredBox from '../components/BlurredBox';
 import IntersectionObserve from '../components/IntersectionObserve';
-import profileImage from '../public/assets/image/profile.webp'
+import profileImage from '../public/assets/image/profile.webp';
 
 interface HomeProps {
   projects: Project[];
@@ -153,7 +153,7 @@ const LandingSection = () => (
   </section>
 );
 const BriefSection = () => (
-  <section className="mt-16 mb-12">
+  <section className="mt-16 mb-20">
     <h2 className="section-header mb-2">Brief about my career</h2>
     <div>
       <p className="text-gray-100 career-section">
@@ -171,7 +171,7 @@ const BriefSection = () => (
 );
 const ProjectSection = ({ projects }: { projects: Project[] }) => {
   return (
-    <section className="my-12 ">
+    <section className="my-20 ">
       <h2 className="section-header mb-7">Featured Projects</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
         {projects.map((project, idx) => (
@@ -183,7 +183,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 };
 
 const ExperienceSection = () => (
-  <section className="my-12 ">
+  <section className="my-12 mb-20 ">
     <h2 className="section-header mb-5">Work Experience</h2>
     <div className="flex gap-8 flex-col">
       {experiences.map((exp, idx) => (
@@ -208,7 +208,7 @@ const TechnologySection = () => {
   }, group);
 
   return (
-    <section className="my-12">
+    <section className="my-12 mb-20">
       <h2 className="section-header mb-2">Technologies</h2>
       <p className="uppercase text-gray-400 text-sm font-semibold mb-4">
         Specialized in
@@ -232,7 +232,7 @@ const TechnologySection = () => {
 
 const EducationSection = () => {
   return (
-    <section className="my-12">
+    <section className="my-12 mb-20">
       <h2 className="section-header mb-5">Education</h2>
       <div className="flex gap-8 flex-col">
         {education.map((edu, idx) => (
@@ -258,7 +258,7 @@ const EducationSection = () => {
 };
 
 const VoluntarySection = () => (
-  <section className="my-12">
+  <section className="my-12 mb-20">
     <h2 className="section-header mb-5">Voluntary Activities</h2>
     <div className="flex gap-8 flex-wrap">
       {voluntaries.map((vol, idx) => (
@@ -298,10 +298,7 @@ const ContactSection = () => {
   }
 
   return (
-    <section
-      id="contact"
-      className="my-24 flex gap-x-8  flex-wrap gap-y-6"
-    >
+    <section id="contact" className="my-24 flex gap-x-8  flex-wrap gap-y-6">
       <div className="max-w-lg w-full">
         <h2 className="section-header mb-3">Contact</h2>
         <ContactItem
