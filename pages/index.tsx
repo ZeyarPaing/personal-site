@@ -143,9 +143,7 @@ const LandingSection = () => (
             Resume
           </Button>
           <TextButton type="primary">
-            <Link href="#contact">
-              <a>Contact me</a>
-            </Link>
+            <Link href="#contact">Contact me</Link>
           </TextButton>
         </div>
       </div>
@@ -248,7 +246,12 @@ const EducationSection = () => {
             className="bg-gray-900 bg-opacity-80 rounded-3xl border border-gray-700 px-5 py-4 flex flex-col items-end gap-y-5"
             key={idx}
           >
-            <Image src="/assets/logos/coursera.svg" width={40} height={40} />
+            <Image
+              src="/assets/logos/coursera.svg"
+              width={40}
+              height={40}
+              alt="coursera logo"
+            />
             <h4 className="font-bold text-xs ">{name}</h4>
           </div>
         ))}
@@ -371,13 +374,9 @@ const CreditSection = () => {
           <Link
             target="_blank"
             href="https://www.behance.net/kaungsithu6/projects"
+            className="hover:underline text-cyan-400 font-semibold"
           >
-            <a
-              target="_blank"
-              className="hover:underline text-cyan-400 font-semibold"
-            >
-              Kaung Sithu
-            </a>
+            Kaung Sithu
           </Link>
           <small className="text-sm text-gray-400"> [Profile on Behance]</small>
         </p>

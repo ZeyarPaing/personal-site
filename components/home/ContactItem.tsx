@@ -13,8 +13,8 @@ const ContactItem = ({
 }) => (
   <div className="flex items-center gap-2 font-secondary mb-2.5">
     <Image src={'/assets/icons/' + icon} width={20} height={20} alt="icon" />
-    <Link href={link}>
-      <a target={link.startsWith('http') ? '_blank' : ''}>{display}</a>
+    <Link href={link} target={link.startsWith('http') ? '_blank' : ''}>
+      {display}
     </Link>
   </div>
 );

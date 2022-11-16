@@ -10,9 +10,11 @@ const projectCard = (props: { project: Project; showDots?: boolean }) => {
       style={{ color: project.color }}
       className={styles.projectCard + ' group'}
       href={project.demoUrl}
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <div
-        className={`relative bg-gray-900 bg-opacity-40 transition-all group-hover:bg-opacity-50 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md`}
+        className={`relative bg-gray-900 bg-opacity-40 transition-all group-hover:bg-opacity-80 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md`}
       >
         <div className="flex gap-4 flex-wrap">
           <Image src={project.logo} width={50} height={50} alt={project.name} />
