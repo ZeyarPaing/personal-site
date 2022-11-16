@@ -1,9 +1,11 @@
 .projectCard {
-    @apply relative cursor-pointer;
+    @apply relative cursor-pointer border-none text-left;
 }
+
 .projectCard:hover::before {
     @apply -top-3 -left-3;
 }
+
 .projectCard::before {
     content: '';
     @apply absolute -top-2 -left-2 rounded-full w-8 h-8  transition-all ease-in bg-current;

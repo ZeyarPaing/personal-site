@@ -13,6 +13,7 @@ export type Experience = {
   companyName: string;
   description: string;
   position: string;
+  websiteLink: string;
 };
 
 export type Technology = {

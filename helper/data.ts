@@ -8,11 +8,12 @@ import {
 
 export const experiences: Experience[] = [
   {
-    companyName: 'Codigo',
+    companyName: 'Rezeve',
     current: true,
+    websiteLink: 'https://www.rezeve.com/',
     position: 'Frontend Developer',
     description:
-      'Developing pixel-perfect user interfaces using Next.Js, React',
+      'Building user interfaces of Rezeve SaaS platform using Next.Js, React and other related technologies. I am also responsible for the maintenance of the existing codebase.',
   },
   {
     companyName: 'Bilions',
@@ -20,6 +21,7 @@ export const experiences: Experience[] = [
     description:
       "Implemented user-friendly web applications designed by UI/UX designer. I've developed a good way of communication with UI/UX designer which benefits in theming & asset sharing for the app.  I’ve improved in organizing the components for better DevX and readability, refactoring, state management and better network requests",
     year: 0.9,
+    websiteLink: 'https://www.bilions.org/',
   },
   {
     companyName: "Partner Associates Int'l Co.,Ltd.",
@@ -28,6 +30,7 @@ export const experiences: Experience[] = [
       'Joined as an Internship Student responsible not only for coding web UIs but also for designing UI/UX for mobile and web applications.' +
       " After almost a year, I've been promoted to Junior Application Developer. I've designed many elegant and usable UI and developed web interfaces with the best performance and design. I've gained a lot of experience about layouts, network request and refactoring techniques",
     year: 1.4,
+    websiteLink: 'https://www.partnerassociates.com/',
   },
 ];
 

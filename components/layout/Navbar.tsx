@@ -8,10 +8,8 @@ const Navbar = () => {
   return (
     <nav className="z-10 px-3 py-3 text-white bg-darkblue bg-opacity-70 backdrop-blur-xl backdrop-saturate-150 backdrop-brightness-150 fixed top-0 w-full">
       <div className="m-container flex flex-wrap justify-center items-center ">
-        <Link href="/">
-          <a className="flex items-center">
-            <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
-          </a>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
         </Link>
         {/*<button*/}
         {/*  className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "*/}
