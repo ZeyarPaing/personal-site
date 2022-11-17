@@ -1,6 +1,3 @@
-@import "fonts/stylesheet.css";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +8,9 @@ body {
     margin: 0;
     font-family: Visby, Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    @apply bg-darkblue text-white tracking-wide scroll-smooth overflow-x-hidden;
+    @apply font-primary bg-darkblue text-white tracking-wide scroll-smooth overflow-x-hidden;
     z-index: -5;
+    scroll-behavior: smooth;
 }
 
 /*custom scroll bar*/

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 
 type interSectionProps = {
   children: React.ReactNode;
 };
 const IntersectionObserve = ({ children }: interSectionProps) => {
-  let ref = useRef();
+  let ref = useRef<HTMLDivElement>(null);
 
   const intersectionObserve: () => IntersectionObserver = () =>
     new IntersectionObserver((entries) => {
@@ -17,13 +17,11 @@ const IntersectionObserve = ({ children }: interSectionProps) => {
       });
     });
 
-  useEffect(() => {
-    // @ts-ignore
-    ref.current.classList.add('before-animate');
-    // @ts-ignore
-    intersectionObserve().observe(ref.current);
+  useLayoutEffect(() => {
+    ref.current?.classList.add('before-animate');
+    intersectionObserve().observe(ref.current!);
   }, []);
-  // @ts-ignore
+
   return <div ref={ref}>{children}</div>;
 };
 

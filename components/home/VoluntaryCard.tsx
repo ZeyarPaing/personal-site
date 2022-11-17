@@ -10,7 +10,7 @@ const VoluntaryCard = ({ voluntary }: { voluntary: Voluntary }) => {
         <p className="text-emerald-400 font-semibold text-sm">
           {voluntary.position}
         </p>
-        <h4 className="font-bold text-lg">{voluntary.place}</h4>
+        <h3 className="font-bold text-lg">{voluntary.place}</h3>
         <p className="text-gray-300 text-sm">{voluntary.description}</p>
       </div>
     </div>

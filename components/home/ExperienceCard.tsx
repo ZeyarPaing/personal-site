@@ -21,9 +21,11 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         </span>
       )}
       <p className="text-gray-400 text-sm">
-        {experience.current ? 'Currently working' : `${experience.year} year`}
+        {experience.current
+          ? `${experience.year} year and still counting`
+          : `${experience.year} year`}
       </p>
-      <h4 className="text-gray-200 font-bold font-primary mt-1 mb-1.5 text-lg">
+      <h3 className="text-gray-200 font-bold font-primary mt-1 mb-1.5 text-lg">
         <Link
           className="hover:text-primary-light"
           rel="noreferrer noopener"
@@ -32,7 +34,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         >
           @{experience.companyName}
         </Link>
-      </h4>
+      </h3>
       <h4 className="font-bold text-md text-gray-300 mb-1">
         {experience.position}
       </h4>

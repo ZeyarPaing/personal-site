@@ -1,4 +1,4 @@
-import { Technology } from '../../types';
+import { Technology } from 'types';
 import Image from 'next/image';
 
 const TechnologyCard = ({ technology }: { technology: Technology }) => {
@@ -34,9 +34,9 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
           />
         </div>
 
-        <p className="group-hover:opacity-100 group-hover:scale-100 scale-0 opacity-0 transition-all absolute bottom-6">
+        <h3 className="group-hover:opacity-100 group-hover:scale-100 scale-0 opacity-0 transition-all absolute bottom-6">
           {technology.name}
-        </p>
+        </h3>
       </div>
     </div>
   );
