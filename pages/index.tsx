@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-import React, { useState } from 'react';
-import Layout from '../components/layout/Layout';
-import { Button, TextButton } from '../components/Button';
-import { Project, Technology } from '../types';
+import React from 'react';
+import Layout from 'components/layout/Layout';
+import { Button, TextButton } from 'components/Button';
+import { Project, Technology } from 'types';
 import {
   courses,
   education,
@@ -11,23 +11,23 @@ import {
   projects,
   technologies,
   voluntaries,
-} from '../helper/data';
-import ExperienceCard from '../components/home/ExperienceCard';
-import TechnologyCard from '../components/home/TechnologyCard';
-import EducationCard from '../components/home/EducationCard';
-import VoluntaryCard from '../components/home/VoluntaryCard';
+} from 'helper/data';
+import ExperienceCard from 'components/home/ExperienceCard';
+import TechnologyCard from 'components/home/TechnologyCard';
+import EducationCard from 'components/home/EducationCard';
+import VoluntaryCard from 'components/home/VoluntaryCard';
 import Link from 'next/link';
-import ContactItem from '../components/home/ContactItem';
-import ProjectCard from '../components/project/ProjectCard';
-import BlurredBox from '../components/BlurredBox';
-import IntersectionObserve from '../components/IntersectionObserve';
-import profileImage from '../public/assets/image/profile.webp';
+import ContactItem from 'components/home/ContactItem';
+import ProjectCard from 'components/project/ProjectCard';
+import BlurredBox from 'components/BlurredBox';
+import IntersectionObserve from 'components/IntersectionObserve';
+import profileImage from 'public/assets/image/profile.webp';
 
 interface HomeProps {
   projects: Project[];
 }
 
-const Home: NextPage<HomeProps> = ({ projects }) => {
+const Home: NextPage<HomeProps> = () => {
   return (
     <Layout>
       <LandingSection />
@@ -36,7 +36,7 @@ const Home: NextPage<HomeProps> = ({ projects }) => {
           <BriefSection />
         </IntersectionObserve>
         <IntersectionObserve>
-          <ProjectSection projects={projects} />
+          <ProjectSection />
         </IntersectionObserve>
         <IntersectionObserve>
           <ExperienceSection />
@@ -109,6 +109,7 @@ const AnimatingBlocks = () => (
     />
   </>
 );
+
 const LandingSection = () => (
   <section className="flex justify-center items-center gap-10 mx-auto mt-18 md:mt-28 relative flex-wrap lg:flex-nowrap">
     <AnimatingBlocks />
@@ -117,16 +118,17 @@ const LandingSection = () => (
         src={profileImage}
         width={420}
         height={450}
-        objectFit="cover"
+        loading={'eager'}
+        priority={true}
         alt="profile image in 3d avatar style"
       />
     </IntersectionObserve>
     <IntersectionObserve>
       <div className="max-w-xl lg:mt-12 mx-2">
-        <p className="font-light uppercase">Hello there, I’m</p>
+        <p className="font-light">Hi there, I’m</p>
         <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
         <p className="max-w-lg text-lg font-light leading-[28px]">
-          A creative & passionate Front-End Developer delivering efficient &
+          A creative & passionate Front-End Web Developer delivering efficient &
           optimized solutions, Skilled in designing, developing and refactoring
           multiple web-based applications incorporating a range of technologies.
         </p>
@@ -136,6 +138,7 @@ const LandingSection = () => (
               window.open(
                 'https://www.figma.com/proto/bejHkqD4rOQRzkkvHiZKqi/Resume?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1',
                 '_blank',
+                'noopener,noreferrer',
               )
             }
             type="primary"
@@ -143,7 +146,7 @@ const LandingSection = () => (
             Resume
           </Button>
           <TextButton type="primary">
-            <Link href="#contact">Contact me</Link>
+            <a href="#contact">Contact me</a>
           </TextButton>
         </div>
       </div>
@@ -161,15 +164,15 @@ const BriefSection = () => (
         {/*including freelance and 2+ years of industry experience in Frontend*/}
         {/*Development,*/}
         I&apos;m delivering responsive, efficient & elegant interfaces with
-        considerations of <b>Performance</b>, <b>Accessibility</b>,{' '}
+        considerations of <b>Performance</b>, <b>Accessibility</b>,
         <b>User Experience</b>.
       </p>
     </div>
   </section>
 );
-const ProjectSection = ({ projects }: { projects: Project[] }) => {
+const ProjectSection = () => {
   return (
-    <section className="my-20 ">
+    <section className="my-20">
       <h2 className="section-header mb-7">Featured Projects</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
         {projects.map((project, idx) => (
@@ -272,61 +275,63 @@ const VoluntarySection = () => (
 );
 
 const ContactSection = () => {
-  const [message, setMessage] = useState('');
-  const [email, setEmail] = useState('');
-  const [submitStatus, setSubmitStatus] = useState('idle');
-
-  async function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitStatus('loading');
-    fetch('/api/dynamo', {
-      body: JSON.stringify({ message: message, email: email }),
-      method: 'PUT',
-    })
-      .then((res) => (res.status != 200 ? Promise.reject(res) : res))
-      .then((res) => res.json())
-      .then((res) => {
-        console.log('message res : ', res);
-        setSubmitStatus('ok');
+  /* const [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [submitStatus, setSubmitStatus] = useState('idle')
+    /*async function handleSendMessage(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+      setSubmitStatus('loading');
+      fetch('/api/dynamo', {
+        body: JSON.stringify({ message: message, email: email }),
+        method: 'PUT',
       })
-      .catch((err) => {
-        console.warn('message err : ', err);
-        setSubmitStatus('err');
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setSubmitStatus('idle');
-        }, 1000);
-      });
-  }
+        .then((res) => (res.status != 200 ? Promise.reject(res) : res))
+        .then((res) => res.json())
+        .then((res) => {
+          console.log('message res : ', res);
+          setSubmitStatus('ok');
+        })
+        .catch((err) => {
+          console.warn('message err : ', err);
+          setSubmitStatus('err');
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setSubmitStatus('idle');
+          }, 1000);
+        });
+    }*/
 
   return (
     <section id="contact" className="my-24 flex gap-x-8  flex-wrap gap-y-6">
       <div className="max-w-lg w-full">
         <h2 className="section-header mb-3">Contact</h2>
-        <ContactItem
-          link="tel:+959783024165"
-          icon="phone.svg"
-          display="+959 78302 4165"
-        />
-        <ContactItem
-          link="mailto:zaynepaing@gmail.com"
-          icon="mail.svg"
-          display="zaynepaing@gmail.com"
-        />
-        <ContactItem
-          link="https://github.com/ZeyarPaing"
-          icon="github.svg"
-          display="ZeyarPaing"
-        />
-        <ContactItem
-          link="https://linkedin.com/in/zeyar-paing"
-          icon="linkedin.svg"
-          display="zeyar-paing"
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <ContactItem
+            link="tel:+959783024165"
+            icon="phone.svg"
+            display="+959 78302 4165"
+          />
+          <ContactItem
+            link="mailto:zeyarpaing@proton.me"
+            icon="mail.svg"
+            display="zeyarpaing@proton.me"
+          />
+
+          <ContactItem
+            link="https://github.com/ZeyarPaing"
+            icon="github.svg"
+            display="ZeyarPaing"
+          />
+          <ContactItem
+            link="https://linkedin.com/in/zeyar-paing"
+            icon="linkedin.svg"
+            display="zeyar-paing"
+          />
+        </div>
       </div>
 
-      <div className="w-full sm:max-w-md sm:w-auto">
+      {/*<div className="w-full sm:max-w-md sm:w-auto">
         <h2 className="section-header mb-3">Drop a line</h2>
         <form onSubmit={handleSendMessage}>
           <label className="font-secondary text-gray-400 font-semibold text-sm">
@@ -358,7 +363,7 @@ const ContactSection = () => {
             </Button>
           </span>
         </form>
-      </div>
+      </div>*/}
     </section>
   );
 };
@@ -367,7 +372,13 @@ const CreditSection = () => {
   return (
     <section className="mb-16 mt-32 flex justify-center">
       <div className="flex md:items-center items-start flex-col md:flex-row gap-3 mt-2 px-8 py-6 rounded-2xl border border-gray-900 shadow-2xl shadow-[#020f25] ">
-        <img src="/logo-mono.svg" className="w-10 h-10" />
+        <Image
+          alt="logo monospace version"
+          src="/logo-mono.svg"
+          width={10}
+          height={10}
+          className="w-10 h-10"
+        />
         <p className="text-gray-300">
           This awesome logo is designed by a talented designer,{' '}
           <br className="sm:block md:hidden" />
@@ -384,9 +395,9 @@ const CreditSection = () => {
     </section>
   );
 };
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: { projects },
+    props: {},
   };
 };
 export default Home;

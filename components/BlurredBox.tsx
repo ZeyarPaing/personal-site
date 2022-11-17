@@ -1,36 +1,24 @@
 import React, { useEffect, useRef } from 'react';
+import { blurBoxProps } from 'types';
 
-type blurProps = {
-  size: {
-    width: string;
-    height: string;
-  };
-  color: string;
-  position: {
-    x: number;
-    y: number;
-  };
-  range?: number;
-};
-
-const BlurredBox = ({ size, color, position, range = 1000 }: blurProps) => {
-  let bRef = useRef();
+const BlurredBox = ({ size, color, position, range = 1000 }: blurBoxProps) => {
+  let bRef = useRef<HTMLDivElement | null>(null);
 
   function animate() {
     let x = (Math.random() - 0.6) * range;
     let y = (Math.random() - 0.6) * range;
-    // @ts-ignore
-    bRef.current.style.transform = `translateX(${x}%) translateY(${y}%)`;
-    // requestAnimationFrame(animate);
+    if (bRef.current) {
+      bRef.current.style.transform = `translateX(${x}%) translateY(${y}%)`;
+    }
   }
 
   useEffect(() => {
-    setInterval(animate, 4000);
+    let interval = setInterval(animate, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      // @ts-ignore
       ref={bRef}
       className="basset absolute transition-transform ease-linear duration-[4s]"
       style={{

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Project = {
   name: string;
   logo: string;
@@ -32,4 +34,26 @@ export type Voluntary = {
   place: string;
   description: string;
   position: string;
+};
+
+export type blurBoxProps = {
+  size: {
+    width: string;
+    height: string;
+  };
+  color: string;
+  position: {
+    x: number;
+    y: number;
+  };
+  range?: number;
+};
+
+export type ButtonType = {
+  children: React.ReactNode;
+  type?: 'primary' | 'secondary';
+  status?: 'idle' | 'loading' | 'ok' | 'err' | string;
+  onClick?: any;
+  disabled?: boolean;
+  className?: string;
 };

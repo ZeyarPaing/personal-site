@@ -1,15 +1,16 @@
-import {
+import type {
   Education,
   Experience,
   Project,
   Technology,
   Voluntary,
-} from '../types';
+} from 'types';
 
 export const experiences: Experience[] = [
   {
     companyName: 'Rezeve',
     current: true,
+    year: 0.4,
     websiteLink: 'https://www.rezeve.com/',
     position: 'Frontend Developer',
     description:

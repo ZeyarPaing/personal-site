@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -12,10 +11,12 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>Zeyar Paing | Personal Site</title>
+        <title>Zeyar Paing | Frontend Web Developer</title>
         <meta
           name="description"
-          content="This website is a personal portfoilo website of Zeyar Paing"
+          content="A creative & passionate Front-End Web Developer delivering efficient &
+          optimized solutions, Skilled in designing, developing and refactoring
+          multiple web-based applications incorporating a range of technologies."
         />
         <link rel="icon" href="/logo-mono.svg" />
       </Head>

@@ -1,13 +1,5 @@
 import React from 'react';
-
-interface ButtonType {
-  children: React.ReactNode;
-  type?: 'primary' | 'secondary';
-  status?: 'idle' | 'loading' | 'ok' | 'err' | string;
-  onClick?: any;
-  disabled?: boolean;
-  className?: string;
-}
+import { ButtonType } from 'types';
 
 const Button = ({
   children,
