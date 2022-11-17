@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type interSectionProps = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ const IntersectionObserve = ({ children }: interSectionProps) => {
       });
     });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     ref.current?.classList.add('before-animate');
     intersectionObserve().observe(ref.current!);
   }, []);
