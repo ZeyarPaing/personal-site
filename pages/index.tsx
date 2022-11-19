@@ -126,7 +126,7 @@ const LandingSection = () => (
     <IntersectionObserve>
       <div className="max-w-xl lg:mt-12 mx-2">
         <p className="font-light">Hi there, I’m</p>
-        <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
+        <h1 className="font-black text-4xl my-3">Zeyar Paing</h1>
         <p className="max-w-lg text-lg font-light leading-[28px]">
           A creative & passionate Front-End Web Developer delivering efficient &
           optimized solutions, Skilled in designing, developing and refactoring
