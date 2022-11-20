@@ -3,7 +3,7 @@
 }
 
 .projectCard:hover::before {
-    @apply -top-3 -left-3;
+    @apply -translate-x-1.5 -translate-y-1.5;
 }
 
 .projectCard::before {

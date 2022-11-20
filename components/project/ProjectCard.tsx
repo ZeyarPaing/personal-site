@@ -2,8 +2,9 @@ import { Project } from 'types';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'styles/Project.module.css';
+import { FC } from 'react';
 
-const projectCard = (props: { project: Project; showDots?: boolean }) => {
+const projectCard: FC<{ project: Project; showDots?: boolean }> = (props) => {
   const { project, showDots } = props;
   return (
     <Link

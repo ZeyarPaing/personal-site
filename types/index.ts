@@ -1,5 +1,10 @@
 import React from 'react';
 
+export type NavItem = {
+  name: string;
+  url: string;
+};
+
 export type Project = {
   name: string;
   logo: string;

@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import Layout from 'components/layout/Layout';
-import { Button, LinkButton } from 'components/Button';
+import { Button, LinkButton } from 'components/shared/Button';
 import { Project, Technology } from 'types';
 import {
   courses,
@@ -19,8 +19,8 @@ import VoluntaryCard from 'components/home/VoluntaryCard';
 import Link from 'next/link';
 import ContactItem from 'components/home/ContactItem';
 import ProjectCard from 'components/project/ProjectCard';
-import BlurredBox from 'components/BlurredBox';
-import IntersectionObserve from 'components/IntersectionObserve';
+import BlurredBox from 'components/shared/BlurredBox';
+import IntersectionObserve from 'components/shared/IntersectionObserve';
 import profileImage from 'public/assets/image/profile.webp';
 
 interface HomeProps {
