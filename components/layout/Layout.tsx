@@ -24,7 +24,6 @@ const Layout = ({
         <meta name="description" content={description} />
         <meta name="keyword" content={keywords} />
         <meta name="author" content="Zeyar Paing" />
-        <meta name="robots" content="index, follow" />
 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -33,10 +32,6 @@ const Layout = ({
         <meta
           property="og:site_name"
           content="Zeyar Paing | Frontend developer"
-        />
-        <meta
-          property="og:image"
-          content="https://zeyarpaing.com/images/og-image.png"
         />
 
         <link rel="icon" href="/logo-mono.svg" />
