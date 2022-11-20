@@ -5,6 +5,12 @@ export type NavItem = {
   url: string;
 };
 
+export type ContactInfo = {
+  link: string;
+  icon: string;
+  name: string;
+};
+
 export type Project = {
   name: string;
   logo: string;

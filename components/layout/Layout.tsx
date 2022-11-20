@@ -5,23 +5,40 @@ import Footer from './Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
+  title?: string;
+  description?: string;
+  keywords?: string;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({
+  children,
+  title = 'Zeyar Paing | Frontend Web Developer',
+  description = 'A creative & passionate Front-End Web Developer delivering efficient & optimized solutions, skilled in designing, developing and refactoring multiple web-based applications incorporating a range of technologies.',
+  keywords = 'frontend developer,frontend,developer, zeyar, zeyarpaing, web developer',
+}: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>Zeyar Paing | Frontend Web Developer</title>
+        <title>{title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="keyword" content={keywords} />
+        <meta name="author" content="Zeyar Paing" />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://zeyar.dev" />
         <meta
-          name="description"
-          content="A creative & passionate Front-End Web Developer delivering efficient &
-          optimized solutions, skilled in designing, developing and refactoring
-          multiple web-based applications incorporating a range of technologies."
+          property="og:site_name"
+          content="Zeyar Paing | Frontend developer"
         />
         <meta
-          name="keyword"
-          content="frontend developer,frontend,developer, zeyar, zeyarpaing, web developer"
+          property="og:image"
+          content="https://zeyarpaing.com/images/og-image.png"
         />
+
         <link rel="icon" href="/logo-mono.svg" />
       </Head>
       <Navbar />

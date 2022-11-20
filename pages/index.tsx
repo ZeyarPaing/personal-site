@@ -11,17 +11,18 @@ import {
   projects,
   technologies,
   voluntaries,
-} from 'helper/data';
+} from 'data/info';
 import ExperienceCard from 'components/home/ExperienceCard';
 import TechnologyCard from 'components/home/TechnologyCard';
 import EducationCard from 'components/home/EducationCard';
 import VoluntaryCard from 'components/home/VoluntaryCard';
 import Link from 'next/link';
-import ContactItem from 'components/home/ContactItem';
 import ProjectCard from 'components/project/ProjectCard';
 import BlurredBox from 'components/shared/BlurredBox';
 import IntersectionObserve from 'components/shared/IntersectionObserve';
 import profileImage from 'public/assets/image/profile.webp';
+import { contactInfo } from '../data';
+import ContactItem from '../components/home/ContactItem';
 
 interface HomeProps {
   projects: Project[];
@@ -177,7 +178,7 @@ const ProjectSection = () => {
       <h2 className="section-header mb-7">Featured Projects</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
         {projects.map((project, idx) => (
-          <ProjectCard showDots={true} key={idx} project={project} />
+          <ProjectCard showDots key={idx} project={project} />
         ))}
       </div>
     </section>
@@ -307,29 +308,17 @@ const ContactSection = () => {
     <section id="contact" className="my-24 flex gap-x-8  flex-wrap gap-y-6">
       <div className="max-w-lg w-full">
         <h2 className="section-header mb-3">Contact</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <ContactItem
-            link="tel:+959783024165"
-            icon="phone.svg"
-            display="+959 78302 4165"
-          />
-          <ContactItem
-            link="mailto:zeyarpaing@proton.me"
-            icon="mail.svg"
-            display="zeyarpaing@proton.me"
-          />
-
-          <ContactItem
-            link="https://github.com/ZeyarPaing"
-            icon="github.svg"
-            display="ZeyarPaing"
-          />
-          <ContactItem
-            link="https://linkedin.com/in/zeyar-paing"
-            icon="linkedin.svg"
-            display="zeyar-paing"
-          />
-        </div>
+        <ul className="grid grid-cols-1 md:grid-cols-2">
+          {contactInfo.map((info, idx) => (
+            <li key={idx} className="flex gap-x-4 items-center">
+              <ContactItem
+                link={info.link}
+                icon={info.icon}
+                display={info.name}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/*<div className="w-full sm:max-w-md sm:w-auto">

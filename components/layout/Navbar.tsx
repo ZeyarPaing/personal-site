@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
-    <nav className="z-10 px-3 py-3 text-white bg-darkblue bg-opacity-70 backdrop-blur-xl backdrop-saturate-150 backdrop-brightness-150 fixed top-0 w-full">
+    <nav className="z-10 px-3 py-3 text-white bg-darkblue bg-opacity-60 backdrop-blur-3xl fixed top-0 w-full">
       <div className="m-layout flex flex-wrap justify-between items-center ">
         <Link href="/" className="flex items-center">
           <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
@@ -28,7 +28,7 @@ const Navbar = () => {
             <path
               className={`transition-transform ease-linear fill-primary-light duration-75 ${
                 isExpanded
-                  ? ' rotate-45 -translate-y-3 translate-x-[14px]'
+                  ? 'rotate-45 -translate-y-3 translate-x-[14px]'
                   : 'rotate-0'
               }`}
               d="M0.560976 14H23L22.439 16H0L0.560976 14Z"
@@ -40,7 +40,7 @@ const Navbar = () => {
               d="M7.43902 7H25L24.561 9H7L7.43902 7Z"
             />
             <path
-              className={`transition-transform ease-linear fill-primary-light duration-75  ${
+              className={`transition-transform ease-linear fill-primary-light duration-75 ${
                 isExpanded ? '-rotate-45 translate-y-[18px]' : 'rotate-0'
               } `}
               d="M5.53659 0H27L26.4634 2H5L5.53659 0Z"
