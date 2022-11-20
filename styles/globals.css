@@ -35,6 +35,16 @@ p {
     box-sizing: border-box;
 }
 
+a, button {
+    border-radius: 8px;
+    outline-offset: -10px;
+}
+
+a:focus, button:focus {
+    @apply outline-primary-light outline-offset-2 outline-2 outline-dashed outline-offset-2;
+    transition: outline-offset 100ms;
+}
+
 .m-layout {
     @apply px-4 max-w-screen-2xl lg:max-w-screen-lg md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
 }
@@ -65,7 +75,7 @@ input, textarea {
     focus:ring-2 focus:ring-primary-light focus:ring-opacity-40 focus:outline-0 focus:border-primary;
 }
 
-.career-section b {
+.career-section b, .description-section b {
     @apply text-primary font-black;
 }
 
