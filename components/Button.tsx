@@ -38,9 +38,10 @@ const TextButton = ({
   disabled = false,
   onClick,
 }: ButtonType) => {
-  const color = `text-${type} hover:text-${type}-light active:text-${type}-dark`;
   return (
     <button
+      onClick={onClick}
+      disabled={disabled}
       className={`${
         type == 'primary'
           ? 'text-primary hover:text-primary-light active:text-primary-dark '
@@ -52,4 +53,25 @@ const TextButton = ({
   );
 };
 
-export { Button, TextButton };
+const LinkButton = ({
+  children,
+  type = 'primary',
+  disabled = false,
+  onClick,
+  href,
+}: ButtonType & { href: string }) => {
+  return (
+    <a
+      className={`${
+        type == 'primary'
+          ? 'text-primary hover:text-primary-light active:text-primary-dark '
+          : 'text-secondary hover:text-secondary-light active:text-secondary-dark '
+      } font-bold`}
+      href={href}
+    >
+      {children}
+    </a>
+  );
+};
+
+export { Button, TextButton, LinkButton };

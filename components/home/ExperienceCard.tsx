@@ -25,7 +25,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
           ? `${experience.year} year and still counting`
           : `${experience.year} year`}
       </p>
-      <h3 className="text-gray-200 font-bold font-primary mt-1 mb-1.5 text-lg">
+      <h3 className="text-gray-200 font-bold font-primary my-1 text-lg">
         <Link
           className="hover:text-primary-light"
           rel="noreferrer noopener"
@@ -38,7 +38,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       <h4 className="font-bold text-md text-gray-300 mb-1">
         {experience.position}
       </h4>
-      <p className="text-sm text-gray-400">{experience.description}</p>
+      <p className="text-sm mt-1 text-gray-400">{experience.description}</p>
     </div>
   );
 };

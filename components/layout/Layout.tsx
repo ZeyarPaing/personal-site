@@ -15,8 +15,12 @@ const Layout = ({ children }: LayoutProps) => {
         <meta
           name="description"
           content="A creative & passionate Front-End Web Developer delivering efficient &
-          optimized solutions, Skilled in designing, developing and refactoring
+          optimized solutions, skilled in designing, developing and refactoring
           multiple web-based applications incorporating a range of technologies."
+        />
+        <meta
+          name="keyword"
+          content="frontend developer,frontend,developer, zeyar, zeyarpaing, web developer"
         />
         <link rel="icon" href="/logo-mono.svg" />
       </Head>
