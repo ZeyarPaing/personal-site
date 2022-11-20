@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import Layout from 'components/layout/Layout';
-import { Button, TextButton } from 'components/Button';
+import { Button, LinkButton } from 'components/Button';
 import { Project, Technology } from 'types';
 import {
   courses,
@@ -126,11 +126,12 @@ const LandingSection = () => (
     <IntersectionObserve>
       <div className="max-w-xl lg:mt-12 mx-2">
         <p className="font-light">Hi there, I’m</p>
-        <h1 className="font-black text-4xl my-3">ZEYAR PAING</h1>
-        <p className="max-w-lg text-lg font-light leading-[28px]">
-          A creative & passionate Front-End Web Developer delivering efficient &
-          optimized solutions, Skilled in designing, developing and refactoring
-          multiple web-based applications incorporating a range of technologies.
+        <h1 className="font-black text-4xl my-3">Zeyar Paing</h1>
+        <p className="max-w-lg text-lg font-light leading-[28px] description-section">
+          A creative & passionate <b>Front-End Web Developer</b> delivering
+          efficient & optimized solutions, skilled in designing, developing and
+          refactoring multiple web-based applications incorporating a range of
+          technologies.
         </p>
         <div className="flex gap-8 items-center mt-5">
           <Button
@@ -145,9 +146,9 @@ const LandingSection = () => (
           >
             Resume
           </Button>
-          <TextButton type="primary">
-            <a href="#contact">Contact me</a>
-          </TextButton>
+          <LinkButton href="#contact" type="primary">
+            Contact me
+          </LinkButton>
         </div>
       </div>
     </IntersectionObserve>
