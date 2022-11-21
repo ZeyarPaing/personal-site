@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import TransitionRender from 'components/shared/TransitionRender';
-import { navItems } from 'data';
+import { navItems } from 'data/app-data';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);

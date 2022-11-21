@@ -21,7 +21,7 @@ import ProjectCard from 'components/project/ProjectCard';
 import BlurredBox from 'components/shared/BlurredBox';
 import IntersectionObserve from 'components/shared/IntersectionObserve';
 import profileImage from 'public/assets/image/profile.webp';
-import { contactInfo } from '../data';
+import { contactInfo } from '../data/app-data';
 import ContactItem from '../components/home/ContactItem';
 
 interface HomeProps {
