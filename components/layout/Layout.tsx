@@ -37,7 +37,7 @@ const Layout = ({
         <link rel="icon" href="/logo-mono.svg" />
       </Head>
       <Navbar />
-      <main style={{ marginTop: '70px' }} className="m-layout">
+      <main style={{ marginTop: '70px' }} className="m-layout min-h-screen">
         {children}
       </main>
       <Footer />

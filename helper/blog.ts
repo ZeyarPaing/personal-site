@@ -9,8 +9,8 @@ export interface IBlogMeta {
   date: string;
   tags?: string[];
   description: string;
-  content: string;
 }
+
 export interface IRepoContent extends IBlogMeta {
   type: string;
   encoding: string;
@@ -41,10 +41,6 @@ const octokit = new Octokit({
 export const ghRawUrl =
   'https://raw.githubusercontent.com/ZeyarPaing/blogs/main';
 
-// async function responseWrapper<T>(fn: () => Promise<T>): Promise<T> {
-//      return fn().then((data) => )
-// }
-
 export class BlogService {
   getBlogUrl(blogName: string) {
     return `${ghRawUrl}/${blogName}/index.md`;
@@ -55,7 +51,6 @@ export class BlogService {
       const rawMd = res.data as string;
       const { data, content } = matter(rawMd);
       const metaData = data as IBlogMeta;
-      console.log('META_DATA', metaData);
       const mdxSource = await serialize(
         content.replace(/!\[([^\]]*)]\(([^)]*)\)/g, (match, p1, p2) => {
           return `![${p1}](${ghRawUrl}/${encodeURI(blogName)}/${p2})`;
@@ -63,6 +58,7 @@ export class BlogService {
       );
       return {
         ...metaData,
+        date: metaData.date + '',
         name: blogName,
         image: `${ghRawUrl}/_cover-images/${blogName}.jpg`,
         content: mdxSource,
@@ -71,32 +67,35 @@ export class BlogService {
   }
 
   async getBlogs() {
-    let a: Promise<OctokitResponse<IRepoContent[]>> = octokit.request(
+    let ghRequest: Promise<OctokitResponse<IRepoContent[]>> = octokit.request(
       'GET /repos/{owner}/{repo}/contents/',
       {
         owner: 'ZeyarPaing',
         repo: 'blogs',
       },
     );
-    return a.then((response) => {
-      let data = response.data.map(async (blog) => {
+    return ghRequest.then(async (response) => {
+      let data = response.data.map((blog) => {
         if (blog.name[0] === '_') return;
-        console.log('BLOG_NAME', blog);
-        return await axios
-          .get(`${ghRawUrl}/${blog.name}/index.md`)
-          .then((res) => {
-            const rawMd = res.data as string;
-            const { data: metaData } = matter(rawMd);
-            return {
-              ...blog,
-              ...metaData,
-              image: `${ghRawUrl}/_cover-images/${blog.name}.jpg`,
-            };
-          });
+        return axios.get(`${ghRawUrl}/${blog.name}/index.md`).then((res) => {
+          const rawMd = res.data as string;
+          const { data: metaData } = matter(rawMd);
+          return {
+            ...blog,
+            ...metaData,
+            date: '' + metaData.date,
+            image: `${ghRawUrl}/_cover-images/${blog.name}.jpg`,
+          };
+        });
       });
-      return Promise.all(data);
+      try {
+        let dataList = await Promise.all(data);
+        return Promise.resolve(dataList.filter(Boolean));
+      } catch (e) {
+        return Promise.reject(e);
+      }
     });
-    //    },
-    // );
   }
 }
+
+export const blogService = new BlogService();

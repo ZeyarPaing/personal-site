@@ -1,12 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Layout from 'components/layout/Layout';
 import React from 'react';
-import { BlogService, IRepoContent } from '../../helper/blog';
+import { blogService, IRepoContent } from 'helper/blog';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
-  console.log('blogs', blogs);
   return (
     <Layout
       title="Blogs by Zeyar Paing"
@@ -15,12 +14,23 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
       <h1 className="text-white font-black text-center mt-12 mb-2 md:mt-24 md:mb-10 text-3xl md:text-5xl">
         Blogs
       </h1>
-      <div className="prose lg:prose-xl">{/*<MDXRemote {...source} />*/}</div>
+
       <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-4">
         {blogs.map((blog, idx) => (
           <Link href={`/blogs/${blog.name}`} key={idx}>
-            <Image src={blog.image} width={100} height={100} alt={blog.name} />
-            <h2>{blog.title}</h2>
+            <div className=" h-56 relative rounded-lg overflow-hidden">
+              <Image
+                className={' w-full h-full object-cover'}
+                src={blog.image}
+                width={500}
+                height={100}
+                alt={blog.name}
+              />
+              <div className="absolute top-0 w-full h-full p-6 bg-gradient-to-tr from-secondary-dark to-transparent flex flex-col justify-end">
+                <h2 className="font-bold text-xl">{blog.title}</h2>
+                <p className="text-sm">{blog.description}</p>
+              </div>
+            </div>
           </Link>
         ))}
       </ul>
@@ -29,24 +39,13 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
 };
 
 export const getStaticProps: GetServerSideProps = async () => {
-  const blogService = new BlogService();
   const data = await blogService.getBlogs();
-  console.log('GETSTA', data);
+
   return {
     props: {
-      blogs: data
-        .filter(Boolean)
-        .map((blog) => ({ ...blog, date: '' + blog?.date })),
+      blogs: data,
     },
   };
 };
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-// console.log('data', data);
-
-// console.log('GH_TOKEN ', process.env.GH_TOKEN);
-// const mdxSource = await serialize('# Hello World');
-//   return { props: { blogs: data } };
-// };
 
 export default Blogs;

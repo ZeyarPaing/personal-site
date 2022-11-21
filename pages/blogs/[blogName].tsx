@@ -1,38 +1,39 @@
 import { GetStaticProps, NextPage } from 'next';
-import Layout from '../../components/layout/Layout';
-import { BlogService, IBlogContent } from '../../helper/blog';
+import Layout from 'components/layout/Layout';
+import { blogService, IBlogContent } from 'helper/blog';
 import { MDXRemote } from 'next-mdx-remote';
 import React from 'react';
+import styles from 'styles/Blogs.module.css';
+import Image from 'next/image';
 
 const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
-  console.log('blog', blog);
   return (
-    <Layout>
-      <h1 className="text-white font-black text-center mt-12 mb-2 md:mt-24 md:mb-10 text-3xl md:text-5xl">
-        {blog?.title}
-      </h1>
-      <MDXRemote {...blog?.content} />
+    <Layout title={blog.title} description={blog.description}>
+      <picture className="block w-full h-56 mt-20">
+        <Image
+          src={blog.image}
+          alt={blog.title}
+          className={'w-full h-full object-cover rounded-xl'}
+          width={1000}
+          height={1000}
+        />
+      </picture>
+      <article className={`${styles.blogDetail} prose lg:prose-xl`}>
+        <MDXRemote {...blog?.content} />
+      </article>
     </Layout>
   );
 };
 
 export const getStaticPaths = async () => {
-  const blogService = new BlogService();
   const data = await blogService.getBlogs();
-  const paths = data
-    .map((blog) =>
-      blog?.name
-        ? {
-            params: { blogName: blog?.name },
-          }
-        : undefined,
-    )
-    .filter(Boolean);
+  const paths = data.map((blog) => ({
+    params: { blogName: blog?.name },
+  }));
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const blogService = new BlogService();
   if (!params?.blogName) {
     return {
       notFound: true,
@@ -43,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      blog: { ...blog, date: '' + blog?.date },
+      blog,
     },
   };
 };
