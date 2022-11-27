@@ -18,6 +18,7 @@ export type Project = {
   description: string;
   demoUrl: string;
   color: string;
+  media?: string;
 };
 
 export type Experience = {

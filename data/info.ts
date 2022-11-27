@@ -149,6 +149,7 @@ export const projects: Project[] = [
       'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness',
     demoUrl: 'https://rezeve.com',
     color: '#5DFC70',
+    media: '/assets/image/projects/rezeve-mockup.webp',
   },
   {
     name: 'MaNaw Store',
@@ -158,6 +159,7 @@ export const projects: Project[] = [
       'All in one POS, Accounting, Invoices, Inventory software for both web and mobile',
     demoUrl: 'https://merchant.manawstore.com/',
     color: '#f1ca3b',
+    media: '/assets/image/projects/manaw-mockup.webp',
   },
   {
     name: 'Monage',
@@ -167,6 +169,7 @@ export const projects: Project[] = [
       'Simple expense/income tracker app with collaborative features. This app can make the fund usage between friends, families and teams more transparent',
     demoUrl: 'https://monage.zeyar.dev',
     color: '#5f6eff',
+    media: '/assets/image/projects/monage-mockup.webp',
   },
   {
     name: 'Spring University Myanmar',
@@ -176,5 +179,6 @@ export const projects: Project[] = [
       'A multilingual, Server Side Rendered website. The major data includes Schools, Courses, Careers and Articles, all of them can be manipulated from a Customized Admin Panel ',
     demoUrl: 'https://sum-five.vercel.app',
     color: '#fa6261',
+    media: '/assets/image/projects/sum-mockup.webp',
   },
 ];
