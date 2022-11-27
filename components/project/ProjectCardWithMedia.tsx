@@ -20,7 +20,7 @@ const ProjectCard: FC<{
       <div
         style={{
           backgroundImage: `url(${project.media})`,
-          backgroundColor: `#2d2d2d`,
+          backgroundColor: `${project.color}cc`,
         }}
         className={`${styles.projectMedia} relative h-[364px] overflow-hidden rounded-2xl z-[1]`}
       >
