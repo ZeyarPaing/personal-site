@@ -1,4 +1,5 @@
 import type {
+  Certifications,
   Education,
   Experience,
   Project,
@@ -105,13 +106,31 @@ export const education: Education[] = [
   },
 ];
 
-export const courses: string[] = [
-  'Programming Foundations with JavaScript, HTML and CSS',
-  'Visual Elements of User Interface Design',
-  'Modern JavaScript: ES6 Basics',
-  'Javascript animation for websites, storytelling',
-  'Crash Course on Python',
-  'Mathematics for Machine Learning: Linear Algebra',
+export const courses: Certifications[] = [
+  {
+    name: 'Modern JavaScript: ES6 Basics',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/A8CM8YAH39SU',
+  },
+  {
+    name: 'Javascript animation for websites, storytelling',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/UR8HJS5QK726',
+  },
+  {
+    name: 'Mathematics for Machine Learning: Linear Algebra',
+    link: 'https://www.coursera.org/account/accomplishments/specialization/certificate/33CUCEAA9Y7T',
+  },
+  {
+    name: 'Visual Elements of User Interface Design',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/YZFPPEZCB9Y8',
+  },
+  {
+    name: 'Object-Oriented Programming with Java',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/85XRFPPFFD32',
+  },
+  {
+    name: 'Crash Course on Python',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/MNNU9LFPXYK7',
+  },
 ];
 
 export const voluntaries: Voluntary[] = [
@@ -149,6 +168,7 @@ export const projects: Project[] = [
       'Website for Rezeve, a company that provides a platform for booking and royalty management for fitness',
     demoUrl: 'https://rezeve.com',
     color: '#5DFC70',
+    media: '/assets/image/projects/rezeve-mockup.webp',
   },
   {
     name: 'MaNaw Store',
@@ -158,6 +178,7 @@ export const projects: Project[] = [
       'All in one POS, Accounting, Invoices, Inventory software for both web and mobile',
     demoUrl: 'https://merchant.manawstore.com/',
     color: '#f1ca3b',
+    media: '/assets/image/projects/manaw-mockup.webp',
   },
   {
     name: 'Monage',
@@ -167,6 +188,7 @@ export const projects: Project[] = [
       'Simple expense/income tracker app with collaborative features. This app can make the fund usage between friends, families and teams more transparent',
     demoUrl: 'https://monage.zeyar.dev',
     color: '#5f6eff',
+    media: '/assets/image/projects/monage-mockup.webp',
   },
   {
     name: 'Spring University Myanmar',
@@ -176,5 +198,6 @@ export const projects: Project[] = [
       'A multilingual, Server Side Rendered website. The major data includes Schools, Courses, Careers and Articles, all of them can be manipulated from a Customized Admin Panel ',
     demoUrl: 'https://sum-five.vercel.app',
     color: '#fa6261',
+    media: '/assets/image/projects/sum-mockup.webp',
   },
 ];

@@ -1,5 +1,16 @@
 import React from 'react';
 
+export type NavItem = {
+  name: string;
+  url: string;
+};
+
+export type ContactInfo = {
+  link: string;
+  icon: string;
+  name: string;
+};
+
 export type Project = {
   name: string;
   logo: string;
@@ -7,6 +18,7 @@ export type Project = {
   description: string;
   demoUrl: string;
   color: string;
+  media?: string;
 };
 
 export type Experience = {
@@ -28,6 +40,11 @@ export type Technology = {
 export type Education = {
   name: string;
   description: string;
+};
+
+export type Certifications = {
+  name: string;
+  link: string;
 };
 
 export type Voluntary = {
