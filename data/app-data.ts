@@ -33,3 +33,6 @@ export const contactInfo: ContactInfo[] = [
     icon: 'linkedin.svg',
   },
 ];
+
+export const hostDomain = 'https://zeyar.dev/';
+export const previewImage = 'https://zeyar.dev/image/preview.jpg';

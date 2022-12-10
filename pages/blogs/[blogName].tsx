@@ -8,7 +8,12 @@ import Image from 'next/image';
 
 const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
   return (
-    <Layout title={blog.title} description={blog.description}>
+    <Layout
+      image={blog.image}
+      keywords={blog.tags?.join(',')}
+      title={blog.title}
+      description={blog.description}
+    >
       <picture className="block w-full h-56 mt-20">
         <Image
           src={blog.image}
