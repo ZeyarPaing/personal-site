@@ -30,25 +30,24 @@ const Layout = ({
         <meta name="keyword" content={keywords} />
         <meta name="author" content="Zeyar Paing" />
 
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://zeyar.dev" />
-        <meta
-          property="og:site_name"
-          content="Zeyar Paing | Frontend developer"
-        />
-
         <link rel="icon" href="/logo-mono.svg" />
 
         <link rel="canonical" href={hostDomain + url} />
 
+        <meta property="fb:app_id" content="3465256607091825" />
         <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:description" content={description} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:url" content={hostDomain + url} />
-        <meta property="og:site_name" content="Rezeve" />
+        <meta
+          property="og:site_name"
+          content="Zeyar Paing | Frontend developer"
+        />
+        <meta
+          property="og:site_name"
+          content="Zeyar Paing | Frontend developer"
+        />
         <meta property="og:image" content={image || previewImage} />
 
         <meta name="twitter:card" content="summary" />
