@@ -15,10 +15,10 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
         Blogs
       </h1>
 
-      <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-4">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-4">
         {blogs.map((blog, idx) => (
           <Link href={`/blogs/${blog.name}`} key={idx}>
-            <div className=" h-56 relative rounded-lg overflow-hidden">
+            <article className=" h-56 relative rounded-lg overflow-hidden">
               <Image
                 className={' w-full h-full object-cover'}
                 src={blog.image}
@@ -31,10 +31,10 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
                 <h2 className="font-bold text-xl">{blog.title}</h2>
                 <p className="text-sm">{blog.description}</p>
               </div>
-            </div>
+            </article>
           </Link>
         ))}
-      </ul>
+      </section>
     </Layout>
   );
 };
