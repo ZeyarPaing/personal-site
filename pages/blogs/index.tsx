@@ -22,9 +22,10 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
               <Image
                 className={' w-full h-full object-cover'}
                 src={blog.image}
-                width={500}
-                height={100}
+                width={600}
+                height={300}
                 alt={blog.name}
+                loading={'eager'}
               />
               <div className="absolute top-0 w-full h-full p-6 bg-gradient-to-tr from-secondary-dark to-transparent flex flex-col justify-end">
                 <h2 className="font-bold text-xl">{blog.title}</h2>

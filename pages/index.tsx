@@ -235,20 +235,26 @@ const TechnologySection = () => {
 
 const EducationSection = () => {
   return (
-    <section className="my-12 mb-20">
+    <section className="my-12 mb-20" id="education">
       <h2 className="section-header mb-5">Education</h2>
       <div className="flex gap-8 flex-col">
         {education.map((edu, idx) => (
           <EducationCard education={edu} key={idx} />
         ))}
       </div>
-      <p className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6">
+      <p
+        id="certifications"
+        className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6"
+      >
         Certificate Courses
       </p>
       <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
-        {courses.map((name, idx) => (
-          <div
-            className="bg-gray-900 bg-opacity-80 rounded-3xl border border-gray-700 px-5 py-4 flex flex-col items-end gap-y-5"
+        {courses.map((certificate, idx) => (
+          <Link
+            href={certificate.link}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-gray-900 hover:bg-gray-800 bg-opacity-80 rounded-3xl border border-gray-700 hover:border-gray-600 px-5 py-4 flex flex-col items-end gap-y-5"
             key={idx}
           >
             <Image
@@ -257,8 +263,8 @@ const EducationSection = () => {
               height={40}
               alt="coursera logo"
             />
-            <h4 className="font-bold text-xs ">{name}</h4>
-          </div>
+            <h4 className="font-bold text-xs ">{certificate.name}</h4>
+          </Link>
         ))}
       </div>
     </section>

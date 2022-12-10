@@ -14,8 +14,9 @@ const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
           src={blog.image}
           alt={blog.title}
           className={'w-full h-full object-cover rounded-xl'}
-          width={1000}
+          width={3000}
           height={1000}
+          loading="eager"
         />
       </picture>
       <article className={`${styles.blogDetail} prose lg:prose-xl`}>

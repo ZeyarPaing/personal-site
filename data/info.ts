@@ -1,4 +1,5 @@
 import type {
+  Certifications,
   Education,
   Experience,
   Project,
@@ -105,13 +106,31 @@ export const education: Education[] = [
   },
 ];
 
-export const courses: string[] = [
-  'Programming Foundations with JavaScript, HTML and CSS',
-  'Visual Elements of User Interface Design',
-  'Modern JavaScript: ES6 Basics',
-  'Javascript animation for websites, storytelling',
-  'Crash Course on Python',
-  'Mathematics for Machine Learning: Linear Algebra',
+export const courses: Certifications[] = [
+  {
+    name: 'Modern JavaScript: ES6 Basics',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/A8CM8YAH39SU',
+  },
+  {
+    name: 'Javascript animation for websites, storytelling',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/UR8HJS5QK726',
+  },
+  {
+    name: 'Mathematics for Machine Learning: Linear Algebra',
+    link: 'https://www.coursera.org/account/accomplishments/specialization/certificate/33CUCEAA9Y7T',
+  },
+  {
+    name: 'Visual Elements of User Interface Design',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/YZFPPEZCB9Y8',
+  },
+  {
+    name: 'Object-Oriented Programming with Java',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/85XRFPPFFD32',
+  },
+  {
+    name: 'Crash Course on Python',
+    link: 'https://www.coursera.org/account/accomplishments/certificate/MNNU9LFPXYK7',
+  },
 ];
 
 export const voluntaries: Voluntary[] = [

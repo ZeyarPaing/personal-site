@@ -42,6 +42,11 @@ export type Education = {
   description: string;
 };
 
+export type Certifications = {
+  name: string;
+  link: string;
+};
+
 export type Voluntary = {
   place: string;
   description: string;

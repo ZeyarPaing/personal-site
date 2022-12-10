@@ -20,7 +20,6 @@ const ProjectCard: FC<{
       <div
         style={{
           backgroundImage: `url(${project.media})`,
-          backgroundColor: `${project.color}cc`,
         }}
         className={`${styles.projectMedia} relative h-[364px] overflow-hidden rounded-2xl z-[1]`}
       >
@@ -33,7 +32,7 @@ const ProjectCard: FC<{
         {/*/>*/}
         <div className={`absolute inset-0`}></div>
         <div
-          className={`absolute bottom-5 left-1/2 -translate-x-1/2 max-w-[80%] w-full flex gap-4 flex-wrap p-4 rounded-2xl ${
+          className={`group-hover:scale-100 scale-90 transition-transform absolute bottom-5 left-1/2 -translate-x-1/2 max-w-[80%] w-full flex gap-4 flex-wrap p-4 rounded-2xl ${
             vertical ? 'flex-col items-center' : ''
           } bg-darkblue bg-opacity-50 backdrop-blur-md border border-gray-300 border-opacity-50`}
         >
