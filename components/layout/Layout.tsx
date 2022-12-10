@@ -32,7 +32,7 @@ const Layout = ({
 
         <link rel="icon" href="/logo-mono.svg" />
 
-        <link rel="canonical" href={hostDomain + url} />
+        <link rel="canonical" href={hostDomain} />
 
         <meta property="fb:app_id" content="3465256607091825" />
         <meta property="og:title" content={title} />
