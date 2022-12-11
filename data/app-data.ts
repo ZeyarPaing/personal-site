@@ -35,4 +35,4 @@ export const contactInfo: ContactInfo[] = [
 ];
 
 export const hostDomain = 'https://zeyar.dev/';
-export const previewImage = 'https://zeyar.dev/image/preview.jpg';
+export const previewImage = 'https://zeyar.dev/assets/image/preview.jpg';
