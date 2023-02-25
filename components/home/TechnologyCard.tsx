@@ -14,7 +14,7 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
     >
       <div
         style={{ height: '100%' }}
-        className={`px-5 md:px-10 py-4 md:py-6 backdrop-blur-md rounded-3xl w-full grid place-items-center bg-darkblue bg-opacity-80 `}
+        className="px-5 md:px-10 py-4 md:py-6 rounded-3xl w-full grid place-items-center bg-darkblue/80 bg-opacity-80"
       >
         <div
           className={`group-hover:scale-75 group-hover:-translate-y-4 ${
@@ -26,7 +26,7 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
           }}
         >
           <Image
-            className={`object-contain`}
+            className={'object-contain'}
             width={9999}
             height={9999}
             src={technology.icon}

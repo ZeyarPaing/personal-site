@@ -42,12 +42,12 @@ export const ghRawUrl =
   'https://raw.githubusercontent.com/ZeyarPaing/blogs/main';
 
 export class BlogService {
-  getBlogUrl(blogName: string) {
+  static getBlogUrl(blogName: string) {
     return `${ghRawUrl}/${blogName}/index.md`;
   }
 
-  getBlogContent(blogName: string): Promise<IBlogContent> {
-    return axios.get(this.getBlogUrl(blogName)).then(async (res) => {
+  static getBlogContent(blogName: string): Promise<IBlogContent> {
+    return axios.get(BlogService.getBlogUrl(blogName)).then(async (res) => {
       const rawMd = res.data as string;
       const { data, content } = matter(rawMd);
       const metaData = data as IBlogMeta;
@@ -56,6 +56,12 @@ export class BlogService {
           return `![${p1}](${ghRawUrl}/${encodeURI(blogName)}/${p2})`;
         }),
       );
+      console.log({
+        content,
+        data,
+        metaData,
+        mdxSource,
+      });
       return {
         ...metaData,
         date: metaData.date + '',
@@ -66,7 +72,7 @@ export class BlogService {
     });
   }
 
-  async getBlogs() {
+  static async getBlogs() {
     let ghRequest: Promise<OctokitResponse<IRepoContent[]>> = octokit.request(
       'GET /repos/{owner}/{repo}/contents/',
       {
@@ -97,5 +103,3 @@ export class BlogService {
     });
   }
 }
-
-export const blogService = new BlogService();

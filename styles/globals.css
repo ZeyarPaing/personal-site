@@ -40,7 +40,7 @@ a, button {
     outline-offset: -10px;
 }
 
-a:focus, button:focus {
+a:focus-visible, button:focus-visible {
     @apply outline-primary-light outline-offset-2 outline-2 outline-dashed outline-offset-2;
     transition: outline-offset 100ms;
 }

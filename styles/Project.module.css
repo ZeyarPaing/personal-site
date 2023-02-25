@@ -1,5 +1,5 @@
 .projectCard {
-    @apply relative cursor-pointer border-none text-left transition-shadow hover:shadow-2xl hover:shadow-black;
+    @apply relative cursor-pointer border-none text-left transition-shadow hover:shadow-lg hover:shadow-black/20 rounded-2xl;
 }
 
 .projectCard:hover::before {

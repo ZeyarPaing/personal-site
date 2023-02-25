@@ -19,10 +19,11 @@ import VoluntaryCard from 'components/home/VoluntaryCard';
 import Link from 'next/link';
 import ProjectCard from 'components/project/ProjectCard';
 import BlurredBox from 'components/shared/BlurredBox';
-import IntersectionObserve from 'components/shared/IntersectionObserve';
+import { useScrollReveal } from 'hooks/useScrollReveal';
 import profileImage from 'public/assets/image/profile.webp';
 import { contactInfo } from '../data/app-data';
 import ContactItem from '../components/home/ContactItem';
+import PatternBackground from 'components/shared/PatternBackground';
 
 interface HomeProps {
   projects: Project[];
@@ -33,32 +34,19 @@ const Home: NextPage<HomeProps> = () => {
     <Layout>
       <LandingSection />
       <div className="mx-2">
-        <IntersectionObserve>
-          <BriefSection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <ProjectSection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <ExperienceSection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <TechnologySection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <EducationSection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <VoluntarySection />
-        </IntersectionObserve>
-        <IntersectionObserve>
-          <ContactSection />
-        </IntersectionObserve>
+        <BriefSection />
+        <ProjectSection />
+        <ExperienceSection />
+        <TechnologySection />
+        <EducationSection />
+        <VoluntarySection />
+        <ContactSection />
         <CreditSection />
       </div>
     </Layout>
   );
 };
+/*
 const AnimatingBlocks = () => (
   <>
     <BlurredBox
@@ -110,11 +98,11 @@ const AnimatingBlocks = () => (
     />
   </>
 );
-
+*/
 const LandingSection = () => (
-  <section className="flex justify-center items-center gap-10 mx-auto mt-18 md:mt-28 relative flex-wrap lg:flex-nowrap">
-    <AnimatingBlocks />
-    <IntersectionObserve>
+  <PatternBackground homePage>
+    <section className="flex justify-center items-center gap-10 mx-auto mt-14 md:mt-20 relative flex-wrap lg:flex-nowrap">
+      {/* <AnimatingBlocks /> */}
       <Image
         src={profileImage}
         width={420}
@@ -123,8 +111,6 @@ const LandingSection = () => (
         priority={true}
         alt="profile image in 3d avatar style"
       />
-    </IntersectionObserve>
-    <IntersectionObserve>
       <div className="max-w-xl lg:mt-12 mx-2">
         <p className="font-light">Hi there, I’m</p>
         <h1 className="font-black text-4xl my-3">Zeyar Paing</h1>
@@ -152,29 +138,27 @@ const LandingSection = () => (
           </LinkButton>
         </div>
       </div>
-    </IntersectionObserve>
-  </section>
+    </section>
+  </PatternBackground>
 );
+
 const BriefSection = () => (
   <section className="mt-16 mb-20">
     <h2 className="section-header mb-2">Brief about my career</h2>
     <div>
       <p className="text-gray-100 career-section">
         I was a UI/UX designer before I dived into web development. I really
-        loves designing UI and making it live.
-        {/*  After 3 years of experience*/}
-        {/*including freelance and 2+ years of industry experience in Frontend*/}
-        {/*Development,*/}
-        I&apos;m delivering responsive, efficient & elegant interfaces with
-        considerations of <b>Performance</b>, <b>Accessibility</b>,
-        <b>User Experience</b>.
+        loves designing UI and making it live. I&apos;m delivering responsive,
+        efficient & elegant interfaces with considerations of <b>Performance</b>
+        , <b>Accessibility</b>,<b>User Experience</b>.
       </p>
     </div>
   </section>
 );
 const ProjectSection = () => {
+  const { ref } = useScrollReveal();
   return (
-    <section className="my-20">
+    <section ref={ref} className="my-20">
       <h2 className="section-header mb-7">Featured Projects</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
         {projects.map((project, idx) => (
@@ -185,18 +169,22 @@ const ProjectSection = () => {
   );
 };
 
-const ExperienceSection = () => (
-  <section className="my-12 mb-20 ">
-    <h2 className="section-header mb-5">Work Experience</h2>
-    <div className="flex gap-8 flex-col">
-      {experiences.map((exp, idx) => (
-        <ExperienceCard experience={exp} key={idx} />
-      ))}
-    </div>
-  </section>
-);
+const ExperienceSection = () => {
+  const { ref } = useScrollReveal();
+  return (
+    <section ref={ref} className="my-12 mb-20 ">
+      <h2 className="section-header mb-5">Work Experience</h2>
+      <div className="flex gap-8 flex-col">
+        {experiences.map((exp, idx) => (
+          <ExperienceCard experience={exp} key={idx} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const TechnologySection = () => {
+  const { ref } = useScrollReveal();
   let group: { specialized: Technology[]; others: Technology[] } = {
     specialized: [],
     others: [],
@@ -211,7 +199,7 @@ const TechnologySection = () => {
   }, group);
 
   return (
-    <section className="my-12 mb-20">
+    <section ref={ref} className="my-12 mb-20">
       <h2 className="section-header mb-2">Technologies</h2>
       <p className="uppercase text-gray-400 text-sm font-semibold mb-4">
         Specialized in

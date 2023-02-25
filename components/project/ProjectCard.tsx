@@ -18,9 +18,7 @@ const ProjectCard: FC<{
       rel="noopener noreferrer"
       target="_blank"
     >
-      <div
-        className={`relative h-full bg-gray-900 bg-opacity-40 transition-colors group-hover:bg-opacity-50 group-hover:bg-gray-800 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md`}
-      >
+      <div className="relative h-full bg-gray-900 bg-opacity-40 transition-colors group-hover:bg-opacity-50 group-hover:bg-gray-800 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md">
         <div
           className={`flex gap-4 flex-wrap ${
             vertical ? 'flex-col items-center' : ''

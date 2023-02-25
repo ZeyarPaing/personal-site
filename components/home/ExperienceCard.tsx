@@ -8,7 +8,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       className={`bg-gray-900 bg-opacity-40 backdrop-blur-md px-6 md:px-10 py-6 md:py-8 rounded-2xl 
                     ${
                       experience.current
-                        ? 'border border-2 border-primary bg-opacity-10 border-opacity-50 bg-primary-dark'
+                        ? 'border-2 border-primary bg-opacity-10 border-opacity-50 bg-primary-dark'
                         : ''
                     }`}
     >
@@ -22,7 +22,10 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       )}
       <p className="text-gray-400 text-sm">
         {experience.current
-          ? `${experience.year} year and still counting`
+          ? `${(
+              (new Date().getTime() - experience.joined!.getTime()) /
+              (1000 * 60 * 60 * 24 * 365)
+            ).toFixed(2)} year and still counting`
           : `${experience.year} year`}
       </p>
       <h3 className="text-gray-200 font-bold font-primary my-1 text-lg">

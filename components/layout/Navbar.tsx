@@ -8,8 +8,8 @@ const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
-    <nav className="z-10 px-3 py-3 text-white bg-darkblue bg-opacity-60 backdrop-blur-3xl fixed top-0 w-full">
-      <div className="m-layout flex flex-wrap justify-between items-center ">
+    <nav className="relative z-50 py-3 mt-8 text-white  rounded-b-xl md:rounded-t-xl rounded-t-none m-layout !px-0 w-full">
+      <div className="m-layout flex flex-wrap justify-between items-center relative">
         <Link href="/" className="flex items-center">
           <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
         </Link>
@@ -68,6 +68,8 @@ const Navbar = () => {
           </ul>
         </TransitionRender>
       </div>
+
+      {/*<div className="absolute inset-x-0 top-full h-px transition bg-white "></div>*/}
     </nav>
   );
 };

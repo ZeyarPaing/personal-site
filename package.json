@@ -1,6 +1,6 @@
 {
-  "name": "personal-site",
-  "version": "0.1.0",
+  "name": "zeyar.dev",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

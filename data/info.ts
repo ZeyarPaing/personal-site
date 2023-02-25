@@ -12,6 +12,7 @@ export const experiences: Experience[] = [
     companyName: 'Rezeve',
     current: true,
     year: 0.4,
+    joined: new Date('21 Jun 2022'),
     websiteLink: 'https://www.rezeve.com/',
     position: 'Frontend Developer',
     description:

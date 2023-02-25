@@ -17,7 +17,7 @@ const Layout = ({
   children,
   title = 'Zeyar Paing | Frontend Web Developer',
   description = 'A creative & passionate Front-End Web Developer delivering efficient & optimized solutions, skilled in designing, developing and refactoring multiple web-based applications incorporating a range of technologies.',
-  keywords = 'frontend developer,frontend,developer, zeyar, zeyarpaing, web developer',
+  keywords = 'frontend developer,software developer, zeyar, zeyarpaing, web developer',
   url = '',
   image,
 }: LayoutProps) => {

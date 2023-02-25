@@ -28,6 +28,7 @@ export type Experience = {
   description: string;
   position: string;
   websiteLink: string;
+  joined?: Date;
 };
 
 export type Technology = {
