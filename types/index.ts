@@ -3,6 +3,7 @@ import React from 'react';
 export type NavItem = {
   name: string;
   url: string;
+  beta?: boolean;
 };
 
 export type ContactInfo = {

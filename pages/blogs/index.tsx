@@ -11,10 +11,12 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
       title="Blogs by Zeyar Paing"
       description="Articles and blogs related to software development, web development and frontend development"
     >
-      <h1 className="text-white font-black text-center mt-12 mb-2 md:mt-24 md:mb-10 text-3xl md:text-5xl">
-        Blogs
+      <h1 className="text-white font-black text-center mt-24 mb-2 md:mb-4 text-3xl md:text-5xl">
+        Blogs <code className="bg-blue-500">beta</code>
       </h1>
-      <p className="text-center">Coming soon!</p>
+      <p className="text-center mb-6">
+        (These blogs are just for testing purpose.)
+      </p>
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-4">
         {blogs.map((blog, idx) => (

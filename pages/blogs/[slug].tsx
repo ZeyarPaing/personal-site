@@ -2,11 +2,16 @@ import { GetStaticProps, NextPage } from 'next';
 import Layout from 'components/layout/Layout';
 import { BlogService, IBlogContent } from 'helper/blog';
 import { MDXRemote } from 'next-mdx-remote';
-import React from 'react';
 import styles from 'styles/Blogs.module.css';
 import Image from 'next/image';
+import { useSetGlobalStyle } from 'hooks/useSetGlobalStyle';
+
+const backdropColor = {
+  ['--color-backdrop' as string]: 'hsl(226deg 42% 10%)',
+} as { string: string };
 
 const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
+  useSetGlobalStyle(backdropColor);
   return (
     <Layout
       image={blog.image}
@@ -14,12 +19,12 @@ const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
       title={blog.title}
       description={blog.description}
     >
-      <picture className="block w-full h-56 mt-20">
+      <picture className="block w-full h-64 mt-20">
         <Image
           src={blog.image}
           alt={blog.title}
           className={'w-full h-full object-cover rounded-xl'}
-          width={3000}
+          width={2500}
           height={1000}
           loading="eager"
         />
@@ -29,7 +34,15 @@ const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
         ></link>
-        <MDXRemote {...blog?.content} />
+        <MDXRemote
+          {...blog?.content}
+          components={{
+            img: (props) => (
+              // @ts-ignore
+              <Image width={1500} height={1500} alt="blog image" {...props} />
+            ),
+          }}
+        />
       </article>
     </Layout>
   );

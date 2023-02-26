@@ -8,6 +8,7 @@ export const navItems: NavItem[] = [
   {
     name: 'Blogs',
     url: '/blogs',
+    beta: true,
   },
 ];
 

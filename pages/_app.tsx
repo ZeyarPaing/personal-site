@@ -1,4 +1,5 @@
 import 'styles/globals.css';
+import 'styles/highlight.css';
 import type { AppProps } from 'next/app';
 import { Manrope, Space_Grotesk } from '@next/font/google';
 // import localFont from '@next/font/local';

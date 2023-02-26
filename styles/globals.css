@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --color-backdrop: hsl(226, 89%, 4%);
+}
+
 body {
-  @apply font-primary md:!overflow-y-auto bg-white dark:bg-darkblue text-darkblue dark:text-white tracking-wide scroll-smooth overflow-x-hidden;
+  @apply font-primary text-white bg-backdrop md:!overflow-y-auto tracking-wide scroll-smooth overflow-x-hidden;
   z-index: -5;
   scroll-behavior: smooth;
 }
@@ -90,38 +94,4 @@ textarea {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
-}
-
-pre {
-  margin: 20px 0;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: rgba(67, 67, 67, 0.388);
-}
-
-code[data-line-numbers] {
-  counter-reset: line;
-}
-code[data-line-numbers] > * {
-  margin-left: -8px;
-}
-
-code[data-line-numbers] > .line::before {
-  counter-increment: line;
-  content: counter(line);
-
-  /* Other styling */
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
-}
-
-code[data-line-numbers-max-digits='2'] > .line::before {
-  width: 2rem;
-}
-
-code[data-line-numbers-max-digits='3'] > .line::before {
-  width: 3rem;
 }

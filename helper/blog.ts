@@ -4,7 +4,6 @@ import axios from 'axios';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import rehypePrettyCode, { Options } from 'rehype-pretty-code';
-import { Highlighter } from 'shiki';
 
 export interface IBlogMeta {
   title: string;
@@ -77,12 +76,6 @@ export class BlogService {
         mdxOptions: {
           rehypePlugins: [[rehypePrettyCode, options]],
         },
-      });
-      console.log({
-        content,
-        data,
-        metaData,
-        mdxSource,
       });
       return {
         ...metaData,

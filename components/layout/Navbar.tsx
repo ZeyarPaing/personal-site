@@ -55,8 +55,10 @@ const Navbar = () => {
         </button>
         <section
           className={`${
-            isExpanded ? 'opacity-100' : 'opacity-0'
-          }  grid place-items-center md:block md:translate-x-0 md:opacity-100 h-screen md:h-auto opacity-0 transition-all duration-300 w-full md:w-auto`}
+            isExpanded
+              ? 'opacity-100 visible'
+              : 'invisible opacity-0 h-0 md:visible md:h-auto md:opacity-100'
+          }  grid place-items-center md:block md:translate-x-0 h-screen opacity-0 transition-opacity duration-300 w-full md:w-auto`}
         >
           <ul className="flex flex-col mt-4 text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium gap-y-5 w-full">
             {navItems.map((item) => (
@@ -66,7 +68,8 @@ const Navbar = () => {
                   aria-current="page"
                   href={item.url}
                 >
-                  {item.name}
+                  {item.name}{' '}
+                  {item.beta && <code className="bg-blue-500">beta</code>}
                 </Link>
               </li>
             ))}
