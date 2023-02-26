@@ -60,6 +60,15 @@ const manrope = Manrope({
   variable: '--font-manrope',
 });
 
+// Whenever the user explicitly chooses light mode
+// localStorage.theme = 'light';
+
+// // Whenever the user explicitly chooses dark mode
+// localStorage.theme = 'dark';
+
+// // Whenever the user explicitly chooses to respect the OS preference
+// localStorage.removeItem('theme');
+
 function MyApp({ Component, pageProps }: AppProps) {
   //if production no console
   if (process.env.NODE_ENV === 'production') {
@@ -67,6 +76,19 @@ function MyApp({ Component, pageProps }: AppProps) {
     console.error = () => {};
     console.warn = () => {};
   }
+
+  if (typeof window !== 'undefined') {
+    if (
+      window.localStorage.theme === 'dark' ||
+      (!('theme' in window.localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
   return (
     <div
       className={`${spaceGrotesk.variable} ${manrope.variable} font-primary`}

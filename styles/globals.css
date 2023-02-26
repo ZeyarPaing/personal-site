@@ -2,93 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: Visby, Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    @apply font-primary bg-darkblue text-white tracking-wide scroll-smooth overflow-x-hidden;
-    z-index: -5;
-    scroll-behavior: smooth;
+  @apply font-primary md:!overflow-y-auto bg-white dark:bg-darkblue text-darkblue dark:text-white tracking-wide scroll-smooth overflow-x-hidden;
+  z-index: -5;
+  scroll-behavior: smooth;
 }
 
 /*custom scroll bar*/
 body::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 body::-webkit-scrollbar-thumb {
-    @apply bg-secondary-light bg-opacity-10 rounded-xl text-blue-900 text-opacity-40;
-    border: 0.2px solid currentColor;
+  @apply bg-secondary-light bg-opacity-10 rounded-xl text-blue-900 text-opacity-40;
+  border: 0.2px solid currentColor;
 }
 
 p {
-    @apply font-secondary;
+  @apply font-secondary;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-a, button {
-    border-radius: 8px;
-    outline-offset: -10px;
+a,
+button {
+  border-radius: 8px;
+  outline-offset: -10px;
 }
 
-a:focus-visible, button:focus-visible {
-    @apply outline-primary-light outline-offset-2 outline-2 outline-dashed outline-offset-2;
-    transition: outline-offset 100ms;
+a:focus-visible,
+button:focus-visible {
+  @apply outline-primary-light outline-offset-2 outline-2 outline-dashed outline-offset-2;
+  transition: outline-offset 100ms;
 }
 
 .m-layout {
-    @apply px-4 max-w-screen-2xl lg:max-w-screen-lg md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
+  @apply px-4 max-w-screen-2xl lg:max-w-screen-lg md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
 }
 
 .m-container {
-    @apply px-4 max-w-screen-sm lg:max-w-screen-xl md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
+  @apply px-4 max-w-screen-sm lg:max-w-screen-xl md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
 }
 
 .section-header {
-    @apply font-black text-xl;
+  @apply font-black text-xl;
 }
 
 .page-header {
-    @apply font-black text-3xl;
+  @apply font-black text-3xl;
 }
 
 .stroked-text {
-    color: white;
-    -webkit-text-fill-color: black; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+  color: white;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 }
 
-input, textarea {
-    @apply bg-[#212121] bg-opacity-50
+input,
+textarea {
+  @apply bg-[#212121] bg-opacity-50
     backdrop-blur-md font-secondary
     border border-[#555555]
     focus:ring-2 focus:ring-primary-light focus:ring-opacity-40 focus:outline-0 focus:border-primary;
 }
 
-.career-section b, .description-section b {
-    @apply text-primary font-black;
+.career-section b,
+.description-section b {
+  @apply text-primary font-black;
 }
 
-
 .before-animate {
-    opacity: 0;
-    -webkit-transform: translateY(5rem);
-    transform: translateY(5rem);
-    transition: all 4s .25s cubic-bezier(0, 1, .3, 1), opacity .3s .25s ease-out;
+  opacity: 0;
+  -webkit-transform: translateY(5rem);
+  transform: translateY(5rem);
+  transition: all 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
+    opacity 0.3s 0.25s ease-out;
 }
 
 .animated {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+pre {
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: rgba(67, 67, 67, 0.388);
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+code[data-line-numbers] > * {
+  margin-left: -8px;
+}
+
+code[data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits='2'] > .line::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits='3'] > .line::before {
+  width: 3rem;
 }

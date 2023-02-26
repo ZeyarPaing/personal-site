@@ -25,6 +25,10 @@ const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
         />
       </picture>
       <article className={`${styles.blogDetail} prose lg:prose-xl`}>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
+        ></link>
         <MDXRemote {...blog?.content} />
       </article>
     </Layout>

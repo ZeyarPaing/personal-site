@@ -39,10 +39,10 @@ export const experiences: Experience[] = [
 
 export const technologies: Technology[] = [
   {
-    icon: '/assets/logos/js.svg',
-    name: 'JavaScript',
+    icon: '/assets/logos/ts.svg',
+    name: 'TypeScript',
     specialized: true,
-    color: '#F0DB4F',
+    color: '#007ACC',
   },
   {
     icon: '/assets/logos/next.svg',

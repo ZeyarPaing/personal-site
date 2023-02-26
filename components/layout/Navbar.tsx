@@ -1,21 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import TransitionRender from 'components/shared/TransitionRender';
 import { navItems } from 'data/app-data';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
-    <nav className="relative z-50 py-3 mt-8 text-white  rounded-b-xl md:rounded-t-xl rounded-t-none m-layout !px-0 w-full">
+    <nav
+      className={`${
+        isExpanded ? 'bg-darkblue/50 backdrop-blur-md' : ''
+      } fixed top-0 left-1/2 -translate-x-1/2 md:bg-transparent md:backdrop-blur-0 md:relative md:translate-x-0 md:left-0 z-50 py-3 pt-6 md:pt-10 text-white  rounded-b-xl md:rounded-t-xl rounded-t-none m-layout !px-0 w-full`}
+    >
       <div className="m-layout flex flex-wrap justify-between items-center relative">
         <Link href="/" className="flex items-center">
           <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
         </Link>
         <button
           className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "
-          onClick={() => setExpanded(!isExpanded)}
+          onClick={() => {
+            document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
+            setExpanded(!isExpanded);
+          }}
         >
           <span className="sr-only">Open main menu</span>
           <svg
@@ -47,11 +53,10 @@ const Navbar = () => {
             />
           </svg>
         </button>
-        <TransitionRender
-          render={isExpanded}
-          className="grid place-items-center md:block md:opacity-100 hidden h-screen md:h-auto opacity-0 transition-transform transition-opacity origin-top duration-300 w-full md:block md:w-auto"
-          renderClassName="opacity-100"
-          hiddenClassName="opacity-0"
+        <section
+          className={`${
+            isExpanded ? 'opacity-100' : 'opacity-0'
+          }  grid place-items-center md:block md:translate-x-0 md:opacity-100 h-screen md:h-auto opacity-0 transition-all duration-300 w-full md:w-auto`}
         >
           <ul className="flex flex-col mt-4 text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium gap-y-5 w-full">
             {navItems.map((item) => (
@@ -66,7 +71,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-        </TransitionRender>
+        </section>
       </div>
 
       {/*<div className="absolute inset-x-0 top-full h-px transition bg-white "></div>*/}

@@ -3,6 +3,8 @@ import { OctokitResponse } from '@octokit/types';
 import axios from 'axios';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
+import rehypePrettyCode, { Options } from 'rehype-pretty-code';
+import { Highlighter } from 'shiki';
 
 export interface IBlogMeta {
   title: string;
@@ -41,6 +43,26 @@ const octokit = new Octokit({
 export const ghRawUrl =
   'https://raw.githubusercontent.com/ZeyarPaing/blogs/main';
 
+const options: Partial<Options> = {
+  theme: 'material-theme-darker',
+  keepBackground: false,
+  onVisitLine(node: any) {
+    // Prevent lines from collapsing in `display: grid` mode, and
+    // allow empty lines to be copy/pasted
+    if (node.children.length === 0) {
+      node.children = [{ type: 'text', value: ' ' }];
+    }
+  },
+  onVisitHighlightedLine(node: any) {
+    // Each line node by default has `class="line"`.
+    node.properties.className.push('highlighted');
+  },
+  onVisitHighlightedWord(node: any) {
+    // Each word node has no className by default.
+    node.properties.className = ['word'];
+  },
+  tokensMap: {},
+};
 export class BlogService {
   static getBlogUrl(blogName: string) {
     return `${ghRawUrl}/${blogName}/index.md`;
@@ -51,11 +73,11 @@ export class BlogService {
       const rawMd = res.data as string;
       const { data, content } = matter(rawMd);
       const metaData = data as IBlogMeta;
-      const mdxSource = await serialize(
-        content.replace(/!\[([^\]]*)]\(([^)]*)\)/g, (match, p1, p2) => {
-          return `![${p1}](${ghRawUrl}/${encodeURI(blogName)}/${p2})`;
-        }),
-      );
+      const mdxSource = await serialize(content, {
+        mdxOptions: {
+          rehypePlugins: [[rehypePrettyCode, options]],
+        },
+      });
       console.log({
         content,
         data,

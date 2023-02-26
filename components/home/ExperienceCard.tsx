@@ -8,7 +8,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       className={`bg-gray-900 bg-opacity-40 backdrop-blur-md px-6 md:px-10 py-6 md:py-8 rounded-2xl 
                     ${
                       experience.current
-                        ? 'border-2 border-primary bg-opacity-10 border-opacity-50 bg-primary-dark'
+                        ? 'border-2 border-primary border-opacity-50 bg-primary-dark/20'
                         : ''
                     }`}
     >

@@ -40,11 +40,11 @@ function PatternBackground({
               }
             : undefined
         }
-        className="fixed z-0 inset-0 bg-gradient-to-r from-[#06D7A0] to-[#0D5FBC] opacity-40 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-secondary-dark/50 dark:to-primary-dark/50 dark:opacity-100"
+        className="fixed z-0 inset-0 bg-gradient-to-r from-secondary-dark/50 to-primary-dark/50 opacity-100 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] "
       >
         <svg
           aria-hidden="true"
-          className="absolute inset-x-0 inset-y-[-50%] h-[200%] w-full skew-x-[-18deg] fill-black/40 stroke-black/50 mix-blend-overlay dark:fill-white/2.5 dark:stroke-white/5"
+          className="absolute inset-x-0 inset-y-[-50%] h-[200%] w-full skew-x-[-18deg] mix-blend-overlay fill-white/2.5 stroke-white/5"
         >
           <defs>
             <pattern
