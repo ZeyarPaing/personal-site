@@ -1,11 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { navItems } from 'data/app-data';
+impor
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+  }, []);
+  
   return (
     <nav
       className={`${
