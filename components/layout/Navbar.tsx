@@ -56,9 +56,9 @@ const Navbar = () => {
         <section
           className={`${
             isExpanded
-              ? 'opacity-100 visible'
-              : 'invisible opacity-0 h-0 md:visible md:h-auto md:opacity-100'
-          }  grid place-items-center md:block md:translate-x-0 h-screen opacity-0 transition-opacity duration-300 w-full md:w-auto`}
+              ? 'opacity-100 visible h-screen'
+              : 'invisible opacity-0 h-0'
+          } grid place-items-center md:block md:translate-x-0 md:visible md:h-auto md:opacity-100 transition-opacity duration-300 w-full md:w-auto`}
         >
           <ul className="flex flex-col mt-4 text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium gap-y-5 w-full">
             {navItems.map((item) => (
