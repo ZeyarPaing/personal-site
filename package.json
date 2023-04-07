@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm i && next dev --turbo",
+    "dev": "pnpm i && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

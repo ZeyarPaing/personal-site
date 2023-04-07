@@ -100,7 +100,7 @@ const AnimatingBlocks = () => (
 );
 */
 const LandingSection = () => (
-  <PatternBackground homePage>
+  <PatternBackground>
     <section className="flex justify-center items-center gap-10 mx-auto mt-14 md:mt-20 relative flex-wrap lg:flex-nowrap">
       {/* <AnimatingBlocks /> */}
       <Image
