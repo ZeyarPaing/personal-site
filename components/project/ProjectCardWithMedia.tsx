@@ -16,6 +16,7 @@ const ProjectCard: FC<{
       href={project.demoUrl}
       rel="noopener noreferrer"
       target="_blank"
+      aria-label={`${project.name} ${project.type}`}
     >
       <div
         style={{
@@ -37,10 +38,10 @@ const ProjectCard: FC<{
           } bg-darkblue bg-opacity-50 backdrop-blur-md border border-gray-300 border-opacity-50`}
         >
           <Image src={project.logo} width={50} height={50} alt={project.name} />
-          <div className={vertical ? 'text-center' : ''}>
+          <article className={vertical ? 'text-center' : ''}>
             <h3 className="font-bold text-lg">{project.name}</h3>
             <p className="text-gray-200 text-sm">{project.type}</p>
-          </div>
+          </article>
         </div>
         {/*<p className="text-gray-300 mt-3 text-sm">{project.description}</p>*/}
       </div>

@@ -2,15 +2,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { navItems } from 'data/app-data';
-
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     document.body.style.overflow = 'auto';
   }, []);
-  
+
   return (
     <nav
       className={`${
@@ -18,8 +19,18 @@ const Navbar = () => {
       } fixed top-0 left-1/2 -translate-x-1/2 md:bg-transparent md:backdrop-blur-0 md:relative md:translate-x-0 md:left-0 z-50 py-3 pt-6 md:pt-10 text-white  rounded-b-xl md:rounded-t-xl rounded-t-none m-layout !px-0 w-full`}
     >
       <div className="m-layout flex flex-wrap justify-between items-center relative">
-        <Link href="/" className="flex items-center">
-          <Image src="/logo-full.svg" width={125} height={30} alt="logo" />
+        <Link
+          aria-label="Go to home page"
+          aria-current={router.pathname === '/' ? 'page' : undefined}
+          href="/"
+          className="flex items-center"
+        >
+          <Image
+            src="/logo-full.svg"
+            width={125}
+            height={30}
+            alt="personal logo"
+          />
         </Link>
         <button
           className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "
@@ -70,7 +81,9 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   className="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent "
-                  aria-current="page"
+                  aria-current={
+                    router.pathname === item.url ? 'page' : undefined
+                  }
                   href={item.url}
                 >
                   {item.name}{' '}

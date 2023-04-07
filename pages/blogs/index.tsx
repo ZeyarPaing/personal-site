@@ -20,7 +20,11 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-4">
         {blogs.map((blog, idx) => (
-          <Link href={`/blogs/${blog.name}`} key={idx}>
+          <Link
+            aria-labelledby="blog-name"
+            href={`/blogs/${blog.name}`}
+            key={idx}
+          >
             <article className=" h-56 relative rounded-lg overflow-hidden">
               <Image
                 className={' w-full h-full object-cover'}
@@ -30,7 +34,10 @@ const Blogs: NextPage<{ blogs: IRepoContent[] }> = ({ blogs }) => {
                 alt={blog.name}
                 loading={'eager'}
               />
-              <div className="absolute top-0 w-full h-full p-6 bg-gradient-to-tr from-secondary-dark to-transparent flex flex-col justify-end">
+              <div
+                id="blog-name"
+                className="absolute top-0 w-full h-full p-6 bg-gradient-to-tr from-secondary-dark to-transparent flex flex-col justify-end"
+              >
                 <h2 className="font-bold text-xl">{blog.title}</h2>
                 <p className="text-sm">{blog.description}</p>
               </div>
