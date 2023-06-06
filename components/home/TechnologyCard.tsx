@@ -21,14 +21,14 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
             !technology.specialized ? 'scale-75' : 'scale-90'
           } md:scale-100 transition-transform flex justify-center items-center`}
           style={{
-            height: '120px',
-            width: technology.name == 'Next.js' ? 120 : 80,
+            height: '80px',
+            width: technology.name == 'Next.js' ? 80 : 60,
           }}
         >
           <Image
             className={'object-contain'}
-            width={9999}
-            height={9999}
+            width={100}
+            height={100}
             src={technology.icon}
             alt={technology.name}
           />

@@ -242,7 +242,7 @@ const EducationSection = () => {
             href={certificate.link}
             target="_blank"
             rel="noreferrer"
-            className="bg-gray-900 hover:bg-gray-800 bg-opacity-80 rounded-3xl border border-gray-700 hover:border-gray-600 px-5 py-4 flex flex-col items-end gap-y-5"
+            className="bg-gray-900/40 hover:bg-gray-900/70 bg-opacity-80 rounded-3xl border border-gray-700/60 hover:border-gray-600 px-5 py-4 flex flex-col items-end gap-y-5"
             key={idx}
           >
             <Image

@@ -36,7 +36,7 @@ function PatternBackground({
             <rect strokeWidth="0" width="73" height="57" x="288" y="168"></rect>
             <rect strokeWidth="0" width="73" height="57" x="144" y="56"></rect>
             <rect strokeWidth="0" width="73" height="57" x="504" y="168"></rect>
-            <rect strokeWidth="0" width="73" height="57" x="720" y="336"></rect>
+            {/* <rect strokeWidth="0" width="73" height="57" x="720" y="336"></rect> */}
           </svg>
         </svg>
       </div>
