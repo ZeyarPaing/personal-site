@@ -105,8 +105,8 @@ const LandingSection = () => (
       {/* <AnimatingBlocks /> */}
       <Image
         src={profileImage}
-        width={420}
-        height={450}
+        width={320}
+        height={350}
         loading={'eager'}
         priority={true}
         alt="profile image in 3d avatar style"
