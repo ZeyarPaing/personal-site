@@ -4,10 +4,10 @@ function PatternBackground({ children }: { children: ReactNode; homePage?: boole
   return (
     <section>
       <div>{children}</div>
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-zinc-500/50 to-neutral-600/50 opacity-100 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)]">
-        <svg
+      <div className="absolute inset-0 z-[-1] bg-neutral-500/20 opacity-100 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)]">
+        {/* <svg
           aria-hidden="true"
-          className="fill-white/2.5 absolute inset-x-0 inset-y-[-50%] h-[200%] w-full stroke-white/5 mix-blend-overlay"
+          className="fill-white/2.5 absolute inset-x-0 inset-y-[-50%] h-[200%] w-full stroke-white/5 opacity-0 mix-blend-overlay"
         >
           <defs>
             <pattern
@@ -26,9 +26,8 @@ function PatternBackground({ children }: { children: ReactNode; homePage?: boole
             <rect strokeWidth="0" width="73" height="57" x="288" y="168"></rect>
             <rect strokeWidth="0" width="73" height="57" x="144" y="56"></rect>
             <rect strokeWidth="0" width="73" height="57" x="504" y="168"></rect>
-            {/* <rect strokeWidth="0" width="73" height="57" x="720" y="336"></rect> */}
           </svg>
-        </svg>
+        </svg> */}
       </div>
     </section>
   );

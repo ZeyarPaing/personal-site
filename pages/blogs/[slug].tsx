@@ -11,7 +11,7 @@ const backdropColor = {
 } as { string: string };
 
 const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
-  useSetGlobalStyle(backdropColor);
+  // useSetGlobalStyle(backdropColor);
   return (
     <Layout
       image={blog.image}
@@ -19,11 +19,11 @@ const BlogDetail: NextPage<{ blog: IBlogContent }> = ({ blog }) => {
       title={blog.title}
       description={blog.description}
     >
-      <picture className="block w-full h-64 mt-20">
+      <picture className="mt-20 block h-64 w-full">
         <Image
           src={blog.image}
           alt={blog.title}
-          className={'w-full h-full object-cover rounded-xl'}
+          className={'h-full w-full rounded-xl object-cover'}
           width={2500}
           height={1000}
           loading="eager"

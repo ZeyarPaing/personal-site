@@ -4,25 +4,25 @@ import Image from 'next/image';
 const TechnologyCard = ({ technology }: { technology: Technology }) => {
   return (
     <div
-      className="group flex-auto border-current text-gray-400 px-[1px] py-[1px] rounded-3xl relative"
+      className="group relative rounded-2xl border-current px-[1px] py-[1px] text-gray-400"
       style={{
         background: `linear-gradient(to bottom right, ${technology.color}${
-          technology.specialized ? 'BB' : '45'
+          technology.specialized ? '55' : '22'
         } , #00000000)`,
       }}
       title={technology.name}
     >
       <div
         style={{ height: '100%' }}
-        className="px-5 md:px-10 py-4 md:py-6 rounded-3xl w-full grid place-items-center bg-darkblue/80 bg-opacity-80"
+        className="grid w-full place-items-center rounded-2xl bg-zinc-900/80 bg-opacity-80 px-5 py-4 md:px-10 md:py-6"
       >
         <div
-          className={`group-hover:scale-75 group-hover:-translate-y-4 ${
+          className={` ${
             !technology.specialized ? 'scale-75' : 'scale-90'
-          } md:scale-100 transition-transform flex justify-center items-center`}
+          } flex items-center justify-center transition-transform md:scale-100`}
           style={{
-            height: '80px',
-            width: technology.name == 'Next.js' ? 80 : 60,
+            height: '30px',
+            width: technology.name == 'Next.js' ? 50 : 30,
           }}
         >
           <Image
@@ -34,9 +34,9 @@ const TechnologyCard = ({ technology }: { technology: Technology }) => {
           />
         </div>
 
-        <h3 className="group-hover:opacity-100 group-hover:scale-100 scale-0 opacity-0 transition-all absolute bottom-6">
+        {/* <h3 className="absolute bottom-6 scale-0 opacity-0 transition-all group-hover:scale-100 group-hover:opacity-100">
           {technology.name}
-        </h3>
+        </h3> */}
       </div>
     </div>
   );

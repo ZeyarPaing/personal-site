@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 html {
-  --color-backdrop: hsl(226, 89%, 4%);
+  --color-backdrop: hsl(240, 2%, 8%);
   @apply scroll-smooth;
 }
 
 body {
-  @apply overflow-x-hidden bg-backdrop font-primary tracking-wide text-white md:!overflow-y-auto;
+  @apply h-full overflow-x-hidden bg-backdrop font-primary tracking-wide text-white md:!overflow-y-auto;
   z-index: -5;
   scroll-behavior: smooth;
+  background-image: url('/assets/image/star-bg.webp');
 }
 
 /*custom scroll bar*/
@@ -23,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  @apply rounded-xl bg-secondary-light bg-opacity-10 text-blue-900 text-opacity-40;
+  @apply rounded-xl bg-zinc-500 bg-opacity-10 text-zinc-400 text-opacity-40;
   border: 0.2px solid currentColor;
 }
 

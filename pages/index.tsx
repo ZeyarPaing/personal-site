@@ -221,7 +221,7 @@ const EducationSection = () => {
           <EducationCard education={edu} key={idx} />
         ))}
       </div>
-      <p id="certifications" className="mb-4 mt-6 text-sm font-semibold uppercase text-gray-400">
+      <p id="certifications" className="mb-4 mt-6 text-sm font-semibold uppercase text-zinc-400">
         Certificate Courses
       </p>
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
@@ -230,7 +230,7 @@ const EducationSection = () => {
             href={certificate.link}
             target="_blank"
             rel="noreferrer"
-            className="flex flex-col items-end gap-y-5 rounded-3xl border border-gray-700/60 bg-gray-900/40 bg-opacity-80 px-5 py-4 hover:border-gray-600 hover:bg-gray-900/70"
+            className="flex flex-col items-end gap-y-5 rounded-3xl border border-zinc-700/60 bg-zinc-900/40 bg-opacity-80 px-5 py-4 hover:border-zinc-600 hover:bg-zinc-900/70"
             key={idx}
           >
             <Image src="/assets/logos/coursera.svg" width={40} height={40} alt="coursera logo" />
@@ -334,7 +334,7 @@ const ContactSection = () => {
 const CreditSection = () => {
   return (
     <section className="mb-16 mt-32 flex justify-center">
-      <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-gray-900 px-8 py-6 shadow-2xl shadow-[#020f25] md:flex-row md:items-center">
+      <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-900 px-8 py-6 shadow-2xl shadow-black/80 md:flex-row md:items-center">
         <Image
           alt="logo monospace version"
           src="/logo-mono.svg"
