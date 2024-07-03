@@ -4,14 +4,7 @@ import React from 'react';
 import Layout from 'components/layout/Layout';
 import { Button, LinkButton } from 'components/shared/Button';
 import { Project, Technology } from 'types';
-import {
-  courses,
-  education,
-  experiences,
-  projects,
-  technologies,
-  voluntaries,
-} from 'data/info';
+import { courses, education, experiences, projects, technologies, voluntaries } from 'data/info';
 import ExperienceCard from 'components/home/ExperienceCard';
 import TechnologyCard from 'components/home/TechnologyCard';
 import EducationCard from 'components/home/EducationCard';
@@ -101,7 +94,7 @@ const AnimatingBlocks = () => (
 */
 const LandingSection = () => (
   <PatternBackground>
-    <section className="flex justify-center items-center gap-10 mx-auto mt-14 md:mt-20 relative flex-wrap lg:flex-nowrap">
+    <section className="relative mx-auto mt-14 flex flex-wrap items-center justify-center gap-10 md:mt-20 lg:flex-nowrap">
       {/* <AnimatingBlocks /> */}
       <Image
         src={profileImage}
@@ -111,23 +104,18 @@ const LandingSection = () => (
         priority={true}
         alt="profile image in 3d avatar style"
       />
-      <div className="max-w-xl lg:mt-12 mx-2">
+      <div className="mx-2 max-w-xl lg:mt-12">
         <p className="font-light">Hi there, I’m</p>
-        <h1 className="font-black text-4xl my-3">Zeyar Paing</h1>
-        <p className="max-w-lg text-lg font-light leading-[28px] description-section">
-          A creative & passionate <b>Front-End Web Developer</b> delivering
-          efficient & optimized solutions, skilled in designing, developing and
-          refactoring multiple web-based applications incorporating a range of
-          technologies.
+        <h1 className="my-3 text-4xl font-black">Zeyar Paing</h1>
+        <p className="description-section max-w-lg text-lg font-light leading-[28px]">
+          A creative & passionate <b>Front-End Web Developer</b> delivering efficient & optimized
+          solutions, skilled in designing, developing and refactoring multiple web-based
+          applications incorporating a range of technologies.
         </p>
-        <div className="flex gap-8 items-center mt-5">
+        <div className="mt-5 flex items-center gap-8">
           <Button
             onClick={() =>
-              window.open(
-                'https://www.figma.com/proto/bejHkqD4rOQRzkkvHiZKqi/Resume?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1',
-                '_blank',
-                'noopener,noreferrer',
-              )
+              window.open('https://dub.sh/zeyar-resume', '_blank', 'noopener,noreferrer')
             }
             type="primary"
           >
@@ -143,14 +131,13 @@ const LandingSection = () => (
 );
 
 const BriefSection = () => (
-  <section className="mt-16 mb-20">
+  <section className="mb-20 mt-16">
     <h2 className="section-header mb-2">Brief about my career</h2>
     <div>
-      <p className="text-gray-100 career-section">
-        I was a UI/UX designer before I dived into web development. I really
-        loves designing UI and making it live. I&apos;m delivering responsive,
-        efficient & elegant interfaces with considerations of <b>Performance</b>
-        , <b>Accessibility</b>,<b>User Experience</b>.
+      <p className="career-section text-gray-100">
+        I was a UI/UX designer before I dived into web development. I really loves designing UI and
+        making it live. I&apos;m delivering responsive, efficient & elegant interfaces with
+        considerations of <b>Performance</b>, <b>Accessibility</b>,<b>User Experience</b>.
       </p>
     </div>
   </section>
@@ -160,7 +147,7 @@ const ProjectSection = () => {
   return (
     <section ref={ref} className="my-20">
       <h2 className="section-header mb-7">Featured Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 project-container">
+      <div className="project-container grid grid-cols-1 gap-8 lg:grid-cols-2">
         {projects.map((project, idx) => (
           <ProjectCard showDots key={idx} project={project} />
         ))}
@@ -172,9 +159,9 @@ const ProjectSection = () => {
 const ExperienceSection = () => {
   const { ref } = useScrollReveal();
   return (
-    <section ref={ref} className="my-12 mb-20 ">
+    <section ref={ref} className="my-12 mb-20">
       <h2 className="section-header mb-5">Work Experience</h2>
-      <div className="flex gap-8 flex-col">
+      <div className="flex flex-col gap-8">
         {experiences.map((exp, idx) => (
           <ExperienceCard experience={exp} key={idx} />
         ))}
@@ -201,17 +188,13 @@ const TechnologySection = () => {
   return (
     <section ref={ref} className="my-12 mb-20">
       <h2 className="section-header mb-2">Technologies</h2>
-      <p className="uppercase text-gray-400 text-sm font-semibold mb-4">
-        Specialized in
-      </p>
+      <p className="mb-4 text-sm font-semibold uppercase text-gray-400">Specialized in</p>
       <div className="flex flex-wrap gap-4">
         {group.specialized.map((tech, idx) => (
           <TechnologyCard key={idx} technology={tech} />
         ))}
       </div>
-      <p className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6">
-        Familiar with
-      </p>
+      <p className="mb-4 mt-6 text-sm font-semibold uppercase text-gray-400">Familiar with</p>
       <div className="flex flex-wrap gap-4">
         {group.others.map((tech, idx) => (
           <TechnologyCard key={idx} technology={tech} />
@@ -225,33 +208,25 @@ const EducationSection = () => {
   return (
     <section className="my-12 mb-20" id="education">
       <h2 className="section-header mb-5">Education</h2>
-      <div className="flex gap-8 flex-col">
+      <div className="flex flex-col gap-8">
         {education.map((edu, idx) => (
           <EducationCard education={edu} key={idx} />
         ))}
       </div>
-      <p
-        id="certifications"
-        className="uppercase text-gray-400 text-sm font-semibold mb-4 mt-6"
-      >
+      <p id="certifications" className="mb-4 mt-6 text-sm font-semibold uppercase text-gray-400">
         Certificate Courses
       </p>
-      <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
         {courses.map((certificate, idx) => (
           <Link
             href={certificate.link}
             target="_blank"
             rel="noreferrer"
-            className="bg-gray-900/40 hover:bg-gray-900/70 bg-opacity-80 rounded-3xl border border-gray-700/60 hover:border-gray-600 px-5 py-4 flex flex-col items-end gap-y-5"
+            className="flex flex-col items-end gap-y-5 rounded-3xl border border-gray-700/60 bg-gray-900/40 bg-opacity-80 px-5 py-4 hover:border-gray-600 hover:bg-gray-900/70"
             key={idx}
           >
-            <Image
-              src="/assets/logos/coursera.svg"
-              width={40}
-              height={40}
-              alt="coursera logo"
-            />
-            <h4 className="font-bold text-xs ">{certificate.name}</h4>
+            <Image src="/assets/logos/coursera.svg" width={40} height={40} alt="coursera logo" />
+            <h4 className="text-xs font-bold">{certificate.name}</h4>
           </Link>
         ))}
       </div>
@@ -262,7 +237,7 @@ const EducationSection = () => {
 const VoluntarySection = () => (
   <section className="my-12 mb-20">
     <h2 className="section-header mb-5">Voluntary Activities</h2>
-    <div className="flex gap-8 flex-wrap">
+    <div className="flex flex-wrap gap-8">
       {voluntaries.map((vol, idx) => (
         <VoluntaryCard voluntary={vol} key={idx} />
       ))}
@@ -299,17 +274,13 @@ const ContactSection = () => {
     }*/
 
   return (
-    <section id="contact" className="my-24 flex gap-x-8  flex-wrap gap-y-6">
-      <div className="max-w-lg w-full">
+    <section id="contact" className="my-24 flex flex-wrap gap-x-8 gap-y-6">
+      <div className="w-full max-w-lg">
         <h2 className="section-header mb-3">Contact</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2">
           {contactInfo.map((info, idx) => (
-            <li key={idx} className="flex gap-x-4 items-center">
-              <ContactItem
-                link={info.link}
-                icon={info.icon}
-                display={info.name}
-              />
+            <li key={idx} className="flex items-center gap-x-4">
+              <ContactItem link={info.link} icon={info.icon} display={info.name} />
             </li>
           ))}
         </ul>
@@ -355,13 +326,13 @@ const ContactSection = () => {
 const CreditSection = () => {
   return (
     <section className="mb-16 mt-32 flex justify-center">
-      <div className="flex md:items-center items-start flex-col md:flex-row gap-3 mt-2 px-8 py-6 rounded-2xl border border-gray-900 shadow-2xl shadow-[#020f25] ">
+      <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-gray-900 px-8 py-6 shadow-2xl shadow-[#020f25] md:flex-row md:items-center">
         <Image
           alt="logo monospace version"
           src="/logo-mono.svg"
           width={10}
           height={10}
-          className="w-10 h-10"
+          className="h-10 w-10"
         />
         <p className="text-gray-300">
           This awesome logo is designed by a talented designer,{' '}
@@ -369,7 +340,7 @@ const CreditSection = () => {
           <Link
             target="_blank"
             href="https://www.behance.net/kaungsithu6/projects"
-            className="hover:underline text-cyan-400 font-semibold"
+            className="font-semibold text-cyan-400 hover:underline"
           >
             Kaung Sithu
           </Link>
