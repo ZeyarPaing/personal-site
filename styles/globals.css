@@ -52,11 +52,11 @@ button:focus-visible {
 }
 
 .section-header {
-  @apply text-xl font-black;
+  @apply text-xl font-extrabold;
 }
 
 .page-header {
-  @apply text-3xl font-black;
+  @apply text-3xl font-extrabold;
 }
 
 .stroked-text {
