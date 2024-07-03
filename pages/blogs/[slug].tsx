@@ -53,7 +53,7 @@ export const getStaticPaths = async () => {
   const paths = data.map((blog) => ({
     params: { slug: blog?.name },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: false, revalidate: 60 };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
