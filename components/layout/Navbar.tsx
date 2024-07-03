@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { navItems } from 'data/app-data';
 import { useRouter } from 'next/router';
+import Logo from 'components/shared/Logo';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
@@ -25,12 +26,13 @@ const Navbar = () => {
           href="/"
           className="flex items-center"
         >
-          <Image
+          {/* <Image
             src="/logo-full.svg"
             width={125}
             height={30}
             alt="personal logo"
-          />
+          /> */}
+          <Logo />
         </Link>
         <button
           className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "

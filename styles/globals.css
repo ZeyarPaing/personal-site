@@ -26,10 +26,6 @@ body::-webkit-scrollbar-thumb {
   border: 0.2px solid currentColor;
 }
 
-p {
-  @apply font-secondary;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -42,7 +38,7 @@ button {
 
 a:focus-visible,
 button:focus-visible {
-  @apply outline-primary-light outline-offset-2 outline-2 outline-dashed outline-offset-2;
+  @apply outline-primary-light outline-offset-2 outline-2 outline-dashed;
   transition: outline-offset 100ms;
 }
 
@@ -72,7 +68,7 @@ button:focus-visible {
 input,
 textarea {
   @apply bg-[#212121] bg-opacity-50
-    backdrop-blur-md font-secondary
+    backdrop-blur-md 
     border border-[#555555]
     focus:ring-2 focus:ring-primary-light focus:ring-opacity-40 focus:outline-0 focus:border-primary;
 }

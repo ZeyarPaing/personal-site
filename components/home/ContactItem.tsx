@@ -11,7 +11,7 @@ const ContactItem = ({
   icon: string;
   display: string;
 }) => (
-  <div className="flex items-center gap-2 font-secondary mb-2.5">
+  <div className="flex items-center gap-2 mb-2.5">
     <Image src={'/assets/icons/' + icon} width={20} height={20} alt="icon" />
     <Link
       href={link}

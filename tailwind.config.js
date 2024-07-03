@@ -6,8 +6,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      primary: ['var(--font-visby)', 'sans-serif'],
-      secondary: ['var(--font-manrope)', 'sans-serif'],
+      primary: ['var(--font-mona-sans)', 'sans-serif'],
     },
     extend: {
       colors: {

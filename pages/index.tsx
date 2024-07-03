@@ -318,7 +318,7 @@ const ContactSection = () => {
       {/*<div className="w-full sm:max-w-md sm:w-auto">
         <h2 className="section-header mb-3">Drop a line</h2>
         <form onSubmit={handleSendMessage}>
-          <label className="font-secondary text-gray-400 font-semibold text-sm">
+          <label className="text-gray-400 font-semibold text-sm">
             Message
           </label>
           <textarea
@@ -327,7 +327,7 @@ const ContactSection = () => {
             className="w-full min-h-[10rem] resize-y px-5 py-4 rounded-xl mt-1 text-sm"
             placeholder="Hi there! "
           />
-          <label className="font-secondary text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
+          <label className="text-gray-400 font-semibold text-sm block mb-1 mt-1.5">
             Email
           </label>
           <input
