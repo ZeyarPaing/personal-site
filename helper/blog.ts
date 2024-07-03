@@ -1,6 +1,5 @@
 import { Octokit } from '@octokit/core';
 import { OctokitResponse } from '@octokit/types';
-import axios from 'axios';
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import rehypePrettyCode, { Options } from 'rehype-pretty-code';
@@ -39,8 +38,7 @@ const octokit = new Octokit({
   auth: process.env.GH_TOKEN,
 });
 
-export const ghRawUrl =
-  'https://raw.githubusercontent.com/ZeyarPaing/blogs/main';
+export const ghRawUrl = 'https://raw.githubusercontent.com/ZeyarPaing/blogs/main';
 
 const options: Partial<Options> = {
   theme: 'material-theme-darker',
@@ -68,23 +66,25 @@ export class BlogService {
   }
 
   static getBlogContent(blogName: string): Promise<IBlogContent> {
-    return axios.get(BlogService.getBlogUrl(blogName)).then(async (res) => {
-      const rawMd = res.data as string;
-      const { data, content } = matter(rawMd);
-      const metaData = data as IBlogMeta;
-      const mdxSource = await serialize(content, {
-        mdxOptions: {
-          rehypePlugins: [[rehypePrettyCode, options]],
-        },
+    return fetch(BlogService.getBlogUrl(blogName))
+      .then((res) => res.text())
+      .then(async (res) => {
+        const rawMd = res as string;
+        const { data, content } = matter(rawMd);
+        const metaData = data as IBlogMeta;
+        const mdxSource = await serialize(content, {
+          mdxOptions: {
+            rehypePlugins: [[rehypePrettyCode, options]],
+          },
+        });
+        return {
+          ...metaData,
+          date: metaData.date + '',
+          name: blogName,
+          image: `${ghRawUrl}/_cover-images/${blogName}.jpg`,
+          content: mdxSource,
+        };
       });
-      return {
-        ...metaData,
-        date: metaData.date + '',
-        name: blogName,
-        image: `${ghRawUrl}/_cover-images/${blogName}.jpg`,
-        content: mdxSource,
-      };
-    });
   }
 
   static async getBlogs() {
@@ -98,16 +98,18 @@ export class BlogService {
     return ghRequest.then(async (response) => {
       let data = response.data.map((blog) => {
         if (blog.name[0] === '_') return;
-        return axios.get(`${ghRawUrl}/${blog.name}/index.md`).then((res) => {
-          const rawMd = res.data as string;
-          const { data: metaData } = matter(rawMd);
-          return {
-            ...blog,
-            ...metaData,
-            date: '' + metaData.date,
-            image: `${ghRawUrl}/_cover-images/${blog.name}.jpg`,
-          };
-        });
+        return fetch(`${ghRawUrl}/${blog.name}/index.md`)
+          .then((res) => res.text())
+          .then((res) => {
+            const rawMd = res as string;
+            const { data: metaData } = matter(rawMd);
+            return {
+              ...blog,
+              ...metaData,
+              date: '' + metaData.date,
+              image: `${ghRawUrl}/_cover-images/${blog.name}.jpg`,
+            };
+          });
       });
       try {
         let dataList = await Promise.all(data);
