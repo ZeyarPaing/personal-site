@@ -14,8 +14,8 @@ export const navItems: NavItem[] = [
 
 export const contactInfo: ContactInfo[] = [
   {
-    name: '+95 978302 4165',
-    link: 'tel:+959783024165',
+    name: '+66 621342935',
+    link: 'tel:+66621342935',
     icon: 'phone.svg',
   },
   {
@@ -24,8 +24,8 @@ export const contactInfo: ContactInfo[] = [
     icon: 'mail.svg',
   },
   {
-    name: 'ZeyarPaing',
-    link: 'https://github.com/ZeyarPaing',
+    name: 'zeyarpaing',
+    link: 'https://github.com/zeyarpaing',
     icon: 'github.svg',
   },
   {

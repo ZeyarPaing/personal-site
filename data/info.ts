@@ -1,20 +1,20 @@
-import type {
-  Certifications,
-  Education,
-  Experience,
-  Project,
-  Technology,
-  Voluntary,
-} from 'types';
+import type { Certifications, Education, Experience, Project, Technology, Voluntary } from 'types';
 
 export const experiences: Experience[] = [
   {
-    companyName: 'Rezeve',
-    current: true,
+    companyName: 'Seak',
     year: 0.4,
-    joined: new Date('21 Jun 2022'),
-    websiteLink: 'https://www.rezeve.com/',
-    position: 'Frontend Developer',
+    websiteLink: 'https://seak.ai/',
+    position: 'Full Stack Engineer',
+    description: `Built and maintained Seak's Supplier Mobile App from scratch using React Native and React ecosystem. Worked directly with the CEO, supplier team and UI/UX to define features and incorporate user feedback
+ from beta test users. Developed Django server app to serve REST APIs for the mobile app and Cron jobs for notifications and 
+automatic product publishing`,
+  },
+  {
+    companyName: 'Rezerv',
+    year: 2,
+    websiteLink: 'https://rezerv.co/',
+    position: 'Lead Frontend Developer',
     description:
       'Building user interfaces of Rezeve SaaS platform using Next.Js, React and other related technologies. I am also responsible for the maintenance of the existing codebase.',
   },
@@ -138,14 +138,12 @@ export const voluntaries: Voluntary[] = [
   {
     place: 'Non-profit Organization',
     position: 'Public Relation Team Member',
-    description:
-      'Responsible for social media awareness for the events and publications',
+    description: 'Responsible for social media awareness for the events and publications',
   },
   {
     place: 'ICPC National Contest',
     position: 'Volunteer',
-    description:
-      "A role for reporting technical errors of computers and contestants' scores",
+    description: "A role for reporting technical errors of computers and contestants' scores",
   },
   {
     place: 'UCSY IT Camp 2019',
@@ -175,8 +173,7 @@ export const projects: Project[] = [
     name: 'MaNaw Store',
     logo: '/assets/logos/manawstore.svg',
     type: 'Web and mobile app',
-    description:
-      'All in one POS, Accounting, Invoices, Inventory software for both web and mobile',
+    description: 'All in one POS, Accounting, Invoices, Inventory software for both web and mobile',
     demoUrl: 'https://merchant.manawstore.com/',
     color: '#f1ca3b',
     media: '/assets/image/projects/manaw-mockup.webp',
