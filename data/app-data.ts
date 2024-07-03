@@ -19,8 +19,8 @@ export const contactInfo: ContactInfo[] = [
     icon: 'phone.svg',
   },
   {
-    name: 'zeyarpaing@porton.me',
-    link: 'mailto:zeyarpaing@porton.me',
+    name: 'zeyarpaing@proton.me',
+    link: 'mailto:zeyarpaing@proton.me',
     icon: 'mail.svg',
   },
   {
