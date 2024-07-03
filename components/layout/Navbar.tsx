@@ -3,39 +3,29 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { navItems } from 'data/app-data';
 import { useRouter } from 'next/router';
-import Logo from 'components/shared/Logo';
+import Logo from '@/icons/Logo';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    document.body.style.overflow = 'auto';
-  }, []);
-
   return (
     <nav
       className={`${
         isExpanded ? 'bg-darkblue/50 backdrop-blur-md' : ''
-      } fixed top-0 left-1/2 -translate-x-1/2 md:bg-transparent md:backdrop-blur-0 md:relative md:translate-x-0 md:left-0 z-50 py-3 pt-6 md:pt-10 text-white  rounded-b-xl md:rounded-t-xl rounded-t-none m-layout !px-0 w-full`}
+      } m-layout fixed left-1/2 top-0 z-50 w-full -translate-x-1/2 rounded-b-xl rounded-t-none !px-0 py-3 pt-6 text-white md:relative md:left-0 md:translate-x-0 md:rounded-t-xl md:bg-transparent md:pt-10 md:backdrop-blur-0`}
     >
-      <div className="m-layout flex flex-wrap justify-between items-center relative">
+      <div className="m-layout relative flex flex-wrap items-center justify-between">
         <Link
           aria-label="Go to home page"
           aria-current={router.pathname === '/' ? 'page' : undefined}
           href="/"
           className="flex items-center"
         >
-          {/* <Image
-            src="/logo-full.svg"
-            width={125}
-            height={30}
-            alt="personal logo"
-          /> */}
           <Logo />
         </Link>
         <button
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 md:hidden "
+          className="ml-3 inline-flex items-center p-2 text-sm text-gray-500 md:hidden"
           onClick={() => {
             document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
             setExpanded(!isExpanded);
@@ -50,22 +40,20 @@ const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              className={`transition-transform ease-linear fill-primary-light duration-75 ${
-                isExpanded
-                  ? 'rotate-45 -translate-y-3 translate-x-[14px]'
-                  : 'rotate-0'
+              className={`fill-primary-light transition-transform duration-75 ease-linear ${
+                isExpanded ? '-translate-y-3 translate-x-[14px] rotate-45' : 'rotate-0'
               }`}
               d="M0.560976 14H23L22.439 16H0L0.560976 14Z"
             />
             <path
               className={`${
                 isExpanded ? 'opacity-0' : 'opacity-100'
-              } transition-opacity duration-75 fill-primary-light`}
+              } fill-primary-light transition-opacity duration-75`}
               d="M7.43902 7H25L24.561 9H7L7.43902 7Z"
             />
             <path
-              className={`transition-transform ease-linear fill-primary-light duration-75 ${
-                isExpanded ? '-rotate-45 translate-y-[18px]' : 'rotate-0'
+              className={`fill-primary-light transition-transform duration-75 ease-linear ${
+                isExpanded ? 'translate-y-[18px] -rotate-45' : 'rotate-0'
               } `}
               d="M5.53659 0H27L26.4634 2H5L5.53659 0Z"
             />
@@ -73,23 +61,18 @@ const Navbar = () => {
         </button>
         <section
           className={`${
-            isExpanded
-              ? 'opacity-100 visible h-screen'
-              : 'invisible opacity-0 h-0'
-          } grid place-items-center md:block md:translate-x-0 md:visible md:h-auto md:opacity-100 transition-opacity duration-300 w-full md:w-auto`}
+            isExpanded ? 'visible h-screen opacity-100' : 'invisible h-0 opacity-0'
+          } grid w-full place-items-center transition-opacity duration-300 md:visible md:block md:h-auto md:w-auto md:translate-x-0 md:opacity-100`}
         >
-          <ul className="flex flex-col mt-4 text-center md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium gap-y-5 w-full">
+          <ul className="mt-4 flex w-full flex-col gap-y-5 text-center md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
             {navItems.map((item) => (
               <li key={item.name}>
                 <Link
-                  className="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent "
-                  aria-current={
-                    router.pathname === item.url ? 'page' : undefined
-                  }
+                  className="block rounded py-2 pl-3 pr-4 text-white md:bg-transparent"
+                  aria-current={router.pathname === item.url ? 'page' : undefined}
                   href={item.url}
                 >
-                  {item.name}{' '}
-                  {item.beta && <code className="bg-blue-500">beta</code>}
+                  {item.name} {item.beta && <code className="bg-blue-500">beta</code>}
                 </Link>
               </li>
             ))}
