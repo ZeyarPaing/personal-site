@@ -5,7 +5,7 @@ import Link from 'next/link';
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   return (
     <div
-      className={`rounded-2xl bg-gray-900 bg-opacity-40 px-6 py-6 backdrop-blur-md md:px-10 md:py-8 ${
+      className={`rounded-2xl bg-zinc-800/60 bg-opacity-40 px-6 py-6 backdrop-blur-md md:px-10 md:py-8 ${
         experience.current ? 'border-2 border-primary border-opacity-50 bg-primary-dark/20' : ''
       }`}
     >

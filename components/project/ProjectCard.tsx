@@ -18,19 +18,15 @@ const ProjectCard: FC<{
       rel="noopener noreferrer"
       target="_blank"
     >
-      <div className="relative h-full bg-gray-900 bg-opacity-40 transition-colors group-hover:bg-opacity-50 group-hover:bg-gray-800 rounded-2xl px-7 py-6 z-[1] backdrop-blur-md">
-        <div
-          className={`flex gap-4 flex-wrap ${
-            vertical ? 'flex-col items-center' : ''
-          }`}
-        >
+      <div className="relative z-[1] h-full rounded-2xl bg-zinc-800 bg-opacity-40 px-7 py-6 backdrop-blur-md transition-colors group-hover:bg-zinc-700 group-hover:bg-opacity-50">
+        <div className={`flex flex-wrap gap-4 ${vertical ? 'flex-col items-center' : ''}`}>
           <Image src={project.logo} width={50} height={50} alt={project.name} />
           <div className={vertical ? 'text-center' : ''}>
-            <h3 className="font-bold text-lg">{project.name}</h3>
-            <p className="text-gray-400 text-sm">{project.type}</p>
+            <h3 className="text-lg font-bold">{project.name}</h3>
+            <p className="text-sm text-gray-400">{project.type}</p>
           </div>
         </div>
-        <p className="text-gray-300 mt-3 text-sm">{project.description}</p>
+        <p className="mt-3 text-sm text-gray-300">{project.description}</p>
       </div>
     </Link>
   );

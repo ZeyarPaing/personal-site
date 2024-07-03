@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 html {
-  --color-backdrop: hsl(226, 89%, 4%);
+  --color-backdrop: hsl(240, 2%, 8%);
+  @apply scroll-smooth;
 }
 
 body {
-  @apply font-primary text-white bg-backdrop md:!overflow-y-auto tracking-wide scroll-smooth overflow-x-hidden;
+  @apply h-full overflow-x-hidden bg-backdrop font-primary tracking-wide text-white md:!overflow-y-auto;
   z-index: -5;
   scroll-behavior: smooth;
+  background-image: url('/assets/image/star-bg.webp');
 }
 
 /*custom scroll bar*/
@@ -22,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  @apply bg-secondary-light bg-opacity-10 rounded-xl text-blue-900 text-opacity-40;
+  @apply rounded-xl bg-zinc-500 bg-opacity-10 text-zinc-400 text-opacity-40;
   border: 0.2px solid currentColor;
 }
 
@@ -38,24 +40,24 @@ button {
 
 a:focus-visible,
 button:focus-visible {
-  @apply outline-primary-light outline-offset-2 outline-2 outline-dashed;
+  @apply outline-dashed outline-2 outline-offset-2 outline-primary-light;
   transition: outline-offset 100ms;
 }
 
 .m-layout {
-  @apply px-4 max-w-screen-2xl lg:max-w-screen-lg md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
+  @apply mx-auto max-w-screen-2xl px-4 sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-lg;
 }
 
 .m-container {
-  @apply px-4 max-w-screen-sm lg:max-w-screen-xl md:max-w-screen-sm sm:max-w-screen-sm mx-auto;
+  @apply mx-auto max-w-screen-sm px-4 sm:max-w-screen-sm md:max-w-screen-sm lg:max-w-screen-xl;
 }
 
 .section-header {
-  @apply font-black text-xl;
+  @apply text-xl font-extrabold;
 }
 
 .page-header {
-  @apply font-black text-3xl;
+  @apply text-3xl font-extrabold;
 }
 
 .stroked-text {
@@ -67,22 +69,15 @@ button:focus-visible {
 
 input,
 textarea {
-  @apply bg-[#212121] bg-opacity-50
-    backdrop-blur-md 
-    border border-[#555555]
-    focus:ring-2 focus:ring-primary-light focus:ring-opacity-40 focus:outline-0 focus:border-primary;
-}
-
-.career-section b,
-.description-section b {
-  @apply text-primary font-black;
+  @apply border border-[#555555] bg-[#212121] bg-opacity-50 backdrop-blur-md focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary-light focus:ring-opacity-40;
 }
 
 .before-animate {
   opacity: 0;
   -webkit-transform: translateY(5rem);
   transform: translateY(5rem);
-  transition: all 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
+  transition:
+    all 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
     opacity 0.3s 0.25s ease-out;
 }
 

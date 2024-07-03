@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { navItems } from 'data/app-data';
 import { useRouter } from 'next/router';
-import Logo from '@/icons/Logo';
+import Logo from '@/svgs/Logo';
 
 const Navbar = () => {
   const [isExpanded, setExpanded] = useState(false);

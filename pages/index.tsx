@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import Layout from 'components/layout/Layout';
-import { Button, LinkButton } from 'components/shared/Button';
+import { Button } from 'components/shared/Button';
 import { Project, Technology } from 'types';
 import { courses, education, experiences, projects, technologies, voluntaries } from 'data/info';
 import ExperienceCard from 'components/home/ExperienceCard';
@@ -13,10 +13,11 @@ import Link from 'next/link';
 import ProjectCard from 'components/project/ProjectCard';
 import BlurredBox from 'components/shared/BlurredBox';
 import { useScrollReveal } from 'hooks/useScrollReveal';
-import profileImage from 'public/assets/image/profile.webp';
+import profileImage from '@/public/assets/image/memoji.webp';
 import { contactInfo } from '../data/app-data';
 import ContactItem from '../components/home/ContactItem';
 import PatternBackground from 'components/shared/PatternBackground';
+import Rings from '@/svgs/Rings';
 
 interface HomeProps {
   projects: Project[];
@@ -27,7 +28,7 @@ const Home: NextPage<HomeProps> = () => {
     <Layout>
       <LandingSection />
       <div className="mx-2">
-        <BriefSection />
+        {/* <BriefSection /> */}
         <ProjectSection />
         <ExperienceSection />
         <TechnologySection />
@@ -94,36 +95,43 @@ const AnimatingBlocks = () => (
 */
 const LandingSection = () => (
   <PatternBackground>
-    <section className="relative mx-auto mt-14 flex flex-wrap items-center justify-center gap-10 md:mt-20 lg:flex-nowrap">
+    <section className="relative mx-auto mt-14 flex flex-col flex-wrap items-center justify-center gap-6 md:mt-20 lg:flex-nowrap">
       {/* <AnimatingBlocks /> */}
-      <Image
-        src={profileImage}
-        width={320}
-        height={350}
-        loading={'eager'}
-        priority={true}
-        alt="profile image in 3d avatar style"
-      />
-      <div className="mx-2 max-w-xl lg:mt-12">
-        <p className="font-light">Hi there, I’m</p>
-        <h1 className="my-3 text-4xl font-black">Zeyar Paing</h1>
-        <p className="description-section max-w-lg text-lg font-light leading-[28px]">
-          A creative & passionate <b>Front-End Web Developer</b> delivering efficient & optimized
-          solutions, skilled in designing, developing and refactoring multiple web-based
-          applications incorporating a range of technologies.
+      <div className="relative mt-12">
+        <Rings className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <Image
+          src={profileImage}
+          width={100}
+          height={100}
+          loading={'eager'}
+          priority={true}
+          alt="profile image in 3d avatar style"
+        />
+      </div>
+      <div className="mx-2 flex max-w-2xl flex-col items-center text-center">
+        {/* <p className="font-light">Hi there, I’m</p> */}
+        <h1 className="my-3 bg-gradient-to-br from-white to-zinc-400/90 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
+          Hi, I’m Zeyar Paing.
+        </h1>
+        <p
+          className="font-light leading-6 md:text-lg"
+          style={{
+            maxInlineSize: '80ch',
+            /** @ts-ignore */
+            textWrap: 'balance',
+          }}
+        >
+          An experienced Software Engineer with a strong focus on frontend engineering transforming
+          Vision into Seamless User Experience
         </p>
-        <div className="mt-5 flex items-center gap-8">
-          <Button
-            onClick={() =>
-              window.open('https://dub.sh/zeyar-resume', '_blank', 'noopener,noreferrer')
-            }
-            type="primary"
-          >
+        <div className="mt-5 flex items-center gap-2">
+          <Button variant={'link'} href="#contact">
+            Contact me
+          </Button>
+
+          <Button href="https://go.zeyar.dev/resume" target="_blank" rel="noreferrer">
             Resume
           </Button>
-          <LinkButton href="#contact" type="primary">
-            Contact me
-          </LinkButton>
         </div>
       </div>
     </section>
@@ -213,7 +221,7 @@ const EducationSection = () => {
           <EducationCard education={edu} key={idx} />
         ))}
       </div>
-      <p id="certifications" className="mb-4 mt-6 text-sm font-semibold uppercase text-gray-400">
+      <p id="certifications" className="mb-4 mt-6 text-sm font-semibold uppercase text-zinc-400">
         Certificate Courses
       </p>
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
@@ -222,7 +230,7 @@ const EducationSection = () => {
             href={certificate.link}
             target="_blank"
             rel="noreferrer"
-            className="flex flex-col items-end gap-y-5 rounded-3xl border border-gray-700/60 bg-gray-900/40 bg-opacity-80 px-5 py-4 hover:border-gray-600 hover:bg-gray-900/70"
+            className="flex flex-col items-end gap-y-5 rounded-3xl border border-zinc-700/60 bg-zinc-900/40 bg-opacity-80 px-5 py-4 hover:border-zinc-600 hover:bg-zinc-900/70"
             key={idx}
           >
             <Image src="/assets/logos/coursera.svg" width={40} height={40} alt="coursera logo" />
@@ -326,7 +334,7 @@ const ContactSection = () => {
 const CreditSection = () => {
   return (
     <section className="mb-16 mt-32 flex justify-center">
-      <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-gray-900 px-8 py-6 shadow-2xl shadow-[#020f25] md:flex-row md:items-center">
+      <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-900 px-8 py-6 shadow-2xl shadow-black/80 md:flex-row md:items-center">
         <Image
           alt="logo monospace version"
           src="/logo-mono.svg"
