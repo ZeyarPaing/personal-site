@@ -49,6 +49,7 @@ export const getStaticProps: GetServerSideProps = async () => {
   return {
     props: {
       blogs: data,
+      revalidate: 60,
     },
   };
 };
